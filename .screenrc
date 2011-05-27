@@ -1,0 +1,18 @@
+autodetach on
+vbell on
+vbell_msg "bell"
+startup_message off
+defscrollback 1024
+caption always "%{=b dW}%Y-%m-%d %0C:%s %a    %= %{= dd}%-Lw%{= bd}%51>%n%f* %t%{-}%+Lw%<%{- Wk}%{= dd}"
+
+term 'screen-256color'
+termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+termcapinfo xterm 'ti@:te@'
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on" 
