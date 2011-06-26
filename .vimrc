@@ -20,14 +20,3 @@ set modeline
 set hlsearch
 
 set cursorline
-
-
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
-
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-
-set tags=./TAGS
