@@ -5,8 +5,10 @@ set cpo-=C
 
 colorscheme wombat256
 
-autocmd BufRead *.as set filetype=actionscript
+autocmd BufRead *.as    set filetype=actionscript
 autocmd BufRead *.scons set filetype=python
+autocmd BufRead *.inf   set filetype=dosini
+
 filetype indent plugin on
 syntax on
 set ruler
