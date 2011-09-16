@@ -121,3 +121,34 @@ __update_title
 __use_keychain
 __os_specific
 __terminal_specific
+
+function select-agent {
+    local -a files
+    local file
+    integer idx
+    integer len
+    integer active
+
+    active=-1
+    files=($(find /tmp/ssh-* -iname agent.\* -type s -user $(id -u) -print0 | sort -z))
+    ((len=${#files} - 1)) #HURR
+    for idx in {1..$len}; do
+        file=$files[$idx]
+        if [[ $SSH_AUTH_SOCK = $file ]]; then
+            active=$idx
+        fi
+        echo $idx'. socket at '$file
+        SSH_AUTH_SOCK=$file ssh-add -l
+        echo
+    done
+
+    echo -n 'ya['$active']: '
+    read idx
+
+    if [[ $idx -le $len ]]; then
+        file=$files[$idx]
+        export SSH_AUTH_SOCK=$file
+        echo 'using socket at '$file
+        SSH_AUTH_SOCK=$file ssh-add -l
+    fi
+}
