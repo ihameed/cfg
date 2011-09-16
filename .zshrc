@@ -125,30 +125,35 @@ __terminal_specific
 function select-agent {
     local -a files
     local file
-    integer idx
-    integer len
-    integer active
+    integer idx=1
+    integer len=0
+    integer active=-1
 
-    active=-1
-    files=($(find /tmp/ssh-* -iname agent.\* -type s -user $(id -u) -print0 | sort -z))
+    files=($(find /tmp -name ssh-\* -type d -print0 2>/dev/null |
+             xargs -0 -I xxx find xxx -iname agent.\* -type s -user $(id -u) -print0 |
+             sort -z))
     ((len=${#files} - 1)) #HURR
-    for idx in {1..$len}; do
-        file=$files[$idx]
-        if [[ $SSH_AUTH_SOCK = $file ]]; then
-            active=$idx
+    if [[ $len -ge 1 ]]; then #HURR DURR
+        for idx in {1..$len}; do
+            file=$files[$derp]
+            if [[ $SSH_AUTH_SOCK = $file ]]; then
+                active=$derp
+            fi
+            echo $derp'. agent socket  at '$file
+            SSH_AUTH_SOCK=$file ssh-add -l
+            echo
+        done
+
+        echo -n 'ya['$active']: '
+        read idx
+
+        if [[ $idx -le $len ]]; then
+            file=$files[$idx]
+            export SSH_AUTH_SOCK=$file
+            echo 'using agent socket at '$file
+            SSH_AUTH_SOCK=$file ssh-add -l
         fi
-        echo $idx'. socket at '$file
-        SSH_AUTH_SOCK=$file ssh-add -l
-        echo
-    done
-
-    echo -n 'ya['$active']: '
-    read idx
-
-    if [[ $idx -le $len ]]; then
-        file=$files[$idx]
-        export SSH_AUTH_SOCK=$file
-        echo 'using socket at '$file
-        SSH_AUTH_SOCK=$file ssh-add -l
+    else
+        echo 'no agent sockets found'
     fi
 }
