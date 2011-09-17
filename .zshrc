@@ -190,4 +190,23 @@ agent-relink() {
 }
 
 agent-clean() {
+    local -aU files
+    files=(/tmp/ssh-*/agent.*) 2>/dev/null
+
+    local file
+    integer idx=0
+    integer len=${#files}
+    integer ret
+    for idx in {1..$len}; do
+        file=$files[$idx]
+        echo -n 'probing '$file'... '
+        SSH_AUTH_SOCK=$file ssh-add -l 2>/dev/null 1>/dev/null
+        if [[ $? -ne 0 ]]; then
+            echo 'deleted'
+            rm -f $file
+            rmdir $(dirname $file)
+        else
+            echo 'kept'
+        fi
+    done
 }
