@@ -129,17 +129,18 @@ function select-agent {
     integer len=0
     integer active=-1
 
+    #fix ifs shit
     files=($(find /tmp -name ssh-\* -type d -print0 2>/dev/null |
              xargs -0 -I xxx find xxx -iname agent.\* -type s -user $(id -u) -print0 |
              sort -z))
     ((len=${#files} - 1)) #HURR
     if [[ $len -ge 1 ]]; then #HURR DURR
         for idx in {1..$len}; do
-            file=$files[$derp]
+            file=$files[$idx]
             if [[ $SSH_AUTH_SOCK = $file ]]; then
-                active=$derp
+                active=$idx
             fi
-            echo $derp'. agent socket  at '$file
+            echo $idx'. agent socket  at '$file
             SSH_AUTH_SOCK=$file ssh-add -l
             echo
         done
