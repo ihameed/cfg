@@ -194,9 +194,12 @@ agent-clean() {
     files=(/tmp/ssh-*/agent.*) 2>/dev/null
 
     local file
+    local old_IFS
     integer idx=0
     integer len=${#files}
     integer ret
+    old_IFS=$IFS
+    IFS=
     for idx in {1..$len}; do
         file=$files[$idx]
         echo -n 'probing '$file'... '
@@ -209,4 +212,5 @@ agent-clean() {
             echo 'kept'
         fi
     done
+    IFS=$old_IFS
 }
