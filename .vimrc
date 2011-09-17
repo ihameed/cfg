@@ -6,6 +6,7 @@ set cpo-=C
 colorscheme wombat256
 
 autocmd BufRead *.as    set filetype=actionscript
+autocmd BufRead *.json  set filetype=json
 autocmd BufRead *.scons set filetype=python
 autocmd BufRead *.inf   set filetype=dosini
 
