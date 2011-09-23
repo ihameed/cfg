@@ -128,7 +128,7 @@ chpwd() {
 setopt IGNORE_EOF
 setopt NO_BANG_HIST
 PS1='%n@%m:%~%(!.#.$) '
-export PAGER='/usr/bin/less'
+export PAGER='less'
 export LESS='-S'
 export WINEDEBUG=fixme-all
 export EDITOR='vim'
