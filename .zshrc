@@ -138,6 +138,7 @@ alias figee=fg
 alias figs=jobs
 alias pdflatex='pdflatex -interaction nonstopmode'
 alias mysql='mysql --sigint-ignore'
+alias ocaml='rlwrap ocaml'
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
 compctl -K listsysctls sysctl
 compctl -c man
