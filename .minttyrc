@@ -10,3 +10,5 @@ Locale=en_US
 Charset=UTF-8
 SwitchShortcuts=no
 BoldAsFont=no
+FontSmoothing=none
+BellFlash=yes

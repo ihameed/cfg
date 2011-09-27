@@ -29,6 +29,8 @@
 
 (show-paren-mode t)
 
+(global-hl-line-mode 1)
+
 (set-background-color "#242424")
 (set-foreground-color "#cccccc")
 (set-cursor-color "#ecee90")
@@ -36,7 +38,7 @@
 (set-face-foreground 'font-lock-doc-face "#c0bc6c")
 (set-face-foreground 'font-lock-constant-face "#e5786d")
 (set-face-foreground 'font-lock-string-face "#95e454")
-(set-face-foreground 'font-lock-variable-name-face "#cae682")
+(set-face-foreground 'font-lock-variable-name-face "#cccccc")
 (set-face-foreground 'font-lock-function-name-face "#cae682")
 (set-face-foreground 'font-lock-type-face "#cae682")
 (set-face-foreground 'font-lock-builtin-face "#87afff")
@@ -50,11 +52,12 @@
 (set-face-background 'region "#444444")
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "yellow")
+(set-face-background 'hl-line "#32322e")
 
 (show-paren-mode t)
 (tool-bar-mode nil)
 (menu-bar-mode nil)
-(toggle-scroll-bar nil)
+(if window-system (progn (toggle-scroll-bar nil)))
 (transient-mark-mode nil)
 
 (setq ring-bell-function (lambda ()))
