@@ -54,6 +54,7 @@
 (show-paren-mode t)
 (tool-bar-mode nil)
 (menu-bar-mode nil)
+(toggle-scroll-bar nil)
 (transient-mark-mode nil)
 
 (setq ring-bell-function (lambda ()))
