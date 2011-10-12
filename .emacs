@@ -52,16 +52,18 @@
 (set-face-background 'lazy-highlight "yellow")
 
 (show-paren-mode t)
-(tool-bar-mode nil)
-(menu-bar-mode nil)
-(toggle-scroll-bar nil)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
 (transient-mark-mode nil)
+(setq mac-allow-anti-aliasing nil)
 
 (setq ring-bell-function (lambda ()))
 
-(setq derp (if (eq system-type 'gnu/linux)
-	       '(default ((t (:height 70 :family "ProFontWindows"))))
-	     '(default ((t (:height 90 :family "ProFontWindows"))))))
+(setq derp (cond
+             ((eq system-type 'gnu/linux) '(default ((t (:height 70 :family "ProFontWindows")))))
+             ((eq system-type 'darwin) '(default ((t (:height 90 :family "ProFontX")))))
+             (t '(default ((t (:height 90 :family "ProFontWindows")))))))
 
 (custom-set-faces
  derp
