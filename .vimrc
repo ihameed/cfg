@@ -7,8 +7,11 @@ colorscheme wombat256
 
 autocmd BufRead *.as    set filetype=actionscript
 autocmd BufRead *.json  set filetype=json
-autocmd BufRead *.scons set filetype=python
 autocmd BufRead *.inf   set filetype=dosini
+
+autocmd BufRead SConstruct set filetype=python
+autocmd BufRead SCsub      set filetype=python
+autocmd BufRead *.scons    set filetype=python
 
 filetype indent plugin on
 syntax on

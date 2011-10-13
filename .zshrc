@@ -47,6 +47,7 @@ __os_specific() {
             export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH
             export SHELL='/bin/zsh'
             export TZ='/usr/share/zoneinfo/America/Los_Angeles'
+            export NACL_SDK_ROOT='/cygdrive/c/sdk/native_client_sdk_0_5_1052'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale

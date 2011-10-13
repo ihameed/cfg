@@ -1,5 +1,4 @@
 import XMonad
-import Data.Map
 import System.IO
 import qualified Data.Map as Map
 
