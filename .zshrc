@@ -41,6 +41,10 @@ __add_local_path() {
     export PATH=$HOME'/.local/bin:'$PATH
 }
 
+__disable_mintty_retardation() {
+    echo -n '\e[?7786l' #mousewheel -> up/down
+}
+
 __os_specific() {
     case $OSTYPE in
         cygwin)
@@ -52,6 +56,7 @@ __os_specific() {
             alias grep='grep --color'
             __set_locale
             __add_local_path
+            __disable_mintty_retardation
             ;;
         linux*)
             export PATH=$HOME'/.local/bin:'$PATH
