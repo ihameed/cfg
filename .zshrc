@@ -1,3 +1,69 @@
+agent-select() {
+    local -aU files
+    files=(/tmp/ssh-*/agent.*) 2>/dev/null
+
+    local file
+    integer idx=0
+    integer len=${#files}
+    integer active=-1
+
+
+    if [[ $len -ge 1 ]]; then
+        for idx in {1..$len}; do
+            file=$files[$idx]
+            if [[ $SSH_AUTH_SOCK = $file ]]; then
+                active=$idx
+            fi
+            echo $idx'. agent socket at '$file
+            SSH_AUTH_SOCK=$file ssh-add -l
+            echo
+        done
+
+        echo -n 'ya['$active']: '
+        read idx
+
+        if [[ ($idx -ge 1) && ($idx -le $len) ]]; then
+            file=$files[$idx]
+            export SSH_AUTH_SOCK=$file
+            echo 'using agent socket at '$file
+            SSH_AUTH_SOCK=$file ssh-add -l
+        fi
+    else
+        echo 'no agent sockets found'
+    fi
+}
+
+agent-relink() {
+}
+
+agent-clean() {
+    local -aU files
+    files=(/tmp/ssh-*/agent.*) 2>/dev/null
+
+    local file
+    local old_IFS
+    integer idx=0
+    integer len=${#files}
+    integer ret
+    old_IFS=$IFS
+    IFS=
+    for idx in {1..$len}; do
+        file=$files[$idx]
+        #echo -n 'probing '$file'... '
+        SSH_AUTH_SOCK=$file ssh-add -l 2>/dev/null 1>/dev/null
+        if [[ $? -ne 0 && $? -ne 1 ]]; then
+            #echo 'deleted'
+            rm -f $file
+            rmdir $(dirname $file)
+        else
+            #echo 'kept'
+        fi
+    done
+    IFS=$old_IFS
+}
+
+
+
 __disable_flow_control() {
     unsetopt FLOW_CONTROL
     stty stop undef
@@ -160,66 +226,4 @@ __use_keychain
 __os_specific
 __terminal_specific
 
-agent-select() {
-    local -aU files
-    files=(/tmp/ssh-*/agent.*) 2>/dev/null
-
-    local file
-    integer idx=0
-    integer len=${#files}
-    integer active=-1
-
-
-    if [[ $len -ge 1 ]]; then
-        for idx in {1..$len}; do
-            file=$files[$idx]
-            if [[ $SSH_AUTH_SOCK = $file ]]; then
-                active=$idx
-            fi
-            echo $idx'. agent socket at '$file
-            SSH_AUTH_SOCK=$file ssh-add -l
-            echo
-        done
-
-        echo -n 'ya['$active']: '
-        read idx
-
-        if [[ ($idx -ge 1) && ($idx -le $len) ]]; then
-            file=$files[$idx]
-            export SSH_AUTH_SOCK=$file
-            echo 'using agent socket at '$file
-            SSH_AUTH_SOCK=$file ssh-add -l
-        fi
-    else
-        echo 'no agent sockets found'
-    fi
-}
-
-agent-relink() {
-}
-
-agent-clean() {
-    local -aU files
-    files=(/tmp/ssh-*/agent.*) 2>/dev/null
-
-    local file
-    local old_IFS
-    integer idx=0
-    integer len=${#files}
-    integer ret
-    old_IFS=$IFS
-    IFS=
-    for idx in {1..$len}; do
-        file=$files[$idx]
-        echo -n 'probing '$file'... '
-        SSH_AUTH_SOCK=$file ssh-add -l 2>/dev/null 1>/dev/null
-        if [[ $? -ne 0 && $? -ne 1 ]]; then
-            echo 'deleted'
-            rm -f $file
-            rmdir $(dirname $file)
-        else
-            echo 'kept'
-        fi
-    done
-    IFS=$old_IFS
-}
+agent-clean
