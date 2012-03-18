@@ -213,7 +213,7 @@ agent-clean() {
         file=$files[$idx]
         echo -n 'probing '$file'... '
         SSH_AUTH_SOCK=$file ssh-add -l 2>/dev/null 1>/dev/null
-        if [[ $? -ne 0 ]]; then
+        if [[ $? -ne 0 && $? -ne 1 ]]; then
             echo 'deleted'
             rm -f $file
             rmdir $(dirname $file)
