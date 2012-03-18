@@ -12,11 +12,24 @@
                      (not (string-match "/\\.\\{1,2\\}$" dir)))
                 (setq load-path (cons dir load-path))))))))
 
-(require 'undo-tree)
-(global-undo-tree-mode)
-(setq viper-mode t)
-(require 'viper)
-(require 'vimpulse)
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+    (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
+
+(setq my-packages '(
+ evil
+ tuareg-mode
+))
+
+
+(el-get 'sync my-packages)
+(el-get 'wait)
+
+(evil-mode 1)
+
 (require 'colorscheme-wombat)
 
 (setq font-lock-maximum-size 4096000)
@@ -31,8 +44,6 @@
 (setq-default line-spacing 1)
 
 (custom-set-variables '(inhibit-startup-echo-area-message (user-real-login-name)))
-
-(show-paren-mode t)
 
 (global-hl-line-mode 1)
 
