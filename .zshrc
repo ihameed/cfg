@@ -103,6 +103,10 @@ __use_local_smlnj() {
     export SMLNJ_HOME=$HOME'/.local/sml'
 }
 
+__use_local_ghc() {
+    export PATH=$HOME'/.local/ghc/bin:'$PATH
+}
+
 __add_local_path() {
     export PATH=$HOME'/.local/bin:'$PATH
 }
@@ -206,8 +210,6 @@ export PAGER='less'
 export LESS='-S'
 export WINEDEBUG=fixme-all
 export EDITOR='vim'
-#export GIT_SSL_NO_VERIFY=1
-#__use_local_smlnj
 alias figee=fg
 alias figs=jobs
 alias pdflatex='pdflatex -interaction nonstopmode'
@@ -225,5 +227,7 @@ __update_title
 __use_keychain
 __os_specific
 __terminal_specific
+#__use_local_smlnj
+__use_local_ghc
 
 agent-clean
