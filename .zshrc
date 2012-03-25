@@ -107,8 +107,12 @@ __use_local_ghc() {
     export PATH=$HOME'/.local/ghc/bin:'$PATH
 }
 
+__use_local_ocaml() {
+    export PATH=$HOME/.local/godi/bin:$HOME/.local/godi/sbin:$PATH
+}
+
 __add_local_path() {
-    export PATH=$HOME'/.local/bin:'$PATH
+    export PATH=$HOME'/.local/bin:'$HOME'/.cabal/bin:'$PATH
 }
 
 __disable_mintty_retardation() {
@@ -229,5 +233,6 @@ __os_specific
 __terminal_specific
 #__use_local_smlnj
 __use_local_ghc
+__use_local_ocaml
 
 agent-clean
