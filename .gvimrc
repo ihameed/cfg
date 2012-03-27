@@ -1,5 +1,5 @@
 "set gfn=sixbyten
-set gfn=ProfontWindows
+set gfn=ProfontWindows\ 9
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar

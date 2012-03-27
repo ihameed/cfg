@@ -5,6 +5,9 @@ set cpo-=C
 
 colorscheme wombat256
 
+set wildmode=longest,list,full
+set wildmenu
+
 autocmd BufRead *.as    set filetype=actionscript
 autocmd BufRead *.json  set filetype=json
 autocmd BufRead *.inf   set filetype=dosini
@@ -34,3 +37,24 @@ function! OCamlType()
     echo system("annot -n -type ".line." ".col." ".file.".annot")
 endfunction
 map <Esc>t :call OCamlType()<cr>
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'oscarh/vimerl'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/FuzzyFinder'
+
+" :-(
+Bundle 'paulyg/Vim-PHP-Stuff'
+
+let g:erlangCompletionGrep='zgrep'
+let g:erlangManSuffix='erl\.gz'
+
+map <F2> :NERDTreeToggle<cr>
+map <F3> :FufBuffer<cr>
+map <F4> :FufFile<cr>
+map <F5> :FufCoverageFile<cr>
