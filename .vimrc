@@ -41,8 +41,6 @@ map <Esc>t :call OCamlType()<cr>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-
 Bundle 'oscarh/vimerl'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/L9'
