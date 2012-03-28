@@ -38,6 +38,14 @@ function! OCamlType()
 endfunction
 map <Esc>t :call OCamlType()<cr>
 
+function! StripTrailingWhite()
+    let l:winview = winsaveview()
+    silent! %s/\s\+$//
+    call winrestview(l:winview)
+endfunction
+
+autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 

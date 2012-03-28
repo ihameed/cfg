@@ -71,7 +71,7 @@ __disable_flow_control() {
 }
 
 __use_keychain() {
-    if which keychain > /dev/null 2>&1; then
+    if which keychain --inherit=any > /dev/null 2>&1; then
         keychain -q -Q
         source ~/.keychain/$HOST-sh > /dev/null
     fi
