@@ -1,4 +1,5 @@
 "set gfn=sixbyten
+
 if has("gui_win32")
     set gfn=ProfontWindows
 elseif has("gui_macvim")
