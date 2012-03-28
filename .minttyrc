@@ -12,4 +12,4 @@ SwitchShortcuts=no
 BoldAsFont=no
 FontSmoothing=none
 BellFlash=yes
-RowSpacing=1
+#RowSpacing=1
