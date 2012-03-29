@@ -53,12 +53,20 @@ Bundle 'oscarh/vimerl'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'lukerandall/haskellmode-vim'
 
 " :-(
 Bundle 'paulyg/Vim-PHP-Stuff'
 
 let g:erlangCompletionGrep='zgrep'
 let g:erlangManSuffix='erl\.gz'
+
+let g:haddock_browser='echo'
+
+let derf = '\v\~$|\.(hi|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+
+let g:fuf_file_exclude = derf
+let g:fuf_coveragefile_exclude = derf
 
 map <F2> :NERDTreeToggle<cr>
 map <F3> :FufBuffer<cr>
