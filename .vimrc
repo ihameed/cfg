@@ -1,4 +1,41 @@
 "set compatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'tpope/vim-surround'
+
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'wlangstroth/vim-haskell'
+
+Bundle 'oscarh/vimerl'
+
+" :-(
+Bundle 'paulyg/Vim-PHP-Stuff'
+
+
+let g:erlangCompletionGrep='zgrep'
+let g:erlangManSuffix='erl\.gz'
+
+
+au BufEnter *.hs compiler ghc
+let g:haddock_browser='echo'
+
+
+let derf = '\v\~$|\.(hi|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_file_exclude = derf
+let g:fuf_coveragefile_exclude = derf
+
+
+map <F2> :NERDTreeToggle<cr>
+map <F3> :FufBuffer<cr>
+map <F4> :FufFile<cr>
+map <F5> :FufCoverageFile<cr>
+
+
+
 set vb t_vb=
 set t_Co=256
 set cpo-=C
@@ -16,7 +53,8 @@ autocmd BufRead SConstruct set filetype=python
 autocmd BufRead SCsub      set filetype=python
 autocmd BufRead *.scons    set filetype=python
 
-filetype indent plugin on
+filetype plugin on
+filetype indent on
 syntax on
 set ruler
 
@@ -45,30 +83,3 @@ function! StripTrailingWhite()
 endfunction
 
 autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'oscarh/vimerl'
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/L9'
-Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'lukerandall/haskellmode-vim'
-
-" :-(
-Bundle 'paulyg/Vim-PHP-Stuff'
-
-let g:erlangCompletionGrep='zgrep'
-let g:erlangManSuffix='erl\.gz'
-
-let g:haddock_browser='echo'
-
-let derf = '\v\~$|\.(hi|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
-
-let g:fuf_file_exclude = derf
-let g:fuf_coveragefile_exclude = derf
-
-map <F2> :NERDTreeToggle<cr>
-map <F3> :FufBuffer<cr>
-map <F4> :FufFile<cr>
-map <F5> :FufCoverageFile<cr>
