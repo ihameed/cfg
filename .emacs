@@ -58,7 +58,6 @@
 (setq ring-bell-function (lambda ()))
 
 (setq derp (cond
-             ((eq system-type 'gnu/linux) '(default ((t (:height 70 :family "ProFontWindows")))))
              ((eq system-type 'darwin) '(default ((t (:height 90 :family "ProFontX")))))
              (t '(default ((t (:height 90 :family "ProFontWindows")))))))
 
