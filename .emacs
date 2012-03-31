@@ -22,6 +22,7 @@
 (setq my-packages '(
  evil
  tuareg-mode
+ haskell-mode
 ))
 
 
