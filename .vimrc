@@ -1,4 +1,7 @@
 "set compatible
+let mapleader = ","
+let maplocalleader = "\\"
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -7,8 +10,15 @@ Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'tpope/vim-surround'
 
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/neocomplcache'
+
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/ghci-vim'
+Bundle 'ujihisa/neco-ghc'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'wlangstroth/vim-haskell'
+Bundle 'Twinside/vim-syntax-haskell-cabal'
 
 Bundle 'oscarh/vimerl'
 
@@ -24,15 +34,22 @@ au BufEnter *.hs compiler ghc
 let g:haddock_browser='echo'
 
 
-let derf = '\v\~$|\.(hi|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let derf = '\v\~$'
+       \ . '|\.(hi|o|p_hi|p_o|exe|dll|bak|beam|orig|swp|test|jpg|png|svn-base|psd|gif|zip)$'
+       \ . '|(^|[/\\])\.(hg|git|bzr|.svn)($|[/\\])'
 let g:fuf_file_exclude = derf
 let g:fuf_coveragefile_exclude = derf
 
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
 
 map <F2> :NERDTreeToggle<cr>
 map <F3> :FufBuffer<cr>
 map <F4> :FufFile<cr>
 map <F5> :FufCoverageFile<cr>
+map <F6> :FufRenewCache<cr>
 
 
 
@@ -49,9 +66,11 @@ autocmd BufRead *.as    set filetype=actionscript
 autocmd BufRead *.json  set filetype=json
 autocmd BufRead *.inf   set filetype=dosini
 
-autocmd BufRead SConstruct set filetype=python
-autocmd BufRead SCsub      set filetype=python
+autocmd BufRead SConstruct set filetype=python autocmd BufRead SCsub      set filetype=python
 autocmd BufRead *.scons    set filetype=python
+
+autocmd BufRead *.roy      set filetype=ocaml
+autocmd BufRead *.cabal    set filetype=cabal
 
 filetype plugin on
 filetype indent on
@@ -65,16 +84,10 @@ set expandtab
 set modeline
 
 set hlsearch
-
 set cursorline
+set showcmd
 
-function! OCamlType()
-    let col  = col('.')
-    let line = line('.')
-    let file = expand("%:p:r")
-    echo system("annot -n -type ".line." ".col." ".file.".annot")
-endfunction
-map <Esc>t :call OCamlType()<cr>
+set mousemodel=popup
 
 function! StripTrailingWhite()
     let l:winview = winsaveview()
