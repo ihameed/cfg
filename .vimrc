@@ -81,6 +81,7 @@ set hlsearch
 set cursorline
 set showcmd
 set colorcolumn=80
+set enc=utf-8
 
 set mousemodel=popup
 
