@@ -115,6 +115,11 @@ __use_local_ocaml() {
     export PATH=$HOME/.local/godi/bin:$HOME/.local/godi/sbin:$PATH
 }
 
+__use_local_cyg_gardensnake() {
+    export PYTHONPATH=$HOME/.local/gardensnake/lib/python2.6/site-packages:$PATH
+    export PATH=$HOME'/.local/gardensnake/bin:'$PATH
+}
+
 __add_local_path() {
     export PATH=$HOME'/.local/bin:'$PATH
 }
@@ -137,6 +142,7 @@ __os_specific() {
             __set_locale
             __add_local_path
             __disable_mintty_retardation
+            __use_local_cyg_gardensnake
             ;;
         linux*)
             export PATH=$HOME'/.local/bin:'$PATH
