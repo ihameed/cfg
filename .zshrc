@@ -111,6 +111,10 @@ __use_local_cabal() {
     export PATH=$HOME'/.cabal/bin:'$PATH
 }
 
+__use_local_emacs() {
+    export PATH=$HOME'/.local/emacs/bin:'$PATH
+}
+
 __use_local_ocaml() {
     export PATH=$HOME/.local/godi/bin:$HOME/.local/godi/sbin:$PATH
 }
