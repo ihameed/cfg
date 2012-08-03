@@ -5,6 +5,8 @@ let maplocalleader = "\\"
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
