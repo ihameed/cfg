@@ -77,6 +77,7 @@ set cursorline
 set showcmd
 set colorcolumn=80
 set enc=utf-8
+set fileformat=unix
 
 set mousemodel=popup
 
