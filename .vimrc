@@ -96,7 +96,7 @@ let g:solarized_bold = 0
 let g:solarized_italic = 0
 let g:solarized_underline = 0
 
-if has('gui')
+if has('gui_running')
     if has('gui_win32')
         set gfn=ProfontWindows
     elseif has('gui_macvim')
