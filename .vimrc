@@ -2,6 +2,10 @@
 let mapleader = ","
 let maplocalleader = "\\"
 
+if !isdirectory(expand("~/.vim/bundle/vundle"))
+    !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+endif
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
