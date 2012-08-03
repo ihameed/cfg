@@ -21,7 +21,7 @@ if !has("gui_running") && &t_Co != 88 && &t_Co != 256
     finish
 endif
 
-" functions {{{
+" grey_number {{{
 " returns an approximate grey index for the given grey level
 fun <SID>grey_number(x)
     if &t_Co == 88
@@ -60,7 +60,8 @@ fun <SID>grey_number(x)
         endif
     endif
 endfun
-
+" }}}
+" grey_level {{{
 " returns the actual grey level represented by the grey index
 fun <SID>grey_level(n)
     if &t_Co == 88
@@ -93,7 +94,8 @@ fun <SID>grey_level(n)
         endif
     endif
 endfun
-
+" }}}
+" grey_color {{{
 " returns the palette index for the given grey index
 fun <SID>grey_color(n)
     if &t_Co == 88
@@ -114,7 +116,8 @@ fun <SID>grey_color(n)
         endif
     endif
 endfun
-
+" }}}
+" rgb_number {{{
 " returns an approximate color index for the given color level
 fun <SID>rgb_number(x)
     if &t_Co == 88
@@ -141,7 +144,8 @@ fun <SID>rgb_number(x)
         endif
     endif
 endfun
-
+" }}}
+" rgb_level {{{
 " returns the actual color level for the given color index
 fun <SID>rgb_level(n)
     if &t_Co == 88
@@ -162,7 +166,8 @@ fun <SID>rgb_level(n)
         endif
     endif
 endfun
-
+" }}}
+" rgb_color {{{
 " returns the palette index for the given R/G/B color indices
 fun <SID>rgb_color(x, y, z)
     if &t_Co == 88
@@ -171,7 +176,8 @@ fun <SID>rgb_color(x, y, z)
         return 16 + (a:x * 36) + (a:y * 6) + a:z
     endif
 endfun
-
+" }}}
+" color {{{
 " returns the palette index to approximate the given R/G/B color levels
 fun <SID>color(r, g, b)
     " get the closest grey
@@ -206,7 +212,8 @@ fun <SID>color(r, g, b)
         return <SID>rgb_color(l:x, l:y, l:z)
     endif
 endfun
-
+" }}}
+" rgb {{{
 " returns the palette index to approximate the 'rrggbb' hex string
 fun <SID>rgb(rgb)
     let l:r = ("0x" . strpart(a:rgb, 0, 2)) + 0
@@ -214,7 +221,8 @@ fun <SID>rgb(rgb)
     let l:b = ("0x" . strpart(a:rgb, 4, 2)) + 0
     return <SID>color(l:r, l:g, l:b)
 endfun
-
+" }}}
+" X {{{
 " sets the highlighting for the given group
 fun <SID>X(group, fg, bg, attr)
     if a:fg != ""

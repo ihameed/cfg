@@ -53,14 +53,6 @@ map <F4> :FufFile<cr>
 map <F5> :FufCoverageFile<cr>
 map <F6> :FufRenewCache<cr>
 
-
-
-set vb t_vb=
-set t_Co=256
-set cpo-=C
-
-colorscheme wombat256
-
 set wildmode=longest,list,full
 set wildmenu
 
@@ -99,3 +91,34 @@ function! StripTrailingWhite()
 endfunction
 
 autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
+
+let g:solarized_bold = 0
+let g:solarized_italic = 0
+let g:solarized_underline = 0
+
+if has('gui')
+    if has('gui_win32')
+        set gfn=ProfontWindows
+    elseif has('gui_macvim')
+        set gfn=ProFontX:h9
+        set noantialias
+    else
+        set gfn=ProfontWindows\ 9
+    endif
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L
+    set lines=100 columns=200
+    set number
+    set linespace=1
+
+    set background=light
+    colorscheme solarized
+else
+    set vb t_vb=
+    set t_Co=256
+    set cpo-=C
+
+    colorscheme wombat256
+endif

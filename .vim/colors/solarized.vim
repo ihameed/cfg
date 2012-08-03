@@ -146,12 +146,12 @@ let s:terms_noitalic=[
             \"Apple_Terminal"
             \]
 if has("gui_running")
-    let s:terminal_italic=0 " TODO: could refactor to not require this at all
+    let s:terminal_italic=1 " TODO: could refactor to not require this at all
 else
     let s:terminal_italic=0 " terminals will be guilty until proven compatible
     for term in s:terms_italic
         if $TERM_PROGRAM =~ term
-            let s:terminal_italic=0
+            let s:terminal_italic=1
         endif
     endfor
 endif
@@ -413,7 +413,7 @@ endif
 " ---------------------------------------------------------------------
 if (g:solarized_bold == 0 || &t_Co == 8 )
     let s:b           = ""
-    let s:bb          = ",bold"
+    let s:bb          = ""
 else
     let s:b           = ",bold"
     let s:bb          = ""
@@ -669,6 +669,7 @@ exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbbu
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
+exe "hi! CursorLineNr"   .s:fmt_bold   .s:fg_base0  .s:bg_base02
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
