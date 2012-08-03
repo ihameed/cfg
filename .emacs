@@ -20,10 +20,12 @@
     (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
 (setq my-packages '(
+ auto-complete
  evil
- tuareg-mode
  haskell-mode
-))
+ markdown-mode
+ tuareg-mode
+ ))
 
 
 (el-get 'sync my-packages)
@@ -42,11 +44,15 @@
  initial-scratch-message nil
  inhibit-splash-screen t)
 
-(setq-default line-spacing 1)
+(setq line-move-visual nil)
+(setq-default line-spacing 1.5)
+(global-visual-line-mode 1)
+(column-number-mode 1)
 
 (custom-set-variables '(inhibit-startup-echo-area-message (user-real-login-name)))
 
 (global-hl-line-mode 1)
+(global-linum-mode 1)
 
 (show-paren-mode t)
 (tool-bar-mode -1)

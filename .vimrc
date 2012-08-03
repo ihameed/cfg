@@ -9,6 +9,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/neocomplcache'
@@ -22,13 +23,14 @@ Bundle 'Twinside/vim-syntax-haskell-cabal'
 
 Bundle 'oscarh/vimerl'
 
+Bundle 'mileszs/ack.vim'
+
 " :-(
 Bundle 'paulyg/Vim-PHP-Stuff'
 
 
-let g:erlangCompletionGrep='zgrep'
-let g:erlangManSuffix='erl\.gz'
-
+let g:erlangCompletionDisplayDoc=0
+let g:erlangFoldSplitFunction=1
 
 au BufEnter *.hs compiler ghc
 let g:haddock_browser='echo'
@@ -86,6 +88,7 @@ set modeline
 set hlsearch
 set cursorline
 set showcmd
+set colorcolumn=80
 
 set mousemodel=popup
 

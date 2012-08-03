@@ -9,6 +9,8 @@
 *.elc
 *~
 
+ac-comphist.dat
+
 !.Xresources
 !.emacs
 !.emacs.d/
