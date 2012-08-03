@@ -22,12 +22,7 @@ Bundle 'wlangstroth/vim-haskell'
 Bundle 'Twinside/vim-syntax-haskell-cabal'
 
 Bundle 'oscarh/vimerl'
-
 Bundle 'mileszs/ack.vim'
-
-" :-(
-Bundle 'paulyg/Vim-PHP-Stuff'
-
 
 let g:erlangCompletionDisplayDoc=0
 let g:erlangFoldSplitFunction=1
