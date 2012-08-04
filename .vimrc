@@ -25,7 +25,6 @@ Bundle 'eagletmt/ghci-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
-Bundle 'wlangstroth/vim-haskell'
 
 Bundle 'oscarh/vimerl'
 Bundle 'tpope/vim-markdown'
@@ -48,11 +47,16 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 map <F2> :NERDTreeToggle<cr>
 map <F3> :FufBuffer<cr>
 map <F4> :FufFile<cr>
 map <F5> :FufCoverageFile<cr>
 map <F6> :FufRenewCache<cr>
+imap <S-Tab> <C-d>
 
 set wildmode=longest,list,full
 set wildmenu
@@ -124,4 +128,8 @@ else
     set cpo-=C
 
     colorscheme wombat256
+endif
+
+if filereadable(expand("~/.vim/local.vim"))
+    source ~/.vim/local.vim
 endif
