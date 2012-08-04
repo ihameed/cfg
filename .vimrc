@@ -11,24 +11,24 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/L9'
-Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-
-Bundle 'Shougo/vimproc'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimproc'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'vim-scripts/L9'
 
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/ghci-vim'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'wlangstroth/vim-haskell'
 Bundle 'Twinside/vim-syntax-haskell-cabal'
+Bundle 'eagletmt/ghci-vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'wlangstroth/vim-haskell'
 
 Bundle 'oscarh/vimerl'
-Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-markdown'
 
 let g:erlangCompletionDisplayDoc=0
 let g:erlangFoldSplitFunction=1
