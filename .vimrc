@@ -41,12 +41,26 @@ au BufEnter *.hs compiler ghc
 let g:haddock_browser = 'echo'
 let g:haskell_conceal = 0
 
+let s:begin_directory_match = '|(^|[/\\])'
+let s:end_directory_match   = '($|[/\\])'
+let s:begin_extension_match = '|\.('
+let s:end_extension_match   = ')$'
 
-let derf = '\v\~$'
-       \ . '|\.(hi|o|p_hi|p_o|exe|dll|bak|beam|orig|swp|test|jpg|png|svn-base|psd|gif|zip)$'
-       \ . '|(^|[/\\])\.(hg|git|bzr|.svn)($|[/\\])'
-let g:fuf_file_exclude = derf
-let g:fuf_coveragefile_exclude = derf
+let g:ignored_files = '\v\~$'
+       \ . s:begin_extension_match
+       \ . 'bak|swp|orig|test'
+       \ . '|jpg|png|psd|gif|zip'
+       \ . '|hi|p_hi|p_o|chi|chs\.h'
+       \ . '|annot|cmo|cma|cmi|cmx|cmxa'
+       \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
+       \ . '|exe|dll|beam'
+       \ . s:end_extension_match
+       \ . s:begin_directory_match
+       \ . '\.(hg|git|bzr|svn)'
+       \ . '|dist|cabal-dev|\.virthualenv'
+       \ . s:end_directory_match
+let g:fuf_file_exclude = g:ignored_files
+let g:fuf_coveragefile_exclude = g:ignored_files
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -82,6 +96,7 @@ filetype indent on
 syntax on
 
 set hlsearch
+set nobackup
 set ruler
 set showcmd
 
@@ -94,12 +109,14 @@ set colorcolumn=81
 set cursorline
 set modeline
 
-set enc=utf-8
+set encoding=utf-8
 set fileformat=unix
 
 set backspace=indent,eol,start
+set directory=~/.vim/tmp/swap//
 set mousemodel=popup
 set shortmess+=I
+set undodir=~/.vim/tmp/undo//
 
 function! StripTrailingWhite()
     let l:winview = winsaveview()
@@ -107,7 +124,17 @@ function! StripTrailingWhite()
     call winrestview(l:winview)
 endfunction
 
-autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
+function! SourceFile()
+    if &l:filetype !=# 'markdown'
+        call StripTrailingWhite()
+        autocmd BufWritePre <buffer> :call StripTrailingWhite()
+    endif
+    setlocal undofile
+endfunction
+
+command! Strip :call StripTrailingWhite()
+
+autocmd FileType ocaml,haskell,c,cpp,vim,python,php,markdown :call SourceFile()
 
 if has('python')
     Bundle 'SirVer/ultisnips'
@@ -129,9 +156,9 @@ if has('gui_running')
     else
         set gfn=ProfontWindows\ 9
     endif
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
     set guioptions-=L
     set number
     set linespace=1
