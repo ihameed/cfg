@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimshell'
 Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
@@ -37,7 +38,8 @@ let g:erlangFoldSplitFunction = 1
 let g:haskell_force_sane_indentation = 1
 
 au BufEnter *.hs compiler ghc
-let g:haddock_browser='echo'
+let g:haddock_browser = 'echo'
+let g:haskell_conceal = 0
 
 
 let derf = '\v\~$'
