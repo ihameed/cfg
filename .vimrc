@@ -56,7 +56,6 @@ map <F3> :FufBuffer<cr>
 map <F4> :FufFile<cr>
 map <F5> :FufCoverageFile<cr>
 map <F6> :FufRenewCache<cr>
-imap <S-Tab> <C-d>
 
 set wildmode=longest,list,full
 set wildmenu
