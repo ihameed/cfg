@@ -20,17 +20,19 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'vim-scripts/L9'
 
-Bundle 'Twinside/vim-syntax-haskell-cabal'
-Bundle 'eagletmt/ghci-vim'
+Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
 
 Bundle 'oscarh/vimerl'
 Bundle 'tpope/vim-markdown'
+Bundle 'vim-scripts/nginx.vim'
+Bundle 'vim-scripts/JSON.vim'
 
-let g:erlangCompletionDisplayDoc=0
-let g:erlangFoldSplitFunction=1
+let g:erlangCompletionDisplayDoc = 0
+let g:erlangFoldSplitFunction = 1
+let g:haskell_force_sane_indentation = 1
 
 au BufEnter *.hs compiler ghc
 let g:haddock_browser='echo'
@@ -89,6 +91,7 @@ set enc=utf-8
 set fileformat=unix
 
 set mousemodel=popup
+set backspace=indent,eol,start
 
 function! StripTrailingWhite()
     let l:winview = winsaveview()

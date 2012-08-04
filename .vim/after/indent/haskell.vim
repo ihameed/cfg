@@ -29,7 +29,11 @@
 " * "<|>" indicates the cursor position after automatic indentation.
 " * "<*>" indicates the cursor position before automatic indentation.
 
-if exists('b:did_indent')
+if !exists("g:haskell_force_sane_indentation")
+  let g:haskell_force_sane_indentation = 0
+endif
+
+if (exists('b:did_indent') && g:haskell_force_sane_indentation == 0)
   finish
 endif
 
