@@ -123,8 +123,19 @@ function! GetHaskellIndent()
       return indent(prev_of_where) + &l:shiftwidth
     endif
 
+    " Case: 'where' clause (3)
+    "   foo = bar . baz
+    "   ##where derp<*>
+    "   ########<|>
+    let where_with_binding = '\v^(\s*<where>\s*[^A-Za-z_]).*$'
+    if l1 =~# where_with_binding
+      let xs = matchlist(l1, where_with_binding)
+      return len(xs[1])
+    endif
+
     " Otherwise: Keep the previous indentation level.
     return -1
+
   else
     " Case: 'where' clause (1)
     "   foo = bar . baz
