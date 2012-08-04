@@ -108,6 +108,7 @@ autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
 let g:solarized_bold = 0
 let g:solarized_italic = 0
 let g:solarized_underline = 0
+let g:solarized_termcolors = 256
 
 if has('gui_running')
     if has('gui_win32')
