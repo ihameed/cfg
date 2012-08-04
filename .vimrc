@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
+Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
