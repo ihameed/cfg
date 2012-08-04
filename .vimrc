@@ -67,35 +67,37 @@ set wildmode=longest,list,full
 set wildmenu
 
 autocmd BufRead *.as    set filetype=actionscript
-autocmd BufRead *.json  set filetype=json
 autocmd BufRead *.inf   set filetype=dosini
+autocmd BufRead *.json  set filetype=json
 
-autocmd BufRead SConstruct set filetype=python autocmd BufRead SCsub      set filetype=python
 autocmd BufRead *.scons    set filetype=python
+autocmd BufRead SConstruct set filetype=python autocmd BufRead SCsub      set filetype=python
 
 autocmd BufRead *.roy      set filetype=ocaml
-autocmd BufRead *.cabal    set filetype=cabal
 
 filetype plugin on
 filetype indent on
 syntax on
-set ruler
-
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set modeline
 
 set hlsearch
-set cursorline
+set ruler
 set showcmd
+
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
 set colorcolumn=80
+set cursorline
+set modeline
+
 set enc=utf-8
 set fileformat=unix
 
-set mousemodel=popup
 set backspace=indent,eol,start
+set mousemodel=popup
+set shortmess+=I
 
 function! StripTrailingWhite()
     let l:winview = winsaveview()
