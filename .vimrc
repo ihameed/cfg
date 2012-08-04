@@ -57,6 +57,8 @@ inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
+imap <F1> <nop>
+map <F1> <nop>
 map <F2> :NERDTreeToggle<cr>
 map <F3> :FufBuffer<cr>
 map <F4> :FufFile<cr>
@@ -106,6 +108,12 @@ function! StripTrailingWhite()
 endfunction
 
 autocmd FileType ocaml,haskell,c,cpp,vim,python,php :call StripTrailingWhite()
+
+if has('python')
+    Bundle 'SirVer/ultisnips'
+    Bundle 'sjl/gundo.vim'
+    map <F1> :GundoToggle<cr>
+endif
 
 let g:solarized_bold = 0
 let g:solarized_italic = 0
