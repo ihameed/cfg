@@ -139,7 +139,7 @@ function! GetHaskellIndent()
     if l0 =~# '\v^\s*\|'
       let np = prevnonblank(n1)
       let after_guard_p = (getline(np) =~# '\v^\s*\|')
-      return indent(np) + (after_guard_p ? 0 : &l:shiftwidth)
+      return indent(np) + (after_guard_p ? 0 : (&l:shiftwidth / 2))
     endif
 
 
