@@ -59,13 +59,16 @@ let g:ignored_files = '\v\~$'
        \ . '\.(hg|git|bzr|svn)'
        \ . '|dist|cabal-dev|\.virthualenv'
        \ . s:end_directory_match
-let g:fuf_file_exclude = g:ignored_files
 let g:fuf_coveragefile_exclude = g:ignored_files
+let g:fuf_file_exclude = g:ignored_files
 
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeMinimalUI = 1
 
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
