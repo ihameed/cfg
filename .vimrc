@@ -10,7 +10,7 @@ function InitTmp(dirs)
   for dir in a:dirs
     let absdir = expand('~/.vim/tmp/' . dir)
     if !isdirectory(absdir)
-      exe '!mkdir ' . absdir
+      silent exe '!mkdir ' . absdir
     endif
   endfor
 endfunction
