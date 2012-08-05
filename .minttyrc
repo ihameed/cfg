@@ -12,3 +12,4 @@ SwitchShortcuts=no
 BoldAsFont=no
 FontSmoothing=none
 BellFlash=yes
+BackspaceSendsBS=yes
