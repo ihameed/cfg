@@ -63,7 +63,6 @@ let g:haskell_force_sane_indentation = 1
 let g:haddock_browser = 'echo'
 let g:haskell_conceal = 0
 
-let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -154,6 +153,7 @@ function! ConfigSourceFileBuffer()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
   setlocal undofile
+  NeoComplCacheEnable
 endfunction
 
 function! CommandCabbr(abbreviation, expansion)
