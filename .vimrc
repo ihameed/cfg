@@ -84,6 +84,7 @@ let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
                               \ 'PrtCurLeft()': ['<left>', '<c-^>'],
                               \ 'ToggleType(-1)': ['<c-b>', '<c-down>', '<f3>'],
+                              \ 'ToggleType(1)': ['<c-f>', '<c-up>', '<f4>'],
                               \ }
 let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
@@ -95,11 +96,12 @@ inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
-imap <F1> <nop>
-map <F1> <nop>
-map <F2> :NERDTreeToggle<cr>
-map <F3> :CtrlPBuffer<cr>
-map <F5> :CtrlPClearCache<cr>
+imap <f1> <nop>
+map <f1> <nop>
+map <f2> :NERDTreeToggle<cr>
+map <f3> :CtrlPBuffer<cr>
+map <f4> :CtrlP<cr>
+map <f5> :CtrlPClearCache<cr>
 
 autocmd BufRead *.as   set filetype=actionscript
 autocmd BufRead *.inf  set filetype=dosini
