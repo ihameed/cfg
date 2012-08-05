@@ -1,4 +1,8 @@
 "set compatible
+
+set encoding=utf-8
+set fileformat=unix
+
 let mapleader = ","
 let maplocalleader = "\\"
 
@@ -123,18 +127,15 @@ set showcmd
 set wildmenu
 set wildmode=longest,list,full
 
+set colorcolumn=81
+set cursorline
+set modeline
+
 set list listchars=tab:»·,trail:·
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
-
-set colorcolumn=81
-set cursorline
-set modeline
-
-set encoding=utf-8
-set fileformat=unix
 
 set backspace=indent,eol,start
 set directory=~/.vim/tmp/swap//
