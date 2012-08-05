@@ -168,6 +168,7 @@ __os_specific() {
             alias grep='grep --color'
             export PATH='/opt/local/bin:/opt/local/sbin/:'$PATH
             export TERMINFO=/opt/local/share/terminfo
+            __set_locale
             __add_local_path
             __set_bsd_clicolor
             ;;
