@@ -3,8 +3,19 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 if !isdirectory(expand("~/.vim/bundle/vundle"))
-    !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
+
+function InitTmp(dirs)
+  for dir in a:dirs
+    let absdir = expand('~/.vim/tmp/' . dir)
+    if !isdirectory(absdir)
+      exe '!mkdir ' . absdir
+    endif
+  endfor
+endfunction
+
+call InitTmp(['undo', 'swap', 'ctrlpcache'])
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -60,6 +71,8 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
 
+let g:ctrlp_cache_dir = expand('~/.vim/tmp/ctrlpcache')
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_map = ''
 let g:ctrlp_max_height = 30
@@ -68,7 +81,10 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtHistory(1)':  [],
                               \ 'PrtSelectMove("j")': ['<c-n>'],
-                              \ 'PrtSelectMove("k")': ['<c-p>']
+                              \ 'PrtSelectMove("k")': ['<c-p>'],
+                              \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
+                              \ 'PrtCurLeft()': ['<left>', '<c-^>'],
+                              \ 'ToggleType(1)': ['<c-b>', '<c-up>', '<f3>']
                               \ }
 let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
@@ -83,8 +99,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 imap <F1> <nop>
 map <F1> <nop>
 map <F2> :NERDTreeToggle<cr>
-map <F3> :CtrlPBuffer<cr>
-map <F4> :CtrlP<cr>
+map <F3> :CtrlP<cr>
 map <F5> :CtrlPClearCache<cr>
 
 autocmd BufRead *.as   set filetype=actionscript
@@ -128,30 +143,43 @@ set shortmess+=I
 set undodir=~/.vim/tmp/undo//
 
 function! StripTrailingWhite()
-    let l:winview = winsaveview()
-    silent! %s/\s\+$//
-    call winrestview(l:winview)
+  let l:winview = winsaveview()
+  silent! %s/\s\+$//
+  call winrestview(l:winview)
 endfunction
 
 function! ConfigSourceFileBuffer()
-    if &l:filetype !=# 'markdown'
-        call StripTrailingWhite()
-        autocmd BufWritePre <buffer> :call StripTrailingWhite()
-    endif
-    setlocal undofile
+  if &l:filetype !=# 'markdown'
+    call StripTrailingWhite()
+    autocmd BufWritePre <buffer> :call StripTrailingWhite()
+  endif
+  setlocal undofile
 endfunction
 
-command! Strip :call StripTrailingWhite()
+function! CommandCabbr(abbreviation, expansion)
+  execute 'cabbr ' . a:abbreviation
+      \ . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion
+      \ . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+
+command!          Strip :call StripTrailingWhite()
+command!          Make  silent make!
+command! -nargs=* Help  vert help <args>
+
+call CommandCabbr('help', 'Help')
 
 autocmd FileType ocaml,haskell,c,cpp
                \,vim,python,php,markdown
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
+autocmd QuickFixCmdPost [^l]* nested Copen
+autocmd QuickFixCmdPost    l* nested Lopen
+
 if has('python')
-    Bundle 'SirVer/ultisnips'
-    Bundle 'sjl/gundo.vim'
-    map <F1> :GundoToggle<cr>
+  Bundle 'SirVer/ultisnips'
+  Bundle 'sjl/gundo.vim'
+  map <F1> :GundoToggle<cr>
 endif
 
 let g:solarized_bold = 0
@@ -160,31 +188,31 @@ let g:solarized_underline = 0
 let g:solarized_termcolors = 256
 
 if has('gui_running')
-    if has('gui_win32')
-        set gfn=ProfontWindows
-    elseif has('gui_macvim')
-        set gfn=ProFontX:h9
-        set noantialias
-    else
-        set gfn=ProfontWindows\ 9
-    endif
-    set guioptions-=L
-    set guioptions-=T
-    set guioptions-=m
-    set guioptions-=r
-    set number
-    set linespace=1
+  if has('gui_win32')
+    set gfn=ProfontWindows
+  elseif has('gui_macvim')
+    set gfn=ProFontX:h9
+    set noantialias
+  else
+    set gfn=ProfontWindows\ 9
+  endif
+  set guioptions-=L
+  set guioptions-=T
+  set guioptions-=m
+  set guioptions-=r
+  set number
+  set linespace=1
 
-    set background=light
-    colorscheme solarized
+  set background=light
+  colorscheme solarized
 else
-    set vb t_vb=
-    set t_Co=256
-    set cpo-=C
+  set vb t_vb=
+  set t_Co=256
+  set cpo-=C
 
-    colorscheme wombat256
+  colorscheme wombat256
 endif
 
 if filereadable(expand("~/.vim/local.vim"))
-    source ~/.vim/local.vim
+  source ~/.vim/local.vim
 endif
