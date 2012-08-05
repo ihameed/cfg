@@ -147,7 +147,6 @@ autocmd FileType ocaml,haskell,c,cpp
                \,vim,python,php,markdown
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
-autocmd FileType haskell compiler ghc
 
 if has('python')
     Bundle 'SirVer/ultisnips'
