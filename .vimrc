@@ -83,8 +83,6 @@ let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtSelectMove("k")': ['<c-p>'],
                               \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
                               \ 'PrtCurLeft()': ['<left>', '<c-^>'],
-                              \ 'ToggleType(-1)': ['<c-b>', '<c-down>', '<f3>'],
-                              \ 'ToggleType(1)': ['<c-f>', '<c-up>', '<f4>'],
                               \ }
 let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
@@ -98,10 +96,10 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 imap <f1> <nop>
 map <f1> <nop>
-map <f2> :NERDTreeToggle<cr>
-map <f3> :CtrlPBuffer<cr>
-map <f4> :CtrlP<cr>
-map <f5> :CtrlPClearCache<cr>
+map <f2> <esc>:NERDTreeToggle<cr>
+map <f3> <esc>:CtrlPBuffer<cr>
+map <f4> <esc>:CtrlP<cr>
+map <f5> <esc>:CtrlPClearCache<cr>
 
 autocmd BufRead *.as   set filetype=actionscript
 autocmd BufRead *.inf  set filetype=dosini
@@ -181,7 +179,7 @@ autocmd QuickFixCmdPost    l* nested Lopen
 if has('python')
   Bundle 'SirVer/ultisnips'
   Bundle 'sjl/gundo.vim'
-  map <F1> :GundoToggle<cr>
+  map <F1> <esc>:GundoToggle<cr>
 endif
 
 let g:solarized_bold = 0
