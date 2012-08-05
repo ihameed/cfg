@@ -20,8 +20,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'vim-scripts/L9'
+
+Bundle 'kien/ctrlp.vim'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
@@ -41,25 +41,25 @@ au BufEnter *.hs compiler ghc
 let g:haddock_browser = 'echo'
 let g:haskell_conceal = 0
 
-let s:begin_directory_match = '|(^|[/\\])'
-let s:end_directory_match   = '($|[/\\])'
-let s:begin_extension_match = '|\.('
-let s:end_extension_match   = ')$'
+let g:ignored_dirs = '\v'
+                 \ . '\.(hg|git|bzr|svn)'
+                 \ . '|dist|cabal-dev|\.virthualenv'
 
-let g:ignored_files = '\v\~$'
-       \ . s:begin_extension_match
-       \ . 'bak|swp|orig|test'
-       \ . '|jpg|png|psd|gif|zip'
-       \ . '|hi|p_hi|p_o|chi|chs\.h'
-       \ . '|annot|cmo|cma|cmi|cmx|cmxa'
-       \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
-       \ . '|exe|dll|beam'
-       \ . s:end_extension_match
-       \ . s:begin_directory_match
-       \ . '\.(hg|git|bzr|svn)'
-       \ . '|dist|cabal-dev|\.virthualenv'
-       \ . s:end_directory_match
-let g:fuf_coveragefile_exclude = g:ignored_files
+let g:ignored_files = '\v\~|%('
+                  \ . 'bak|swp|orig|test'
+                  \ . '|jpg|png|psd|gif|zip'
+                  \ . '|hi|p_hi|p_o|chi|chs\.h'
+                  \ . '|annot|cmo|cma|cmi|cmx|cmxa'
+                  \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
+                  \ . '|exe|dll|beam'
+                  \ . ')$'
+
+let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
+                            \ 'file': g:ignored_files,
+                            \ 'link': g:ignored_files
+                            \ }
+
+
 let g:fuf_file_exclude = g:ignored_files
 
 let g:neocomplcache_enable_at_startup = 1
@@ -70,6 +70,15 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
 
+let g:ctrlp_map = '<C-t>'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
+                              \ 'PrtHistory(1)':  [],
+                              \ 'PrtSelectMove("j")': ['<c-n>'],
+                              \ 'PrtSelectMove("k")': ['<c-p>']
+                              \ }
+
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
@@ -77,10 +86,9 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 imap <F1> <nop>
 map <F1> <nop>
 map <F2> :NERDTreeToggle<cr>
-map <F3> :FufBuffer<cr>
-map <F4> :FufFile<cr>
-map <F5> :FufCoverageFile<cr>
-map <F6> :FufRenewCache<cr>
+map <F3> :CtrlPBuffer<cr>
+map <F4> :CtrlP<cr>
+map <F5> :CtrlPClearCache<cr>
 
 set wildmode=longest,list,full
 set wildmenu
@@ -127,7 +135,7 @@ function! StripTrailingWhite()
     call winrestview(l:winview)
 endfunction
 
-function! SourceFile()
+function! ConfigSourceFileBuffer()
     if &l:filetype !=# 'markdown'
         call StripTrailingWhite()
         autocmd BufWritePre <buffer> :call StripTrailingWhite()
@@ -137,7 +145,10 @@ endfunction
 
 command! Strip :call StripTrailingWhite()
 
-autocmd FileType ocaml,haskell,c,cpp,vim,python,php,markdown :call SourceFile()
+autocmd FileType ocaml,haskell,c,cpp
+               \,vim,python,php,markdown
+               \,javascript,json
+               \ :call ConfigSourceFileBuffer()
 
 if has('python')
     Bundle 'SirVer/ultisnips'
