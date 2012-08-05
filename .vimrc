@@ -123,6 +123,7 @@ set showcmd
 set wildmenu
 set wildmode=longest,list,full
 
+set list listchars=tab:»·,trail:·
 set expandtab
 set shiftwidth=4
 set softtabstop=4
