@@ -34,6 +34,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 
@@ -70,6 +71,7 @@ let g:haskell_conceal = 0
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_dictionary_filetype_lists = { 'default': '' }
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
@@ -143,6 +145,10 @@ set mousemodel=popup
 set shortmess+=I
 set undodir=~/.vim/tmp/undo//
 
+function! SplitRtp()
+    return split(&runtimepath, ',')
+endfunction
+
 function! StripTrailingWhite()
   let l:winview = winsaveview()
   silent! %s/\s\+$//
@@ -164,11 +170,13 @@ function! CommandCabbr(abbreviation, expansion)
       \ . '" : "' . a:abbreviation . '"<CR>'
 endfunction
 
-command!          Strip :call StripTrailingWhite()
-command!          Make  silent make!
-command! -nargs=* Help  vert help <args>
+command! -nargs=0                Strip :call StripTrailingWhite()
+command! -nargs=0                Make  silent make!
+command! -nargs=* -complete=help Help  vert help <args>
 
 call CommandCabbr('help', 'Help')
+call CommandCabbr('ty', 'Type')
+call CommandCabbr('tyc', 'Ctype')
 
 autocmd FileType ocaml,haskell,c,cpp
                \,vim,python,php,markdown

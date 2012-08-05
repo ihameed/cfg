@@ -8,4 +8,4 @@ set cmdheight=1
 
 map <buffer> <LocalLeader>r :GHCReload<cr>
 command! -buffer Type :GhcModType
-command! -buffer Ctype :Ghc
+command! -buffer Ctype :GhcModTypeClear
