@@ -16,12 +16,11 @@ Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-
-Bundle 'kien/ctrlp.vim'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
@@ -30,16 +29,8 @@ Bundle 'ujihisa/neco-ghc'
 
 Bundle 'oscarh/vimerl'
 Bundle 'tpope/vim-markdown'
-Bundle 'vim-scripts/nginx.vim'
 Bundle 'vim-scripts/JSON.vim'
-
-let g:erlangCompletionDisplayDoc = 0
-let g:erlangFoldSplitFunction = 1
-let g:haskell_force_sane_indentation = 1
-
-au BufEnter *.hs compiler ghc
-let g:haddock_browser = 'echo'
-let g:haskell_conceal = 0
+Bundle 'vim-scripts/nginx.vim'
 
 let g:ignored_dirs = '\v'
                  \ . '\.(hg|git|bzr|svn)'
@@ -54,13 +45,12 @@ let g:ignored_files = '\v\~|%('
                   \ . '|exe|dll|beam'
                   \ . ')$'
 
-let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
-                            \ 'file': g:ignored_files,
-                            \ 'link': g:ignored_files
-                            \ }
+let g:erlangCompletionDisplayDoc = 0
+let g:erlangFoldSplitFunction = 1
+let g:haskell_force_sane_indentation = 1
 
-
-let g:fuf_file_exclude = g:ignored_files
+let g:haddock_browser = 'echo'
+let g:haskell_conceal = 0
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
@@ -70,7 +60,9 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
 
-let g:ctrlp_map = '<C-t>'
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_map = ''
+let g:ctrlp_max_height = 30
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
@@ -78,6 +70,11 @@ let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtSelectMove("j")': ['<c-n>'],
                               \ 'PrtSelectMove("k")': ['<c-p>']
                               \ }
+let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
+                            \ 'file': g:ignored_files,
+                            \ 'link': g:ignored_files
+                            \ }
+
 
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -90,17 +87,15 @@ map <F3> :CtrlPBuffer<cr>
 map <F4> :CtrlP<cr>
 map <F5> :CtrlPClearCache<cr>
 
-set wildmode=longest,list,full
-set wildmenu
-
-autocmd BufRead *.as    set filetype=actionscript
-autocmd BufRead *.inf   set filetype=dosini
-autocmd BufRead *.json  set filetype=json
+autocmd BufRead *.as   set filetype=actionscript
+autocmd BufRead *.inf  set filetype=dosini
+autocmd BufRead *.json set filetype=json
 
 autocmd BufRead *.scons    set filetype=python
-autocmd BufRead SConstruct set filetype=python autocmd BufRead SCsub      set filetype=python
+autocmd BufRead SConstruct set filetype=python
+autocmd BufRead SCsub      set filetype=python
 
-autocmd BufRead *.roy      set filetype=ocaml
+autocmd BufRead *.roy set filetype=ocaml
 
 filetype plugin on
 filetype indent on
@@ -110,6 +105,9 @@ set hlsearch
 set nobackup
 set ruler
 set showcmd
+
+set wildmenu
+set wildmode=longest,list,full
 
 set expandtab
 set shiftwidth=4
@@ -149,6 +147,7 @@ autocmd FileType ocaml,haskell,c,cpp
                \,vim,python,php,markdown
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
+autocmd FileType haskell compiler ghc
 
 if has('python')
     Bundle 'SirVer/ultisnips'
@@ -170,10 +169,10 @@ if has('gui_running')
     else
         set gfn=ProfontWindows\ 9
     endif
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
     set guioptions-=L
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
     set number
     set linespace=1
 
