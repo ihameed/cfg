@@ -6,7 +6,7 @@ if !isdirectory(expand("~/.vim/bundle/vundle"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
 
-function InitTmp(dirs)
+function! InitTmp(dirs)
   for dir in a:dirs
     let absdir = expand('~/.vim/tmp/' . dir)
     if !isdirectory(absdir)
@@ -83,11 +83,11 @@ let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtSelectMove("k")': ['<c-p>'],
                               \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
                               \ 'PrtCurLeft()': ['<left>', '<c-^>'],
-                              \ 'ToggleType(1)': ['<c-b>', '<c-up>', '<f3>']
+                              \ 'ToggleType(-1)': ['<c-b>', '<c-down>', '<f3>'],
                               \ }
 let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
-                            \ 'link': g:ignored_files
+                            \ 'link': g:ignored_files,
                             \ }
 
 
@@ -98,7 +98,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 imap <F1> <nop>
 map <F1> <nop>
 map <F2> :NERDTreeToggle<cr>
-map <F3> :CtrlP<cr>
+map <F3> :CtrlPBuffer<cr>
 map <F5> :CtrlPClearCache<cr>
 
 autocmd BufRead *.as   set filetype=actionscript
