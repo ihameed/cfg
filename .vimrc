@@ -5,6 +5,7 @@ set fileformat=unix
 
 let mapleader = ","
 let maplocalleader = "\\"
+let g:guifont = ''
 
 if !isdirectory(expand("~/.vim/bundle/vundle"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -151,9 +152,24 @@ set notildeop
 set shortmess=I
 set whichwrap=
 
+function! FontSet(fontspec)
+  execute 'set guifont=' . a:fontspec
+  echoerr &guifont
+  if match(&guifont, 'profont\c') != -1
+    set noantialias
+  else
+    set antialias
+  endif
+endfunction
+
+function! FontInit(fontspec)
+  if has('gui_running') && empty(&guifont)
+    call FontSet(a:fontspec)
+  endif
+endfunction
 
 function! SplitRtp()
-    return split(&runtimepath, ',')
+  return split(&runtimepath, ',')
 endfunction
 
 function! StripTrailingWhite()
@@ -168,7 +184,9 @@ function! ConfigSourceFileBuffer()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
   setlocal undofile
-  NeoComplCacheEnable
+endfunction
+
+function! RefreshComplCache()
 endfunction
 
 function! CommandCabbr(abbreviation, expansion)
@@ -177,13 +195,14 @@ function! CommandCabbr(abbreviation, expansion)
       \ . '" : "' . a:abbreviation . '"<CR>'
 endfunction
 
-command! -nargs=0                Strip :call StripTrailingWhite()
+command! -nargs=0                Strip call StripTrailingWhite()
 command! -nargs=0                Make  silent make!
 command! -nargs=* -complete=help Help  vert help <args>
 
 call CommandCabbr('help', 'Help')
-call CommandCabbr('ty', 'Type')
-call CommandCabbr('tyc', 'Ctype')
+call CommandCabbr('ty',   'Type')
+call CommandCabbr('tyc',  'Ctype')
+call CommandCabbr('rc',   'RefreshComplCache')
 
 autocmd FileType ocaml,haskell,cabal,c,cpp
                \,vim,python,php,markdown
@@ -206,12 +225,11 @@ let g:solarized_termcolors = 256
 
 if has('gui_running')
   if has('gui_win32')
-    set guifont=ProfontWindows
+    let g:guifont = 'ProfontWindows'
   elseif has('gui_macvim')
-    set guifont=ProFontX:h9
-    set noantialias
+    let g:guifont = 'ProFontX:h9'
   else
-    set guifont=ProfontWindows\ 9
+    let g:guifont = 'ProfontWindows\ 9'
   endif
   set guioptions-=L
   set guioptions-=T
@@ -234,3 +252,5 @@ endif
 if filereadable(expand("~/.vim/local.vim"))
   source ~/.vim/local.vim
 endif
+
+call FontInit(g:guifont)

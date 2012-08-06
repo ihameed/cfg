@@ -7,5 +7,6 @@ setlocal omnifunc=
 set cmdheight=1
 
 map <buffer> <LocalLeader>r :GHCReload<cr>
-command! -buffer Type :GhcModType
-command! -buffer Ctype :GhcModTypeClear
+command! -buffer -nargs=0 Type  GhcModType
+command! -buffer -nargs=0 Ctype GhcModTypeClear
+command! -buffer -nargs=0 RefreshComplCache NeoComplCacheCachingGhc
