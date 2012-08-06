@@ -154,7 +154,6 @@ set whichwrap=
 
 function! FontSet(fontspec)
   execute 'set guifont=' . a:fontspec
-  echoerr &guifont
   if match(&guifont, 'profont\c') != -1
     set noantialias
   else
