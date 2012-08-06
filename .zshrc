@@ -62,6 +62,13 @@ agent-clean() {
     IFS=$old_IFS
 }
 
+ghc-pkg-clean() {
+    for p in `ghc-pkg check $* 2>&1  | grep problems \
+            | awk '{print $6}' | sed -e 's/:$//'`
+    do
+        echo unregistering $p; ghc-pkg $* unregister $p
+    done
+}
 
 
 __disable_flow_control() {

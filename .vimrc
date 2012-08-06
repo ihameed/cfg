@@ -122,9 +122,9 @@ filetype indent on
 syntax on
 
 set hlsearch
-set nobackup
 set ruler
 set showcmd
+set showmode
 
 set wildmenu
 set wildmode=longest,list,full
@@ -142,8 +142,15 @@ set tabstop=8
 set backspace=indent,eol,start
 set directory=~/.vim/tmp/swap//
 set mousemodel=popup
-set shortmess+=I
 set undodir=~/.vim/tmp/undo//
+
+set cedit=
+set formatoptions=vt
+set nobackup
+set notildeop
+set shortmess=I
+set whichwrap=
+
 
 function! SplitRtp()
     return split(&runtimepath, ',')
@@ -178,7 +185,7 @@ call CommandCabbr('help', 'Help')
 call CommandCabbr('ty', 'Type')
 call CommandCabbr('tyc', 'Ctype')
 
-autocmd FileType ocaml,haskell,c,cpp
+autocmd FileType ocaml,haskell,cabal,c,cpp
                \,vim,python,php,markdown
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
@@ -199,17 +206,18 @@ let g:solarized_termcolors = 256
 
 if has('gui_running')
   if has('gui_win32')
-    set gfn=ProfontWindows
+    set guifont=ProfontWindows
   elseif has('gui_macvim')
-    set gfn=ProFontX:h9
+    set guifont=ProFontX:h9
     set noantialias
   else
-    set gfn=ProfontWindows\ 9
+    set guifont=ProfontWindows\ 9
   endif
   set guioptions-=L
   set guioptions-=T
   set guioptions-=m
   set guioptions-=r
+  set guioptions-=e
   set number
   set linespace=1
 
