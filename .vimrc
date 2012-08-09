@@ -38,6 +38,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'xaimus/vim-togglelist'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
