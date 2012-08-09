@@ -84,14 +84,14 @@ __use_keychain() {
 }
 
 __update_title() {
-	case $TERM in
-		sun-cmd)
+    case $TERM in
+        sun-cmd)
             print -Pn "\e]l%~\e\\"
             ;;
-		*xterm*|rxvt*|(dt|k|E)term|screen*)
+        *xterm*|rxvt*|(dt|k|E)term|screen*)
             print -Pn "\e]2;%n@%m:%~\a"
             ;;
-	esac
+    esac
 }
 
 __set_locale() {
@@ -224,7 +224,7 @@ __bind_keys() {
 }
 
 chpwd() {
-	[[ -t 1 ]] || return
+    [[ -t 1 ]] || return
     __update_title
 }
 
