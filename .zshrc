@@ -238,6 +238,7 @@ export EDITOR='vim'
 alias figee=fg
 alias figs=jobs
 alias pdflatex='pdflatex -interaction nonstopmode'
+alias xelatex='xelatex -halt-on-error -interaction nonstopmode'
 alias mysql='mysql --sigint-ignore'
 alias ocaml='rlwrap ocaml'
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
