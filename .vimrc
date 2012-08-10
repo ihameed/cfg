@@ -49,6 +49,7 @@ Bundle 'oscarh/vimerl'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/JSON.vim'
 Bundle 'vim-scripts/nginx.vim'
+Bundle 'proyvind/Cpp11-Syntax-Support'
 
 let g:ignored_dirs = '\v'
                  \ . '\.(hg|git|bzr|svn)'
@@ -118,6 +119,7 @@ autocmd BufRead SConstruct set filetype=python
 autocmd BufRead SCsub      set filetype=python
 
 autocmd BufRead *.roy set filetype=ocaml
+autocmd BufRead *.set filetype=ocaml
 
 filetype plugin on
 filetype indent on
@@ -204,10 +206,12 @@ call CommandCabbr('ty',   'Type')
 call CommandCabbr('tyc',  'Ctype')
 call CommandCabbr('rc',   'RefreshComplCache')
 
-autocmd FileType ocaml,haskell,cabal,c,cpp
+autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11
                \,vim,python,php,markdown
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
+
+autocmd FileType cpp set filetype=cpp11
 
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
