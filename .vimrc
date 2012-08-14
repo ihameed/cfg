@@ -186,6 +186,7 @@ function! ConfigSourceFileBuffer()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
   setlocal undofile
+  NeoComplCacheEnable
 endfunction
 
 function! RefreshComplCache()
