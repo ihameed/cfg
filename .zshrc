@@ -130,6 +130,16 @@ __use_local_cyg_gardensnake() {
     export PATH=$HOME'/.local/gardensnake/bin:'$PATH
 }
 
+__use_local_pkgsrc() {
+    export PATH=$HOME/.local/pkg/sbin:$HOME/.local/pkg/bin:$PATH
+}
+
+__use_local_portage_prefix() {
+    export PATH=$HOME/.local/portage-prefix/sbin:$HOME/.local/portage-prefix/bin:$PATH
+    export PATH=$HOME/.local/portage-prefix/usr/sbin:$HOME/.local/portage-prefix/usr/bin:$PATH
+    export EPREFIX=$HOME/.local/portage-prefix
+}
+
 __add_local_path() {
     export PATH=$HOME'/.local/bin:'$PATH
 }
