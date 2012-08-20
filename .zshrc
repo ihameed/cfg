@@ -61,6 +61,11 @@ agent-clean() {
     IFS=$old_IFS
 }
 
+updoot() {
+    local configpath=$(dirname $HOME/.zshrc(:A))
+    (cd $configpath && git pull)
+}
+
 ghc-pkg-clean() {
     for p in `ghc-pkg check $* 2>&1  | grep problems \
             | awk '{print $6}' | sed -e 's/:$//'`
@@ -262,9 +267,9 @@ __use_keychain
 __os_specific
 __terminal_specific
 #__use_local_smlnj
+__use_local_ocaml
 __use_local_ghc
 __use_local_cabal
-__use_local_ocaml
 
 agent-clean
 
