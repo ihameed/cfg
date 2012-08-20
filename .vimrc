@@ -160,6 +160,7 @@ set nobackup
 set notildeop
 set shortmess=I
 set whichwrap=
+set viminfo=
 
 function! FontSet(fontspec)
   execute 'set guifont=' . a:fontspec
