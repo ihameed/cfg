@@ -24,7 +24,7 @@ call InitTmp(['undo', 'swap', 'ctrlpcache'])
 
 function! VsnCmd(vsn, cmd)
   if version >= a:vsn
-    execute cmd
+    execute a:cmd
   endif
 endfunction
 
