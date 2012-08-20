@@ -22,6 +22,12 @@ endfunction
 
 call InitTmp(['undo', 'swap', 'ctrlpcache'])
 
+function! VsnCmd(vsn, cmd)
+  if version >= a:vsn
+    execute cmd
+  endif
+endfunction
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -133,7 +139,7 @@ set showmode
 set wildmenu
 set wildmode=longest,list,full
 
-set colorcolumn=81
+call VsnCmd(730, 'set colorcolumn=81')
 set cursorline
 set modeline
 
@@ -146,7 +152,7 @@ set tabstop=8
 set backspace=indent,eol,start
 set directory=~/.vim/tmp/swap//
 set mousemodel=popup
-set undodir=~/.vim/tmp/undo//
+call VsnCmd(730, 'set undodir=~/.vim/tmp/undo//')
 
 set cedit=
 set formatoptions=vt
@@ -185,7 +191,7 @@ function! ConfigSourceFileBuffer()
     call StripTrailingWhite()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
-  setlocal undofile
+  call VsnCmd(730, 'setlocal undofile')
   NeoComplCacheEnable
 endfunction
 
