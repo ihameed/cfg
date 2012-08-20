@@ -69,7 +69,6 @@ ghc-pkg-clean() {
     done
 }
 
-
 __disable_flow_control() {
     unsetopt FLOW_CONTROL
     stty stop undef
@@ -105,38 +104,37 @@ __set_bsd_clicolor() {
 }
 
 __use_local_smlnj() {
-    export PATH=$HOME'/.local/sml/bin:'$PATH
-    export SMLNJ_HOME=$HOME'/.local/sml'
+    path=($HOME/.local/sml/bin $path)
+    export SMLNJ_HOME=$HOME/.local/sml
 }
 
 __use_local_ghc() {
-    export PATH=$HOME'/.local/ghc/bin:'$PATH
+    path=($HOME/.local/ghc/bin $path)
 }
 
 __use_local_cabal() {
-    export PATH=$HOME'/.cabal/bin:'$PATH
+    path=($HOME/.cabal/bin $path)
 }
 
 __use_local_emacs() {
-    export PATH=$HOME'/.local/emacs/bin:'$PATH
+    path=($HOME/.local/emacs/bin $path)
 }
 
 __use_local_ocaml() {
-    export PATH=$HOME/.local/godi/bin:$HOME/.local/godi/sbin:$PATH
+    path=($HOME/.local/godi/{sbin,bin} $path)
 }
 
 __use_local_cyg_gardensnake() {
     export PYTHONPATH=$HOME/.local/gardensnake/lib/python2.6/site-packages:$PATH
-    export PATH=$HOME'/.local/gardensnake/bin:'$PATH
+    path=($HOME/.local/gardensnake/bin $path)
 }
 
 __use_local_pkgsrc() {
-    export PATH=$HOME/.local/pkg/sbin:$HOME/.local/pkg/bin:$PATH
+    path=($HOME/.local/pkg/sbin $HOME/.local/pkg/bin $path)
 }
 
 __use_local_portage_prefix() {
-    export PATH=$HOME/.local/portage-prefix/sbin:$HOME/.local/portage-prefix/bin:$PATH
-    export PATH=$HOME/.local/portage-prefix/usr/sbin:$HOME/.local/portage-prefix/usr/bin:$PATH
+    path=($HOME/.local/portage-prefix/{usr/,}{sbin,bin} $path)
     export EPREFIX=$HOME/.local/portage-prefix
 }
 
@@ -269,3 +267,8 @@ __use_local_cabal
 __use_local_ocaml
 
 agent-clean
+
+path=(${(Oa)path})
+typeset -U path
+path=(${(Oa)path})
+export PATH

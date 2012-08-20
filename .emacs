@@ -52,6 +52,8 @@
  line-move-visual nil
  ring-bell-function (lambda ())
  mac-allow-anti-aliasing nil
+ ido-enable-flex-matching t
+ ido-everywhere t
  vc-follow-symlinks t)
 
 (setq-default
@@ -62,7 +64,8 @@
 (global-visual-line-mode 1)
 (column-number-mode 1)
 (fringe-mode 0)
-(fci-mode)
+(ido-mode 1)
+
 
 (custom-set-variables '(inhibit-startup-echo-area-message
                         (user-real-login-name)))
@@ -104,5 +107,7 @@
 
 (set-frame-height (selected-frame) 75)
 (set-frame-width (selected-frame) 150)
+
+(global-set-key (kbd "<f3>") 'ido-switch-buffer)
 
 (if (file-exists-p "~/.emacs.d/local.el") (load "~/.emacs.d/local"))
