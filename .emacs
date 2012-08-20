@@ -19,13 +19,12 @@
     "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
     (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
-(setq my-packages '(
- auto-complete
- evil
- haskell-mode
- markdown-mode
- tuareg-mode
- ))
+(setq my-packages '( auto-complete
+                     evil
+                     haskell-mode
+                     markdown-mode
+                     tuareg-mode
+                     ))
 
 
 (el-get 'sync my-packages)
@@ -45,9 +44,10 @@
  inhibit-splash-screen t)
 
 (setq line-move-visual nil)
-(setq-default line-spacing 1.5)
+;(setq-default line-spacing 1.5)
 (global-visual-line-mode 1)
 (column-number-mode 1)
+(fringe-mode 0)
 
 (custom-set-variables '(inhibit-startup-echo-area-message (user-real-login-name)))
 
@@ -70,4 +70,5 @@
 (custom-set-faces
  derp
  '(mode-line ((t (:box (:line-width 1 :color "#444444"))))))
-(set-face-background 'modeline "#444444")
+
+(if (file-exists-p "~/.emacs.d/local.el") (load "~/.emacs.d/local"))

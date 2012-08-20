@@ -45,6 +45,8 @@
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#32322e")
 
+(set-face-background 'modeline "#444444")
+
 (setq evil-default-cursor '("#ecee90" t))
 
 (setq markdown-bold-face '((t (:weight normal))))
