@@ -12,6 +12,9 @@
                      (not (string-match "/\\.\\{1,2\\}$" dir)))
                 (setq load-path (cons dir load-path))))))))
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -19,20 +22,22 @@
     "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
     (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
-(setq my-packages '( auto-complete
-                     evil
-                     haskell-mode
-                     markdown-mode
-                     tuareg-mode
-                     ))
-
+(setq my-packages '(
+		    auto-complete
+		    evil
+		    haskell-mode
+		    markdown-mode
+		    tuareg-mode
+		    ))
 
 (el-get 'sync my-packages)
 (el-get 'wait)
 
 (evil-mode 1)
 
-(require 'colorscheme-wombat)
+;(require 'colorscheme-wombat)
+
+(load-theme 'solarized-light t)
 
 (setq font-lock-maximum-size 4096000)
 
@@ -53,6 +58,21 @@
 
 (global-hl-line-mode 1)
 (global-linum-mode 1)
+
+(defvar linum-dynamic-format "")
+
+(add-hook 'linum-before-numbering-hook
+	  (lambda ()
+	    (let ((width
+		   (length (number-to-string
+			    (count-lines (point-min) (point-max))))))
+	      (setq linum-dynamic-format
+		    (concat "%" (number-to-string width) "d ")))))
+	
+(setq linum-format
+      (lambda (line-number)
+	(propertize (format linum-dynamic-format line-number) 'face 'linum)))
+				     
 
 (show-paren-mode t)
 (tool-bar-mode -1)
