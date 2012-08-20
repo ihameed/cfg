@@ -242,7 +242,7 @@ setopt IGNORE_EOF
 setopt NO_BANG_HIST
 PS1='%n@%m:%~%(!.#.$) '
 export PAGER='less'
-export LESS='-S'
+export LESS='-SR'
 export WINEDEBUG=fixme-all
 export EDITOR='vim'
 alias figee=fg
