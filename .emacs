@@ -15,17 +15,23 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
 
+(if (not (file-exists-p "~/.emacs.d/el-get"))
+  (make-directory "~/.emacs.d/el-get"))
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
   (url-retrieve
-    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-    (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (goto-char (point-max))
+     (eval-print-last-sexp))))
 
 (setq my-packages '(auto-complete
                     column-marker
                     ethan-wspace
+                    evil
                     fill-column-indicator
+                    ghc-mod
                     haskell-mode
                     markdown-mode
                     tuareg-mode
@@ -36,8 +42,9 @@
 
 (evil-mode 1)
 
-;(require 'colorscheme-wombat)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
+;(require 'colorscheme-wombat)
 (load-theme 'solarized-light t)
 
 (customize-set-variable 'indent-tabs-mode nil)
