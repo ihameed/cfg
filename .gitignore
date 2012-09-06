@@ -17,15 +17,16 @@ ac-comphist.dat
 !.fonts.conf
 !.git/
 !.gitignore
+!.gitmodules
 !.gvimrc
 !.gvimrc-darwin
 !.minttyrc
 !.misc/
 !.screenrc
+!.startxwinrc
 !.tmux.conf
 !.vim/
 !.vimrc
 !.xinitrc
 !.xmonad/
 !.zshrc
-!.gitmodules
