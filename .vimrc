@@ -125,7 +125,9 @@ autocmd BufRead SConstruct set filetype=python
 autocmd BufRead SCsub      set filetype=python
 
 autocmd BufRead *.roy set filetype=ocaml
-autocmd BufRead *.set filetype=ocaml
+autocmd BufRead *.md  set filetype=markdown
+
+autocmd FileType cpp set filetype=cpp11
 
 filetype plugin on
 filetype indent on
@@ -219,7 +221,6 @@ autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
-autocmd FileType cpp set filetype=cpp11
 
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen

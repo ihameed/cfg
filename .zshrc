@@ -255,6 +255,7 @@ alias xelatex='xelatex -halt-on-error -interaction nonstopmode'
 alias mysql='mysql --sigint-ignore'
 alias ocaml='rlwrap ocaml'
 alias racket='rlwrap racket'
+alias emacs-cli='emacs -nw'
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
 compctl -K listsysctls sysctl
 compctl -c man
