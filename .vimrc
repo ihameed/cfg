@@ -44,7 +44,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'xaimus/vim-togglelist'
+Bundle 'ihameed/vim-togglelist'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
@@ -124,8 +124,9 @@ autocmd BufRead *.scons    set filetype=python
 autocmd BufRead SConstruct set filetype=python
 autocmd BufRead SCsub      set filetype=python
 
-autocmd BufRead *.roy set filetype=ocaml
-autocmd BufRead *.md  set filetype=markdown
+autocmd BufRead *.escript set filetype=erlang
+autocmd BufRead *.md      set filetype=markdown
+autocmd BufRead *.roy     set filetype=ocaml
 
 autocmd FileType cpp set filetype=cpp11
 
@@ -216,8 +217,8 @@ call CommandCabbr('ty',   'Type')
 call CommandCabbr('tyc',  'Ctype')
 call CommandCabbr('rc',   'RefreshComplCache')
 
-autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11
-               \,vim,python,php,markdown
+autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
+               \,vim,python,php,markdown,sh
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
