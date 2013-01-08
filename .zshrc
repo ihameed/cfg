@@ -256,6 +256,7 @@ alias mysql='mysql --sigint-ignore'
 alias ocaml='rlwrap ocaml'
 alias racket='rlwrap racket'
 alias emacs-cli='emacs -nw'
+alias ssh-xforward='ssh -c arcfour,blowfish-cbc -Y -C'
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
 compctl -K listsysctls sysctl
 compctl -c man
