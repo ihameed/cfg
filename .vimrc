@@ -58,16 +58,16 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'proyvind/Cpp11-Syntax-Support'
 
 let g:ignored_dirs = '\v'
-                 \ . '\.(hg|git|bzr|svn)'
+                 \ . '\.(hg|git|bzr|svn)|_darcs'
                  \ . '|dist|cabal-dev|\.virthualenv'
 
-let g:ignored_files = '\v\~|%('
+let g:ignored_files = '\v\~|\.%('
                   \ . 'bak|swp|orig|test'
                   \ . '|jpg|png|psd|gif|zip'
                   \ . '|hi|p_hi|p_o|chi|chs\.h'
                   \ . '|annot|cmo|cma|cmi|cmx|cmxa'
                   \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
-                  \ . '|exe|dll|beam'
+                  \ . '|exe|dll|beam|keter'
                   \ . ')$'
 
 let g:erlangCompletionDisplayDoc = 0

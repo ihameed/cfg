@@ -151,6 +151,19 @@ __disable_mintty_retardation() {
     echo -n '\e[?7786l' #mousewheel -> up/down
 }
 
+__simple_prompt() {
+    PS1='%n@%m:%~%(!.#.$) '
+}
+
+__tacky_prompt() {
+    username='%F{magenta}%B%n%b%f'
+    separator='%F{magenta}@%f'
+    hostname='%F{magenta}%B%m%f%b'
+    curdir='%F{blue}%B%~%b%f'
+    privind='%(!.#.$)'
+    PS1=$username$separator$hostname' '$curdir$privind' '
+}
+
 __os_specific() {
     case $OSTYPE in
         cygwin)
@@ -243,7 +256,6 @@ chpwd() {
 
 setopt IGNORE_EOF
 setopt NO_BANG_HIST
-PS1='%n@%m:%~%(!.#.$) '
 export PAGER='less'
 export LESS='-SR'
 export WINEDEBUG=fixme-all
@@ -273,6 +285,7 @@ __terminal_specific
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal
+__tacky_prompt
 
 agent-clean
 
