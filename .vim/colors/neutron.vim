@@ -1,9 +1,6 @@
-
-<!-- saved from url=(0066)https://raw.github.com/josephwecker/neutron.vim/master/neutron.vim -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">set background=light
 hi clear
 if exists("syntax_on")
-	syntax reset
+  syntax reset
 endif
 
 let g:colors_name="neutron"
@@ -77,6 +74,3 @@ hi Underlined     guibg=#f3f2ed guifg=#202020 gui=underline
 hi Error          guibg=#faf5cd guifg=#c83c28 gui=none
 
 hi ToDo           guibg=#f3f2ed guifg=#404040 gui=none
-
-
-</pre></body></html>
