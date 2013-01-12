@@ -14,7 +14,7 @@ endif
 let g:colors_name="vydark"
 
 
-hi Normal        guifg=#bbbbbb  guibg=#282828
+hi Normal        guifg=#bbbbbb  guibg=#222222
 hi Title         guifg=white
 hi Cursor        guibg=#ffffff
 hi LineNr        guifg=#444455  guibg=#292929
