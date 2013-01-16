@@ -42,9 +42,11 @@ Bundle 'ihameed/vim-togglelist'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/sessionman.vim'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
@@ -58,8 +60,8 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'proyvind/Cpp11-Syntax-Support'
 
 let g:ignored_dirs = '\v'
-                 \ . '\.(hg|git|bzr|svn)|_darcs'
-                 \ . '|dist|cabal-dev|\.virthualenv'
+                 \ . '\.(hg|git|bzr|svn)$|_darcs'
+                 \ . '|^(dist|cabal-dev|^\.virthualenv)$'
 
 let g:ignored_files = '\v\~|\.%('
                   \ . 'bak|swp|orig|test'
@@ -72,10 +74,9 @@ let g:ignored_files = '\v\~|\.%('
 
 let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
-let g:haskell_force_sane_indentation = 1
 
 let g:haddock_browser = 'echo'
-let g:haskell_conceal = 0
+let g:haskell_conceal = 1
 
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -98,6 +99,7 @@ let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
                               \ 'PrtSelectMove("k")': ['<c-p>'],
                               \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
                               \ 'PrtCurLeft()': ['<left>', '<c-^>'],
+                              \ 'PrtClearCache()': ['<f12>'],
                               \ }
 let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
@@ -114,7 +116,7 @@ map <f1> <nop>
 map <f2> <esc>:NERDTreeToggle<cr>
 map <f3> <esc>:CtrlPBuffer<cr>
 map <f4> <esc>:CtrlP<cr>
-map <f5> <esc>:CtrlPClearCache<cr>
+map <f12> <esc>:CtrlPClearCache<cr>
 
 autocmd BufRead *.as   set filetype=actionscript
 autocmd BufRead *.inf  set filetype=dosini
@@ -222,6 +224,7 @@ autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
+autocmd FileType haskell :let b:ghcmod_ghc_options = []
 
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
@@ -229,7 +232,52 @@ autocmd QuickFixCmdPost    l* nested Lopen
 if has('python')
   Bundle 'SirVer/ultisnips'
   Bundle 'sjl/gundo.vim'
-  map <F1> <esc>:GundoToggle<cr>
+
+  let g:gundo_preview_bottom = 1
+  let g:gundo_help = 0
+  map <f1> <esc>:GundoToggle<cr>
+else
+  Bundle 'mbbill/undotree'
+endif
+
+if executable('ctags')
+    Bundle 'majutsushi/tagbar'
+
+    let g:tagbar_compact = 1
+    let g:tagbar_singleclick = 0
+    let g:tagbar_iconchars = ['▶', '▼']
+
+    map <f5> <esc>:TagbarToggle<cr>
+endif
+
+if executable('lushtags')
+    let g:tagbar_type_haskell = {
+        \ 'ctagsbin' : 'lushtags',
+        \ 'ctagsargs' : '--ignore-parse-error --',
+        \ 'kinds' : [
+            \ 'm:module:0',
+            \ 'e:exports:1',
+            \ 'i:imports:1',
+            \ 't:declarations:0',
+            \ 'd:declarations:1',
+            \ 'n:declarations:1',
+            \ 'f:functions:0',
+            \ 'c:constructors:0'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+            \ 'd' : 'data',
+            \ 'n' : 'newtype',
+            \ 'c' : 'constructor',
+            \ 't' : 'type'
+        \ },
+        \ 'scope2kind' : {
+            \ 'data' : 'd',
+            \ 'newtype' : 'n',
+            \ 'constructor' : 'c',
+            \ 'type' : 't'
+        \ }
+    \ }
 endif
 
 let g:solarized_bold = 0
