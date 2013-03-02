@@ -42,7 +42,6 @@ Bundle 'ihameed/vim-togglelist'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -75,13 +74,30 @@ let g:ignored_files = '\v\~|\.%('
 let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
 
-let g:haddock_browser = 'echo'
-let g:haskell_conceal = 1
+let g:haddock_browser       = 'echo'
+let g:haskell_conceal       = 0
+let g:haskell_quasi         = 0
+let g:haskell_interpolation = 0
+let g:haskell_regex         = 0
+let g:haskell_jmacro        = 0
+let g:haskell_shqq          = 0
+let g:haskell_sql           = 0
+let g:haskell_json          = 0
+let g:haskell_xml           = 0
+let g:haskell_hsp           = 0
+let g:haskell_tabular       = 0
+
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_dictionary_filetype_lists = { 'default': '' }
+
+let g:ghcmod_use_basedir = getcwd()
+let g:ghcmod_ghc_options = []
+
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
@@ -198,6 +214,8 @@ function! ConfigSourceFileBuffer()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
   call VsnCmd(703, 'setlocal undofile')
+  "autocmd CursorMoved * silent! exe
+  "      \ printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
   NeoComplCacheEnable
 endfunction
 
@@ -223,8 +241,6 @@ autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
                \,vim,python,php,markdown,sh
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
-
-autocmd FileType haskell :let b:ghcmod_ghc_options = []
 
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
@@ -284,6 +300,8 @@ let g:solarized_bold = 0
 let g:solarized_italic = 0
 let g:solarized_underline = 0
 let g:solarized_termcolors = 256
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 if has('gui_running')
   if has('gui_win32')
