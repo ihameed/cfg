@@ -33,7 +33,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'chrisbra/SudoEdit.vim'
@@ -53,10 +52,10 @@ Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
 
 Bundle 'oscarh/vimerl'
+Bundle 'proyvind/Cpp11-Syntax-Support'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/JSON.vim'
 Bundle 'vim-scripts/nginx.vim'
-Bundle 'proyvind/Cpp11-Syntax-Support'
 
 let g:ignored_dirs = '\v'
                  \ . '\.(hg|git|bzr|svn)$|_darcs'
@@ -122,11 +121,6 @@ let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'link': g:ignored_files,
                             \ }
 
-
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
 imap <f1> <nop>
 map <f1> <nop>
 map <f2> <esc>:NERDTreeToggle<cr>
@@ -183,6 +177,8 @@ set shortmess=I
 set whichwrap=
 set viminfo=
 
+set lz
+
 function! FontSet(fontspec)
   execute 'set guifont=' . a:fontspec
   if match(&guifont, 'profont\c') != -1
@@ -216,7 +212,9 @@ function! ConfigSourceFileBuffer()
   call VsnCmd(703, 'setlocal undofile')
   "autocmd CursorMoved * silent! exe
   "      \ printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-  NeoComplCacheEnable
+  if exists(":NeoComplCacheEnable")
+    NeoComplCacheEnable
+  endif
 endfunction
 
 function! RefreshComplCache()
@@ -235,6 +233,7 @@ command! -nargs=* -complete=help Help  vert help <args>
 call CommandCabbr('help', 'Help')
 call CommandCabbr('ty',   'Type')
 call CommandCabbr('tyc',  'Ctype')
+call CommandCabbr('info',   'Info')
 call CommandCabbr('rc',   'RefreshComplCache')
 
 autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
@@ -248,6 +247,7 @@ autocmd QuickFixCmdPost    l* nested Lopen
 if has('python')
   Bundle 'SirVer/ultisnips'
   Bundle 'sjl/gundo.vim'
+  "Bundle 'Valloric/YouCompleteMe'
 
   let g:gundo_preview_bottom = 1
   let g:gundo_help = 0
@@ -255,6 +255,11 @@ if has('python')
 else
   Bundle 'mbbill/undotree'
 endif
+Bundle 'Shougo/neocomplcache'
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
