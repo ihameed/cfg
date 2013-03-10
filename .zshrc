@@ -126,7 +126,9 @@ __use_local_emacs() {
 }
 
 __use_local_ocaml() {
-    path=($HOME/.local/godi/{sbin,bin} $path)
+    if [ -f $HOME/.opam/opam-init/init.zsh ]; then
+        . $HOME/.opam/opam-init/init.zsh
+    fi
 }
 
 __use_local_cyg_gardensnake() {
@@ -269,11 +271,16 @@ alias ocaml='rlwrap ocaml'
 alias racket='rlwrap racket'
 alias emacs-cli='emacs -nw'
 alias ssh-xforward='ssh -c arcfour,blowfish-cbc -Y -C'
+
+autoload -Uz compinit
+compinit
+
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
 compctl -K listsysctls sysctl
 compctl -c man
 compctl -c info
 compctl -c which
+
 
 __bind_keys
 __disable_flow_control
