@@ -1,3 +1,7 @@
+recursive-fetch() {
+    wget -r --no-parent --reject "index.html*" "$@"
+}
+
 agent-select() {
     local -aU files
     files=(/tmp/ssh-*/agent.*) 2>/dev/null
@@ -167,9 +171,9 @@ __tacky_prompt() {
 __os_specific() {
     case $OSTYPE in
         cygwin)
-            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2011/bin/i386-cygwin'
-            export MANPATH=$MANPATH'/usr/local/texlive/2011/texmf/doc/man'
-            export INFOPATH=$INFOPATH'/usr/local/texlive/2011/texmf/doc/info'
+            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2012/bin/i386-cygwin'
+            export MANPATH=$MANPATH'/usr/local/texlive/2012/texmf/doc/man'
+            export INFOPATH=$INFOPATH'/usr/local/texlive/2012/texmf/doc/info'
             export SHELL='/bin/zsh'
             export TZ='/usr/share/zoneinfo/America/Los_Angeles'
             export NACL_SDK_ROOT='/cygdrive/c/sdk/native_client_sdk_0_5_1052'
@@ -263,7 +267,7 @@ export EDITOR='vim'
 alias figee=fg
 alias figs=jobs
 alias pdflatex='pdflatex -interaction nonstopmode'
-alias xelatex='xelatex -halt-on-error -interaction nonstopmode'
+alias xelatex='xelatex -halt-on-error -interaction nonstopmode --shell-escape'
 alias mysql='mysql --sigint-ignore'
 alias ocaml='rlwrap ocaml'
 alias racket='rlwrap racket'
