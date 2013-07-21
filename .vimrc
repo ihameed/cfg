@@ -33,7 +33,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'chrisbra/SudoEdit.vim'
@@ -42,7 +41,6 @@ Bundle 'ihameed/vim-togglelist'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -55,6 +53,7 @@ Bundle 'ujihisa/neco-ghc'
 
 Bundle 'kongo2002/fsharp-vim'
 Bundle 'oscarh/vimerl'
+Bundle 'proyvind/Cpp11-Syntax-Support'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/JSON.vim'
 Bundle 'vim-scripts/nginx.vim'
@@ -77,13 +76,30 @@ let g:ignored_files = '\v\~|\.%('
 let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
 
-let g:haddock_browser = 'echo'
-let g:haskell_conceal = 1
+let g:haddock_browser       = 'echo'
+let g:haskell_conceal       = 0
+let g:haskell_quasi         = 0
+let g:haskell_interpolation = 0
+let g:haskell_regex         = 0
+let g:haskell_jmacro        = 0
+let g:haskell_shqq          = 0
+let g:haskell_sql           = 0
+let g:haskell_json          = 0
+let g:haskell_xml           = 0
+let g:haskell_hsp           = 0
+let g:haskell_tabular       = 0
+
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_dictionary_filetype_lists = { 'default': '' }
+
+let g:ghcmod_use_basedir = getcwd()
+let g:ghcmod_ghc_options = []
+
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
@@ -107,11 +123,6 @@ let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
                             \ 'file': g:ignored_files,
                             \ 'link': g:ignored_files,
                             \ }
-
-
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 imap <f1> <nop>
 map <f1> <nop>
@@ -169,6 +180,8 @@ set shortmess=I
 set whichwrap=
 set viminfo=
 
+set lz
+
 function! FontSet(fontspec)
   execute 'set guifont=' . a:fontspec
   if match(&guifont, 'profont\c') != -1
@@ -200,7 +213,11 @@ function! ConfigSourceFileBuffer()
     autocmd BufWritePre <buffer> :call StripTrailingWhite()
   endif
   call VsnCmd(703, 'setlocal undofile')
-  NeoComplCacheEnable
+  "autocmd CursorMoved * silent! exe
+  "      \ printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+  if exists(":NeoComplCacheEnable")
+    NeoComplCacheEnable
+  endif
 endfunction
 
 function! RefreshComplCache()
@@ -219,6 +236,7 @@ command! -nargs=* -complete=help Help  vert help <args>
 call CommandCabbr('help', 'Help')
 call CommandCabbr('ty',   'Type')
 call CommandCabbr('tyc',  'Ctype')
+call CommandCabbr('info',   'Info')
 call CommandCabbr('rc',   'RefreshComplCache')
 
 autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
@@ -226,14 +244,13 @@ autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
-autocmd FileType haskell :let b:ghcmod_ghc_options = []
-
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
 
 if has('python')
   Bundle 'SirVer/ultisnips'
   Bundle 'sjl/gundo.vim'
+  "Bundle 'Valloric/YouCompleteMe'
 
   let g:gundo_preview_bottom = 1
   let g:gundo_help = 0
@@ -241,6 +258,11 @@ if has('python')
 else
   Bundle 'mbbill/undotree'
 endif
+Bundle 'Shougo/neocomplcache'
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
@@ -286,6 +308,8 @@ let g:solarized_bold = 0
 let g:solarized_italic = 0
 let g:solarized_underline = 0
 let g:solarized_termcolors = 256
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 if has('gui_running')
   if has('gui_win32')
