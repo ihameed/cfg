@@ -39,11 +39,11 @@ Bundle 'chrisbra/SudoEdit.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'ihameed/vim-togglelist'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'thinca/vim-prettyprint'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/buffergrep'
 Bundle 'vim-scripts/sessionman.vim'
 
 Bundle 'dag/vim2hs'
@@ -61,11 +61,11 @@ Bundle 'proyvind/Cpp11-Syntax-Support'
 Bundle 'vim-scripts/e2.lua'
 
 let g:ignored_dirs = '\v'
-                 \ . '\.(hg|git|bzr|svn)$|_darcs'
-                 \ . '|^(dist|cabal-dev|^\.virthualenv)$'
+                 \ . '^\.%(hg|git|bzr|svn)$|^_darcs$'
+                 \ . '|%(dist|\.virthualenv|cabal-dev)$'
 
-let g:ignored_files = '\v\~|\.%('
-                  \ . 'bak|swp|orig|test'
+let g:ignored_files = '\v\~|\.%'
+                  \ . '(bak|swp|orig|test'
                   \ . '|jpg|png|psd|gif|zip'
                   \ . '|hi|p_hi|p_o|chi|chs\.h'
                   \ . '|annot|cmo|cma|cmi|cmx|cmxa'
@@ -95,11 +95,14 @@ let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_dictionary_filetype_lists = { 'default': '' }
+"let g:neocomplcache_dictionary_filetype_lists = { 'default': '' }
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_skip_auto_completion_time = '3'
+
+let g:necoghc_enable_detailed_browse = 1
 
 let g:ghcmod_use_basedir = getcwd()
 let g:ghcmod_ghc_options = []
-
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
@@ -142,6 +145,7 @@ autocmd BufRead SCsub      set filetype=python
 autocmd BufRead *.escript set filetype=erlang
 autocmd BufRead *.md      set filetype=markdown
 autocmd BufRead *.roy     set filetype=ocaml
+autocmd BufRead *.lhs     set filetype=haskell
 
 autocmd FileType cpp set filetype=cpp11
 
@@ -215,9 +219,6 @@ function! ConfigSourceFileBuffer()
   call VsnCmd(703, 'setlocal undofile')
   "autocmd CursorMoved * silent! exe
   "      \ printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-  if exists(":NeoComplCacheEnable")
-    NeoComplCacheEnable
-  endif
 endfunction
 
 function! RefreshComplCache()
