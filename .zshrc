@@ -173,12 +173,11 @@ __tacky_prompt() {
 __os_specific() {
     case $OSTYPE in
         cygwin)
-            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2012/bin/i386-cygwin'
-            export MANPATH=$MANPATH'/usr/local/texlive/2012/texmf/doc/man'
-            export INFOPATH=$INFOPATH'/usr/local/texlive/2012/texmf/doc/info'
+            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2013/bin/i386-cygwin'
+            export MANPATH=$MANPATH'/usr/local/texlive/2013/texmf-dist/doc/man'
+            export INFOPATH=$INFOPATH'/usr/local/texlive/2013/texmf-dist/doc/info'
             export SHELL='/bin/zsh'
             export TZ='/usr/share/zoneinfo/America/Los_Angeles'
-            export NACL_SDK_ROOT='/cygdrive/c/sdk/native_client_sdk_0_5_1052'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
