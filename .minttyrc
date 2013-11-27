@@ -1,4 +1,4 @@
-Font=ProFontWindows
+Font=PragmataPro
 FontHeight=9
 Term=xterm-256color
 CursorType=block
@@ -10,6 +10,8 @@ Locale=en_US
 Charset=UTF-8
 SwitchShortcuts=no
 BoldAsFont=no
-FontSmoothing=none
+FontSmoothing=default
 BellFlash=yes
 BackspaceSendsBS=yes
+CopyAsRTF=no
+BellTaskbar=no
