@@ -1,5 +1,3 @@
-/*/
-/*
 *.swp
 .netrwhist
 *-x86_64-linux
@@ -10,23 +8,3 @@
 *~
 
 ac-comphist.dat
-
-!.Xresources
-!.emacs
-!.emacs.d/
-!.fonts.conf
-!.git/
-!.gitignore
-!.gitmodules
-!.gvimrc
-!.gvimrc-darwin
-!.minttyrc
-!.misc/
-!.screenrc
-!.startxwinrc
-!.tmux.conf
-!.vim/
-!.vimrc
-!.xinitrc
-!.xmonad/
-!.zshrc
