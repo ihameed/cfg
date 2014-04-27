@@ -15,3 +15,5 @@ BellFlash=yes
 BackspaceSendsBS=yes
 CopyAsRTF=no
 BellTaskbar=no
+BoldAsColour=yes
+FontIsBold=no

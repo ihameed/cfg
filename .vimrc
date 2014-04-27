@@ -249,7 +249,6 @@ autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
 
 if has('python')
-  Bundle 'SirVer/ultisnips'
   Bundle 'sjl/gundo.vim'
   "Bundle 'Valloric/YouCompleteMe'
 
@@ -263,7 +262,6 @@ Bundle 'Shougo/neocomplcache'
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
 
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
