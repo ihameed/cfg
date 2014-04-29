@@ -289,7 +289,7 @@ compctl -c which
 __bind_keys
 __disable_flow_control
 __update_title
-__use_keychain
+#__use_keychain
 __os_specific
 __terminal_specific
 #__use_local_smlnj
