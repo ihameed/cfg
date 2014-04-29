@@ -77,12 +77,14 @@ let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
 
 let g:haddock_browser       = 'echo'
+let g:haskell_haddock       = 1
 let g:haskell_conceal       = 0
-let g:haskell_quasi         = 0
+let g:haskell_quasi         = 1
 let g:haskell_interpolation = 0
 let g:haskell_regex         = 0
 let g:haskell_jmacro        = 0
 let g:haskell_shqq          = 0
+let g:haskell_rlangqq       = 0
 let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
@@ -339,5 +341,8 @@ endif
 if filereadable(expand("~/.vim/local.vim"))
   source ~/.vim/local.vim
 endif
+
+set rtp-=~/.vim/after/
+set rtp+=~/.vim/after/
 
 call FontInit(g:guifont)

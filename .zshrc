@@ -144,9 +144,8 @@ __use_local_pkgsrc() {
     path=($HOME/.local/pkg/sbin $HOME/.local/pkg/bin $path)
 }
 
-__use_local_portage_prefix() {
-    path=($HOME/.local/portage-prefix/{usr/,}{sbin,bin} $path)
-    export EPREFIX=$HOME/.local/portage-prefix
+__use_local_nix() {
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
 }
 
 __add_local_path() {
