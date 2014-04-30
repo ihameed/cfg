@@ -146,6 +146,7 @@ __use_local_pkgsrc() {
 
 __use_local_nix() {
     source $HOME/.nix-profile/etc/profile.d/nix.sh
+    export MANPATH=$MANPATH:$HOME'/.nix-profile/share/man'
 }
 
 __add_local_path() {
