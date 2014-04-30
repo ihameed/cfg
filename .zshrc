@@ -173,8 +173,6 @@ __os_specific() {
     case $OSTYPE in
         cygwin)
             export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2013/bin/i386-cygwin'
-            export MANPATH=$MANPATH'/usr/local/texlive/2013/texmf-dist/doc/man'
-            export INFOPATH=$INFOPATH'/usr/local/texlive/2013/texmf-dist/doc/info'
             export SHELL='/bin/zsh'
             export TZ='/usr/share/zoneinfo/America/Los_Angeles'
             alias ls='ls -F --color'
