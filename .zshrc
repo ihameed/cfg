@@ -149,6 +149,13 @@ __use_local_nix() {
     export MANPATH=$MANPATH:$HOME'/.nix-profile/share/man'
 }
 
+__use_local_nix_profile() {
+    if [ -d $HOME/.nix-profile ]; then
+        export C_INCLUDE_PATH=$HOME/.nix-profile/include
+        export LIBRARY_PATH=$HOME/.nix-profile/lib
+    fi
+}
+
 __add_local_path() {
     export PATH=$HOME'/.local/bin:'$PATH
 }
@@ -175,7 +182,7 @@ __os_specific() {
         cygwin)
             export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2013/bin/i386-cygwin'
             export SHELL='/bin/zsh'
-            export TZ='/usr/share/zoneinfo/America/Los_Angeles'
+            export TZ='America/Los_Angeles'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
@@ -185,7 +192,7 @@ __os_specific() {
             ;;
         linux*)
             export PATH=$HOME'/.local/bin:'$PATH
-            export TZ='/usr/share/zoneinfo/America/Los_Angeles'
+            export TZ='America/Los_Angeles'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
@@ -194,7 +201,7 @@ __os_specific() {
         interix*)
             export HOME='/home/'`whoami`
             export PATH='/usr/local/sbin:'$PATH
-            export TZ='/usr/share/zoneinfo/America/Los_Angeles'
+            export TZ='America/Los_Angeles'
             alias ls='ls -F'
             __add_local_path
             ;;
@@ -289,6 +296,7 @@ __disable_flow_control
 __update_title
 #__use_keychain
 __os_specific
+__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
 __use_local_ocaml
