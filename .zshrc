@@ -296,7 +296,7 @@ __disable_flow_control
 __update_title
 #__use_keychain
 __os_specific
-__use_local_nix_profile
+#__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
 __use_local_ocaml

@@ -6,6 +6,7 @@ setup-x86_64.exe ^
 --local-package-dir C:\cygwin\usr\distfiles ^
 --packages ^
 curl,^
+dos2unix,^
 emacs,^
 gcc-core,^
 gcc-fortran,^
