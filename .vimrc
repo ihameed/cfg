@@ -53,11 +53,9 @@ Bundle 'ujihisa/neco-ghc'
 
 Bundle 'kongo2002/fsharp-vim'
 Bundle 'oscarh/vimerl'
-Bundle 'proyvind/Cpp11-Syntax-Support'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/JSON.vim'
 Bundle 'vim-scripts/nginx.vim'
-Bundle 'proyvind/Cpp11-Syntax-Support'
 Bundle 'vim-scripts/e2.lua'
 
 let g:ignored_dirs = '\v'
