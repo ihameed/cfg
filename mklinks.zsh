@@ -35,6 +35,6 @@ _link .startxwinrc ~
 _link .tmux.conf ~
 _link .vim ~
 _link .vimrc ~
-_link .xinitrc ~
+#_link .xinitrc ~
 _link .xmonad ~
 _link .zshrc ~

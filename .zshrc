@@ -4,7 +4,7 @@ recursive-fetch() {
 
 agent-select() {
     local -aU files
-    files=(/tmp/ssh-*/agent.*) 2>/dev/null
+    files=($TMPDIR/ssh-*/agent.*) 2>/dev/null
 
     local file
     integer idx=0
@@ -42,7 +42,7 @@ agent-relink() {
 
 agent-clean() {
     local -aU files
-    files=(/tmp/ssh-*/agent.*) 2>/dev/null
+    files=($TMPDIR/ssh-*/agent.*) 2>/dev/null
 
     local file
     local old_IFS
