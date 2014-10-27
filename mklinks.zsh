@@ -2,7 +2,7 @@
 scriptdir=$(cd -P -- "$(dirname -- "$0")"; pwd -P)
 _link() {
     local target="$scriptdir"/"$1"
-    local linkpath="$2"/"$1"
+    local linkpath="$2"
     printf '%s -> %s\n' "$linkpath" "$target"
     case $OSTYPE in
         cygwin)
@@ -24,17 +24,16 @@ _link() {
     esac
 }
 
-_link .Xresources ~
-_link .emacs.d ~
-_link .fonts.conf ~
-_link .gvimrc ~
-_link .minttyrc ~
-_link .misc ~
-_link .screenrc ~
-_link .startxwinrc ~
-_link .tmux.conf ~
-_link .vim ~
-_link .vimrc ~
-_link .xinitrc ~
-_link .xmonad ~
-_link .zshrc ~
+_link Xresources ~/.Xresources
+_link emacs.d ~/.emacs.d
+_link fonts.conf ~/.fonts.conf
+_link gvimrc ~/.gvimrc
+_link minttyrc ~/.minttyrc
+_link screenrc ~/.screenrc
+_link startxwinrc ~/.startxwinrc
+_link tmux.conf ~/.tmux.conf
+_link vim ~/.vim
+_link vimrc ~/.vimrc
+_link xinitrc ~/.xinitrc
+_link xmonad ~/.xmonad
+_link zshrc ~/.zshrc

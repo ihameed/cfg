@@ -5,21 +5,6 @@ setup-x86_64.exe ^
 --root C:\cygwin ^
 --local-package-dir C:\cygwin\usr\distfiles ^
 --packages ^
-curl,^
-dos2unix,^
-emacs,^
-gcc-core,^
-gcc-fortran,^
-gcc-g++,^
-git,^
-make,^
-mercurial,^
-ncurses,^
-ocaml,^
-openssh,^
-patch,^
-screen,^
-subversion,^
 texlive,^
 texlive-collection-fontsextra,^
 texlive-collection-fontsextra-doc,^
@@ -42,12 +27,3 @@ texlive-collection-music,^
 texlive-collection-music-doc,^
 texlive-collection-xetex,^
 texlive-collection-xetex-doc,^
-tmux,^
-vim,^
-wget,^
-xdpyinfo,^
-xinit,^
-xorg-server,^
-zsh
-mkdir C:\cygwin\home
-C:\cygwin\bin\ash.exe /bin/rebaseall
