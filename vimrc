@@ -170,6 +170,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
+set fileformats=unix,dos
 
 set backspace=indent,eol,start
 set directory=~/.vim/tmp/swap//
@@ -180,7 +181,7 @@ set cedit=
 set formatoptions=vt
 set nobackup
 set notildeop
-set shortmess=I
+set shortmess=a
 set whichwrap=
 set viminfo=
 
