@@ -48,8 +48,8 @@ Bundle 'vim-scripts/sessionman.vim'
 
 Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/neco-ghc'
 Bundle 'lukerandall/haskellmode-vim'
-Bundle 'ujihisa/neco-ghc'
 
 Bundle 'kongo2002/fsharp-vim'
 Bundle 'oscarh/vimerl'
@@ -184,6 +184,8 @@ set notildeop
 set shortmess=a
 set whichwrap=
 set viminfo=
+
+set maxmempattern=2000
 
 set lz
 
