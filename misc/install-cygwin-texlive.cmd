@@ -5,25 +5,17 @@ setup-x86_64.exe ^
 --root C:\cygwin ^
 --local-package-dir C:\cygwin\usr\distfiles ^
 --packages ^
+python-pygments,^
 texlive,^
 texlive-collection-fontsextra,^
-texlive-collection-fontsextra-doc,^
 texlive-collection-fontsrecommended,^
-texlive-collection-fontsrecommended-doc,^
 texlive-collection-fontutils,^
-texlive-collection-fontutils-doc,^
 texlive-collection-langenglish,^
 texlive-collection-langfrench,^
 texlive-collection-langspanish,^
 texlive-collection-latex,^
-texlive-collection-latex-doc,^
 texlive-collection-latexextra,^
-texlive-collection-latexextra-doc,^
 texlive-collection-latexrecommended,^
-texlive-collection-latexrecommended-doc,^
-texlive-collection-matchextra-doc,^
 texlive-collection-mathextra,^
 texlive-collection-music,^
-texlive-collection-music-doc,^
-texlive-collection-xetex,^
-texlive-collection-xetex-doc,^
+texlive-collection-xetex
