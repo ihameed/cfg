@@ -17,3 +17,5 @@ CopyAsRTF=no
 BellTaskbar=no
 BoldAsColour=yes
 FontIsBold=no
+Transparency=off
+OpaqueWhenFocused=no
