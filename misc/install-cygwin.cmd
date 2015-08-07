@@ -24,7 +24,6 @@ tmux,^
 vim,^
 wget,^
 xdpyinfo,^
-xinit,^
 xorg-server,^
 zsh
 mkdir C:\cygwin\home

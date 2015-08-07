@@ -1,9 +1,11 @@
-(tool-bar-mode -1)
+(if window-system
+  (progn
+    (fringe-mode 0)
+    (scroll-bar-mode -1)
+    (tool-bar-mode -1)))
 (menu-bar-mode -1)
-(if window-system (progn (scroll-bar-mode -1)))
 (transient-mark-mode nil)
 (show-paren-mode t)
-(fringe-mode 0)
 (global-hl-line-mode 1)
 (ido-mode 1)
 (column-number-mode 1)

@@ -283,7 +283,7 @@ alias ocaml='rlwrap ocaml'
 alias sml='rlwrap sml'
 alias racket='rlwrap racket'
 alias emacs-cli='emacs -nw'
-alias ssh-xforward='ssh -c arcfour,blowfish-cbc -Y -C'
+alias ssh-xforward='ssh -Y -C'
 
 autoload -Uz compinit
 compinit
