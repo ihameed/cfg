@@ -19,3 +19,5 @@ BoldAsColour=yes
 FontIsBold=no
 Transparency=off
 OpaqueWhenFocused=no
+ClicksTargetApp=no
+ClickTargetMod=off
