@@ -7,15 +7,11 @@ let mapleader = ","
 let maplocalleader = "\\"
 let g:guifont = ''
 
-if !isdirectory(expand("~/.vim/bundle/vundle"))
-  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-endif
-
 function! InitTmp(dirs)
   for dir in a:dirs
-    let absdir = expand('~/.vim/tmp/' . dir)
+    let absdir = expand('~/.local/vim/tmp/' . dir)
     if !isdirectory(absdir)
-      silent exe '!mkdir ' . absdir
+      silent exe '!mkdir -p ' . absdir
     endif
   endfor
 endfunction
@@ -28,35 +24,7 @@ function! VsnCmd(vsn, cmd)
   endif
 endfunction
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
-Bundle 'chrisbra/SudoEdit.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'ihameed/vim-togglelist'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'thinca/vim-prettyprint'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/buffergrep'
-Bundle 'vim-scripts/sessionman.vim'
-
-Bundle 'dag/vim2hs'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'lukerandall/haskellmode-vim'
-
-Bundle 'kongo2002/fsharp-vim'
-Bundle 'oscarh/vimerl'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-scripts/JSON.vim'
-Bundle 'vim-scripts/nginx.vim'
-Bundle 'vim-scripts/e2.lua'
+execute pathogen#infect('junk/{}')
 
 let g:ignored_dirs = '\v'
                  \ . '^\.%(hg|git|bzr|svn)$|^_darcs$'
@@ -89,9 +57,6 @@ let g:haskell_xml           = 0
 let g:haskell_hsp           = 0
 let g:haskell_tabular       = 0
 
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'passive' }
-
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -107,7 +72,7 @@ let g:ghcmod_ghc_options = []
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeMinimalUI = 1
 
-let g:ctrlp_cache_dir = expand('~/.vim/tmp/ctrlpcache')
+let g:ctrlp_cache_dir = expand('~/.local/vim/tmp/ctrlpcache')
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_map = ''
@@ -134,7 +99,6 @@ map <f3> <esc>:CtrlPBuffer<cr>
 map <f4> <esc>:CtrlP<cr>
 map <f12> <esc>:CtrlPClearCache<cr>
 
-autocmd BufRead *.as   set filetype=actionscript
 autocmd BufRead *.inf  set filetype=dosini
 autocmd BufRead *.json set filetype=json
 
@@ -144,14 +108,13 @@ autocmd BufRead SCsub      set filetype=python
 
 autocmd BufRead *.escript set filetype=erlang
 autocmd BufRead *.md      set filetype=markdown
-autocmd BufRead *.roy     set filetype=ocaml
 autocmd BufRead *.lhs     set filetype=haskell
 
-autocmd FileType cpp set filetype=cpp11
-
 filetype plugin on
-filetype indent on
+"filetype indent on
 syntax on
+
+set autoindent
 
 set hlsearch
 set ruler
@@ -173,9 +136,9 @@ set tabstop=8
 set fileformats=unix,dos
 
 set backspace=indent,eol,start
-set directory=~/.vim/tmp/swap//
+set directory=~/.local/vim/tmp/swap//
 set mousemodel=popup
-call VsnCmd(703, 'set undodir=~/.vim/tmp/undo//')
+call VsnCmd(703, 'set undodir=~/.local/vim/tmp/undo//')
 
 set cedit=
 set formatoptions=vt
@@ -252,22 +215,22 @@ autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
 
 if has('python')
-  Bundle 'sjl/gundo.vim'
+  "Bundle 'sjl/gundo.vim'
   "Bundle 'Valloric/YouCompleteMe'
 
-  let g:gundo_preview_bottom = 1
-  let g:gundo_help = 0
-  map <f1> <esc>:GundoToggle<cr>
+  "let g:gundo_preview_bottom = 1
+  "let g:gundo_help = 0
+  "map <f1> <esc>:GundoToggle<cr>
 else
-  Bundle 'mbbill/undotree'
+  "Bundle 'mbbill/undotree'
 endif
-Bundle 'Shougo/neocomplcache'
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 if executable('ctags')
-    Bundle 'majutsushi/tagbar'
+    "Bundle 'majutsushi/tagbar'
 
     let g:tagbar_compact = 1
     let g:tagbar_singleclick = 0
@@ -315,11 +278,11 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 if has('gui_running')
   if has('gui_win32')
-    let g:guifont = 'ProfontWindows'
+    let g:guifont = 'PragmataPro:h9,ProfontWindows'
   elseif has('gui_macvim')
     let g:guifont = 'ProFontX:h9'
   else
-    let g:guifont = 'ProfontWindows\ 9'
+    let g:guifont = 'PragmataPro\ 9, ProfontWindows\ 9'
   endif
   set guioptions-=L
   set guioptions-=T
@@ -339,8 +302,8 @@ else
   colorscheme wombat256
 endif
 
-if filereadable(expand("~/.vim/local.vim"))
-  source ~/.vim/local.vim
+if filereadable(expand("~/.local/vim/local.vim"))
+  source ~/.local/vim/local.vim
 endif
 
 set rtp-=~/.vim/after/
