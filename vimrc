@@ -282,7 +282,7 @@ if has('gui_running')
   elseif has('gui_macvim')
     let g:guifont = 'ProFontX:h9'
   else
-    let g:guifont = 'PragmataPro\ 9, ProfontWindows\ 9'
+    let g:guifont = 'PragmataPro\ 9,ProfontWindows\ 9'
   endif
   set guioptions-=L
   set guioptions-=T
