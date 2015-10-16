@@ -26,36 +26,46 @@ endfunction
 
 execute pathogen#infect('junk/{}')
 
-let g:ignored_dirs = '\v'
-                 \ . '^\.%(hg|git|bzr|svn)$|^_darcs$'
-                 \ . '|%(dist|\.virthualenv|cabal-dev)$'
+let g:ignored_dirs
+\ = '\v'
+\ . '^\.%(hg|git|bzr|svn)$|^_darcs$'
+\ . '|%(dist|\.virthualenv|cabal-dev)$'
 
-let g:ignored_files = '\v\~|\.%'
-                  \ . '(bak|swp|orig|test'
-                  \ . '|jpg|png|psd|gif|zip'
-                  \ . '|hi|p_hi|p_o|dyn_hi|dyn_o|chi|chs\.h'
-                  \ . '|annot|cmo|cma|cmi|cmx|cmxa'
-                  \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
-                  \ . '|exe|dll|beam|keter'
-                  \ . ')$'
+let g:ignored_files
+\ = '\v\~|\.%'
+\ . '(bak|swp|orig|test'
+\ . '|jpg|png|psd|gif|zip'
+\ . '|hi|p_hi|p_o|dyn_hi|dyn_o|chi|chs\.h'
+\ . '|annot|cmo|cma|cmi|cmx|cmxa'
+\ . '|o|lo|slo|a|la|sla|lib|so|dylib'
+\ . '|exe|dll|beam|keter'
+\ . ')$'
 
 let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
 
 let g:haddock_browser       = 'echo'
-let g:haskell_haddock       = 1
-let g:haskell_conceal       = 0
-let g:haskell_quasi         = 1
-let g:haskell_interpolation = 0
-let g:haskell_regex         = 0
-let g:haskell_jmacro        = 0
-let g:haskell_shqq          = 0
-let g:haskell_rlangqq       = 0
-let g:haskell_sql           = 0
-let g:haskell_json          = 0
-let g:haskell_xml           = 0
-let g:haskell_hsp           = 0
-let g:haskell_tabular       = 0
+let g:haskell_conceal              = 0
+let g:haskell_conceal_bad          = 0
+let g:haskell_conceal_comments     = 0
+let g:haskell_conceal_enumerations = 0
+let g:haskell_conceal_wide         = 0
+let g:haskell_cpp                  = 0
+let g:haskell_ffi                  = 0
+let g:haskell_haddock              = 0
+let g:haskell_hsp                  = 0
+let g:haskell_interpolation        = 0
+let g:haskell_jmacro               = 0
+let g:haskell_json                 = 0
+let g:haskell_multiline_strings    = 0
+let g:haskell_quasi                = 0
+let g:haskell_regex                = 0
+let g:haskell_rlangqq              = 0
+let g:haskell_shqq                 = 0
+let g:haskell_sql                  = 0
+let g:haskell_tabular              = 0
+let g:haskell_th                   = 0
+let g:haskell_xml                  = 0
 
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -79,18 +89,20 @@ let g:ctrlp_map = ''
 let g:ctrlp_max_height = 30
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_prompt_mappings = { 'PrtHistory(-1)': [],
-                              \ 'PrtHistory(1)':  [],
-                              \ 'PrtSelectMove("j")': ['<c-n>'],
-                              \ 'PrtSelectMove("k")': ['<c-p>'],
-                              \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
-                              \ 'PrtCurLeft()': ['<left>', '<c-^>'],
-                              \ 'PrtClearCache()': ['<f12>'],
-                              \ }
-let g:ctrlp_custom_ignore = { 'dir':  g:ignored_dirs,
-                            \ 'file': g:ignored_files,
-                            \ 'link': g:ignored_files,
-                            \ }
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtHistory(-1)': [],
+  \ 'PrtHistory(1)':  [],
+  \ 'PrtSelectMove("j")': ['<c-n>'],
+  \ 'PrtSelectMove("k")': ['<c-p>'],
+  \ 'PrtBS()': ['<c-h>', '<bs>', '<c-]>'],
+  \ 'PrtCurLeft()': ['<left>', '<c-^>'],
+  \ 'PrtClearCache()': ['<f12>'],
+  \ }
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  g:ignored_dirs,
+  \ 'file': g:ignored_files,
+  \ 'link': g:ignored_files,
+  \ }
 
 imap <f1> <nop>
 map <f1> <nop>
@@ -230,43 +242,43 @@ endif
 "inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 if executable('ctags')
-    "Bundle 'majutsushi/tagbar'
+  "Bundle 'majutsushi/tagbar'
 
-    let g:tagbar_compact = 1
-    let g:tagbar_singleclick = 0
-    let g:tagbar_iconchars = ['▶', '▼']
+  let g:tagbar_compact = 1
+  let g:tagbar_singleclick = 0
+  let g:tagbar_iconchars = ['▶', '▼']
 
-    map <f5> <esc>:TagbarToggle<cr>
+  map <f5> <esc>:TagbarToggle<cr>
 endif
 
 if executable('lushtags')
-    let g:tagbar_type_haskell = {
-        \ 'ctagsbin' : 'lushtags',
-        \ 'ctagsargs' : '--ignore-parse-error --',
-        \ 'kinds' : [
-            \ 'm:module:0',
-            \ 'e:exports:1',
-            \ 'i:imports:1',
-            \ 't:declarations:0',
-            \ 'd:declarations:1',
-            \ 'n:declarations:1',
-            \ 'f:functions:0',
-            \ 'c:constructors:0'
-        \ ],
-        \ 'sro' : '.',
-        \ 'kind2scope' : {
-            \ 'd' : 'data',
-            \ 'n' : 'newtype',
-            \ 'c' : 'constructor',
-            \ 't' : 'type'
-        \ },
-        \ 'scope2kind' : {
-            \ 'data' : 'd',
-            \ 'newtype' : 'n',
-            \ 'constructor' : 'c',
-            \ 'type' : 't'
-        \ }
+  let g:tagbar_type_haskell = {
+    \ 'ctagsbin' : 'lushtags',
+    \ 'ctagsargs' : '--ignore-parse-error --',
+    \ 'kinds' : [
+      \ 'm:module:0',
+      \ 'e:exports:1',
+      \ 'i:imports:1',
+      \ 't:declarations:0',
+      \ 'd:declarations:1',
+      \ 'n:declarations:1',
+      \ 'f:functions:0',
+      \ 'c:constructors:0'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+      \ 'd' : 'data',
+      \ 'n' : 'newtype',
+      \ 'c' : 'constructor',
+      \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+      \ 'data' : 'd',
+      \ 'newtype' : 'n',
+      \ 'constructor' : 'c',
+      \ 'type' : 't'
     \ }
+  \ }
 endif
 
 let g:solarized_bold = 0

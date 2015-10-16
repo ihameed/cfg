@@ -1,8 +1,11 @@
 let b:ghc_staticoptions = '-ignore-dot-ghci -fforce-recomp'
-compiler ghc
+if executable('ghc')
+  compiler ghc
+endif
 
 setlocal completefunc=
 setlocal omnifunc=
+setlocal nofoldenable
 
 set cmdheight=1
 

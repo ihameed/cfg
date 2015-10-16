@@ -822,17 +822,17 @@ let hs_highlight_delimiters=1
 
 exe "hi! cPreCondit". s:fg_orange.s:bg_none   .s:fmt_none
 
-exe "hi! VarId"    . s:fg_blue   .s:bg_none   .s:fmt_none
+"exe "hi! VarId"    . s:fg_blue   .s:bg_none   .s:fmt_none
 exe "hi! ConId"    . s:fg_yellow .s:bg_none   .s:fmt_none
 exe "hi! hsImport" . s:fg_magenta.s:bg_none   .s:fmt_none
-exe "hi! hsString" . s:fg_base00 .s:bg_none   .s:fmt_none
+"exe "hi! hsString" . s:fg_base00 .s:bg_none   .s:fmt_none
 
 exe "hi! hsStructure"        . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hs_hlFunctionName"  . s:fg_blue   .s:bg_none
+"exe "hi! hs_hlFunctionName"  . s:fg_blue   .s:bg_none
 exe "hi! hsStatement"        . s:fg_cyan   .s:bg_none   .s:fmt_none
 exe "hi! hsImportLabel"      . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hs_OpFunctionName"  . s:fg_yellow .s:bg_none   .s:fmt_none
-exe "hi! hs_DeclareFunction" . s:fg_orange .s:bg_none   .s:fmt_none
+"exe "hi! hs_OpFunctionName"  . s:fg_yellow .s:bg_none   .s:fmt_none
+"exe "hi! hs_DeclareFunction" . s:fg_orange .s:bg_none   .s:fmt_none
 exe "hi! hsVarSym"           . s:fg_cyan   .s:bg_none   .s:fmt_none
 exe "hi! hsType"             . s:fg_yellow .s:bg_none   .s:fmt_none
 exe "hi! hsTypedef"          . s:fg_cyan   .s:bg_none   .s:fmt_none
