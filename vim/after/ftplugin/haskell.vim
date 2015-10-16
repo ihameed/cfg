@@ -1,7 +1,7 @@
 let b:ghc_staticoptions = '-ignore-dot-ghci -fforce-recomp'
-if executable('ghc')
-  compiler ghc
-endif
+"if executable('ghc')
+"  compiler ghc
+"endif
 
 setlocal completefunc=
 setlocal omnifunc=
