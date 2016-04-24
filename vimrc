@@ -292,11 +292,11 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 if has('gui_running')
   if has('gui_win32')
-    let g:guifont = 'PragmataPro:h9,ProfontWindows'
+    let g:guifont = 'PragmataPro_Mono:h9,PragmataPro:h9,ProfontWindows'
   elseif has('gui_macvim')
     let g:guifont = 'ProFontX:h9'
   else
-    let g:guifont = 'PragmataPro\ 9,ProfontWindows\ 9'
+    let g:guifont = 'PragmataPro_Mono\ 9,PragmataPro\ 9,ProfontWindows\ 9'
   endif
   set guioptions-=L
   set guioptions-=T
