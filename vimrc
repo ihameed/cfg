@@ -122,6 +122,8 @@ autocmd BufRead *.escript set filetype=erlang
 autocmd BufRead *.md      set filetype=markdown
 autocmd BufRead *.lhs     set filetype=haskell
 
+autocmd BufNewFile,BufRead *.fs,*.fsi,*.fsx set filetype=fsharp
+
 autocmd BufEnter * set noro
 
 filetype plugin on
