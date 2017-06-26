@@ -5,6 +5,7 @@ CursorType=block
 CursorBlinks=no
 CopyOnSelect=yes
 ZoomShortcuts=no
+ZoomMouse=no
 Scrollbar=none
 Locale=en_US
 Charset=UTF-8
