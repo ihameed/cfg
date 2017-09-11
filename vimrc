@@ -40,6 +40,7 @@ let g:ignored_files
 \ . '|o|lo|slo|a|la|sla|lib|so|dylib'
 \ . '|exe|dll|beam|keter'
 \ . ')$'
+\ . '|target(\\|/).*%(class|lst|jar|xml|txt|properties)$'
 
 let g:erlangCompletionDisplayDoc = 0
 let g:erlangFoldSplitFunction = 1
@@ -298,7 +299,7 @@ if has('gui_running')
   elseif has('gui_macvim')
     let g:guifont = 'ProFontX:h9'
   else
-    let g:guifont = 'PragmataPro_Mono\ 9,PragmataPro\ 9,ProfontWindows\ 9'
+    let g:guifont = 'PragmataPro\ Mono\ 9,PragmataPro_Mono\ 9,PragmataPro\ 9,ProfontWindows\ 9'
   endif
   set guioptions-=L
   set guioptions-=T
