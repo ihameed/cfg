@@ -223,6 +223,7 @@ __os_specific() {
             alias ls='ls -F'
             alias grep='grep --color'
             __set_bsd_clicolor
+            unset TERMCAP
             ;;
     esac
 }
