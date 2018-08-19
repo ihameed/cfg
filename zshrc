@@ -69,11 +69,6 @@ agent-clean() {
     IFS=$old_IFS
 }
 
-updoot() {
-    local configpath=$(dirname $HOME/.zshrc(:A))
-    (cd $configpath && git pull)
-}
-
 ghc-pkg-clean() {
     for p in `ghc-pkg check $* 2>&1  | grep problems \
             | awk '{print $6}' | sed -e 's/:$//'`
@@ -139,11 +134,6 @@ __use_local_ocaml() {
     fi
 }
 
-__use_local_cyg_gardensnake() {
-    export PYTHONPATH=$HOME/.local/gardensnake/lib/python2.6/site-packages:$PATH
-    path=($HOME/.local/gardensnake/bin $path)
-}
-
 __use_local_pkgsrc() {
     path=($HOME/.local/pkg/sbin $HOME/.local/pkg/bin $path)
 }
@@ -184,7 +174,7 @@ __tacky_prompt() {
 __os_specific() {
     case $OSTYPE in
         cygwin)
-            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2013/bin/i386-cygwin'
+            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH
             export SHELL='/bin/zsh'
             export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
@@ -193,7 +183,6 @@ __os_specific() {
             __set_locale
             __add_local_path
             __disable_mintty_retardation
-            __use_local_cyg_gardensnake
             ;;
         linux*)
             export PATH=$HOME'/.local/bin:'$PATH
@@ -224,7 +213,11 @@ __os_specific() {
             alias ls='ls -F'
             alias grep='grep --color'
             __set_bsd_clicolor
-            unset TERMCAP
+            case $TERM in
+                xterm-256color)
+                    export TERM='xterm'
+                    ;;
+            esac
             ;;
     esac
 }
