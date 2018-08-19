@@ -228,6 +228,8 @@ autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
                \,javascript,json
                \ :call ConfigSourceFileBuffer()
 
+autocmd BufRead *.tsv set noexpandtab
+
 autocmd QuickFixCmdPost [^l]* nested Copen
 autocmd QuickFixCmdPost    l* nested Lopen
 
@@ -306,8 +308,8 @@ if has('gui_running')
   set guioptions-=m
   set guioptions-=r
   set guioptions-=e
-  set number
-  set linespace=1
+  "set number
+  "set linespace=1
 
   set background=light
   colorscheme solarized

@@ -187,6 +187,7 @@ __os_specific() {
             export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH':/usr/local/texlive/2013/bin/i386-cygwin'
             export SHELL='/bin/zsh'
             export TZ='America/Los_Angeles'
+            export LESSHISTFILE='-'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
