@@ -50,15 +50,19 @@ agent-clean() {
 
     local file
     local old_IFS
+    local timeout_cmd
     integer idx=0
     integer len=${#files}
     integer ret
+    if ! type timeout > /dev/null; then
+      timeout_cmd=''
+    fi
     old_IFS=$IFS
     IFS=
     for idx in {1..$len}; do
         file=$files[$idx]
         #echo -n 'probing '$file'... '
-        SSH_AUTH_SOCK=$file timeout 5 ssh-add -l 2>/dev/null 1>/dev/null
+        SSH_AUTH_SOCK=$file $timeout_cmd 5 ssh-add -l 2>/dev/null 1>/dev/null
         if [[ $? -ne 0 && $? -ne 1 ]]; then
             #echo 'deleted'
             rm -r $(dirname $file)
