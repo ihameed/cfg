@@ -62,9 +62,11 @@ agent-clean() {
     for idx in {1..$len}; do
         file=$files[$idx]
         #echo -n 'probing '$file'... '
-        SSH_AUTH_SOCK=$file $timeout_cmd ssh-add -l 2>/dev/null 1>/dev/null
-        if [[ $? -ne 0 && $? -ne 1 ]]; then
-            #echo 'deleted'
+        local cmd="SSH_AUTH_SOCK=$file $timeout_cmd ssh-add -l 2>/dev/null 1>/dev/null"
+        eval $cmd
+        local code=$?
+        if [[ $code -ne 0 && $code -ne 1 ]]; then
+            #echo 'deleted: ' $code
             rm -r $(dirname $file)
         else
             #echo 'kept'
