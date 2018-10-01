@@ -138,6 +138,10 @@ __use_local_ocaml() {
     fi
 }
 
+__use_local_opam() {
+    path=($HOME/.local/opam/bin $path)
+}
+
 __use_local_pkgsrc() {
     path=($HOME/.local/pkg/sbin $HOME/.local/pkg/bin $path)
 }
@@ -302,6 +306,7 @@ __os_specific
 #__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
+__use_local_opam
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal

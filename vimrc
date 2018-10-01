@@ -145,7 +145,8 @@ call VsnCmd(703, 'set colorcolumn=81')
 set cursorline
 set modeline
 
-set list listchars=tab:»·,trail:·
+"set list listchars=tab:»·,trail:·
+set list listchars=tab:»\ ,trail:·
 set expandtab
 set shiftwidth=4
 set softtabstop=4
