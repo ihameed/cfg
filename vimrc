@@ -170,21 +170,6 @@ set maxmempattern=2000
 
 set lz
 
-function! FontSet(fontspec)
-  execute 'set guifont=' . a:fontspec
-  if match(&guifont, 'profont\c') != -1
-    set noantialias
-  else
-    set antialias
-  endif
-endfunction
-
-function! FontInit(fontspec)
-  if has('gui_running') && empty(&guifont)
-    call FontSet(a:fontspec)
-  endif
-endfunction
-
 function! SplitRtp()
   return split(&runtimepath, ',')
 endfunction
@@ -298,11 +283,11 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 if has('gui_running')
   if has('gui_win32')
-    let g:guifont = 'PragmataPro_Mono:h9,PragmataPro:h9,ProfontWindows'
+    set guifont=PragmataPro_Mono:h9,PragmataPro:h9,ProfontWindows
   elseif has('gui_macvim')
-    let g:guifont = 'ProFontX:h9'
+    set guifont=PragmataPro\ Mono:h12,ProFontX:h9
   else
-    let g:guifont = 'PragmataPro\ Mono\ 9,PragmataPro_Mono\ 9,PragmataPro\ 9,ProfontWindows\ 9'
+    set guifont=PragmataPro\ Mono\ 9,PragmataPro_Mono\ 9,PragmataPro\ 9,ProfontWindows\ 9
   endif
   set guioptions-=L
   set guioptions-=T
@@ -328,5 +313,3 @@ endif
 
 set rtp-=~/.vim/after/
 set rtp+=~/.vim/after/
-
-call FontInit(g:guifont)
