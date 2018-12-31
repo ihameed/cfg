@@ -1,5 +1,5 @@
 recursive-fetch() {
-    wget -r --no-parent --reject "index.html*" "$@"
+    wget -e robots=off -r --no-parent --reject "index.html*" "$@"
 }
 
 agent-select() {
@@ -184,7 +184,7 @@ __tacky_prompt() {
 __os_specific() {
     case $OSTYPE in
         cygwin)
-            export PATH='/bin:/usr/bin:/usr/local/bin:'$PATH
+            export PATH='/usr/bin/:/bin:/usr/local/bin:'$PATH
             export SHELL='/bin/zsh'
             export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
@@ -308,7 +308,7 @@ __os_specific
 #__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
-__use_local_opam
+#__use_local_opam
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal
