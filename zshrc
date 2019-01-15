@@ -223,11 +223,11 @@ __os_specific() {
             alias ls='ls -F'
             alias grep='grep --color'
             __set_bsd_clicolor
-            case $TERM in
-                xterm-256color)
-                    export TERM='xterm'
-                    ;;
-            esac
+            # case $TERM in
+            #     xterm-256color)
+            #         export TERM='xterm'
+            #         ;;
+            # esac
             ;;
     esac
 }
