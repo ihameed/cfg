@@ -3,10 +3,17 @@ recursive-fetch() {
 }
 
 agent-select() {
+    local -aU tmpdir_files
+    local -aU tmp_files
     local -aU files
     local tmpdir=$TMPDIR
-    if [ -z "$tmpdir" ]; then tmpdir='/tmp' fi
-    files=($tmpdir/ssh-*/agent.*) 2>/dev/null
+    if [ -z "$tmpdir" ]; then
+        tmpdir_files=( )
+    else
+        tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
+    fi
+    tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
+    files=($tmpdir_files $tmp_files)
 
     local file
     integer idx=0
@@ -43,10 +50,17 @@ agent-relink() {
 }
 
 agent-clean() {
+    local -aU tmpdir_files
+    local -aU tmp_files
     local -aU files
     local tmpdir=$TMPDIR
-    if [ -z "$tmpdir" ]; then tmpdir='/tmp' fi
-    files=($tmpdir/ssh-*/agent.*) 2>/dev/null
+    if [ -z "$tmpdir" ]; then
+        tmpdir_files=( )
+    else
+        tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
+    fi
+    tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
+    files=($tmpdir_files $tmp_files)
 
     local file
     local old_IFS
