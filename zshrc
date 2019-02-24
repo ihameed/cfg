@@ -198,7 +198,7 @@ __tacky_prompt() {
 __os_specific() {
     case $OSTYPE in
         cygwin)
-            export PATH='/usr/bin/:/bin:/usr/local/bin:'$PATH
+            export PATH='/usr/bin:/bin:/usr/local/bin:'$PATH
             export SHELL='/bin/zsh'
             export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
@@ -226,7 +226,7 @@ __os_specific() {
         darwin*)
             alias ls='ls -F'
             alias grep='grep --color'
-            export PATH='/opt/local/bin:/opt/local/sbin/:'$PATH
+            export PATH='/opt/local/bin:/opt/local/sbin:'$PATH
             export TERMINFO=/opt/local/share/terminfo
             __set_locale
             __add_local_path

@@ -90,6 +90,8 @@ let g:ctrlp_map = ''
 let g:ctrlp_max_height = 30
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_depth = 100
+let g:ctrlp_max_files = 1000000
 let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(-1)': [],
   \ 'PrtHistory(1)':  [],
