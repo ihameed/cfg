@@ -55,7 +55,7 @@ agent-clean() {
     local -aU files
     local tmpdir=$TMPDIR
     if [ -z "$tmpdir" ]; then
-        tmpdir_files=( )
+        tmpdir_files=()
     else
         tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
     fi
@@ -65,16 +65,12 @@ agent-clean() {
     local file
     local old_IFS
     local timeout_cmd='timeout 5'
-    integer idx=0
-    integer len=${#files}
-    integer ret
     if ! type timeout > /dev/null; then
       timeout_cmd=''
     fi
     old_IFS=$IFS
     IFS=
-    for idx in {1..$len}; do
-        file=$files[$idx]
+    for file in $files; do
         #echo -n 'probing '$file'... '
         local cmd="SSH_AUTH_SOCK=$file $timeout_cmd ssh-add -l 2>/dev/null 1>/dev/null"
         eval $cmd
