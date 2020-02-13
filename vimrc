@@ -151,6 +151,8 @@ set modeline
 "set list listchars=tab:»·,trail:·
 set list listchars=tab:»\ ,trail:·
 set expandtab
+set copyindent
+set preserveindent
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
