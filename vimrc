@@ -3,6 +3,8 @@
 set encoding=utf-8
 set fileformat=unix
 
+runtime macros/matchit.vim
+
 let mapleader = ","
 let maplocalleader = "\\"
 let g:guifont = ''
