@@ -216,10 +216,10 @@ call CommandCabbr('tyc',  'Ctype')
 call CommandCabbr('info',   'Info')
 call CommandCabbr('rc',   'RefreshComplCache')
 
-autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
-               \,vim,python,php,markdown,sh
-               \,javascript,json
-               \ :call ConfigSourceFileBuffer()
+"autocmd FileType ocaml,haskell,cabal,c,cpp,cpp11,erlang
+"               \,vim,python,php,markdown,sh
+"               \,javascript,json
+"               \ :call ConfigSourceFileBuffer()
 
 autocmd BufRead *.tsv set noexpandtab
 

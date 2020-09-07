@@ -285,6 +285,7 @@ chpwd() {
 
 setopt IGNORE_EOF
 setopt NO_BANG_HIST
+setopt HIST_IGNORE_DUPS
 export PAGER='less'
 export LESS='-SR'
 export WINEDEBUG=fixme-all
