@@ -33,3 +33,5 @@ XTerm*color15:    #ffffff
 XTerm*metaSendsEscape: true
 XTerm*utf8: 1
 XTerm*toolBar: false
+
+Xft.dpi: 144
