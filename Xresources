@@ -1,10 +1,15 @@
 XTerm*termName: xterm-256color
 XTerm*saveLines: 1024
-XTerm*font: 6x13
-XTerm*boldFont: 6x13
-! XTerm*font: xft:PragmataPro Mono:size=9
+! XTerm*font: 6x13
+! XTerm*boldFont: 6x13
+XTerm*font: xft:PragmataPro Mono:size=9
+XTerm*boldFont: xft:PragmataPro Mono:size=9
 XTerm*boldMode: false
+XTerm*allowBoldFonts: false
 XTerm*titeInhibit: true
+XTerm*scrollTtyOutput: false
+XTerm*scrollBar: false
+XTerm*scrollKey: true
 
 XTerm*borderWidth: 0
 XTerm*internalBorder: 1
@@ -32,6 +37,60 @@ XTerm*color15:    #ffffff
 
 XTerm*metaSendsEscape: true
 XTerm*utf8: 1
+XTerm*locale: 0
 XTerm*toolBar: false
+
+
+
+
+
+
+
+
+
+
+
+
+UXTerm*termName: xterm-256color
+UXTerm*saveLines: 1024
+! UXTerm*font: 6x13
+! UXTerm*boldFont: 6x13
+UXTerm*font: xft:PragmataPro Mono:size=9
+UXTerm*boldFont: xft:PragmataPro Mono:size=9
+UXTerm*boldMode: false
+UXTerm*allowBoldFonts: false
+UXTerm*titeInhibit: true
+UXTerm*scrollTtyOutput: false
+UXTerm*scrollBar: false
+UXTerm*scrollKey: true
+
+UXTerm*borderWidth: 0
+UXTerm*internalBorder: 1
+
+UXTerm*background: #000000
+UXTerm*foreground: #c2c2c2
+
+UXTerm*color0:    #000000
+UXTerm*color1:    #bf0000
+UXTerm*color2:    #00bf00
+UXTerm*color3:    #bfbf00
+UXTerm*color4:    #0000bf
+UXTerm*color5:    #bf00bf
+UXTerm*color6:    #00bfbf
+UXTerm*color7:    #bfbfbf
+
+UXTerm*color8:    #404040
+UXTerm*color9:    #ff4040
+UXTerm*color10:    #40ff40
+UXTerm*color11:    #ffff40
+UXTerm*color12:    #6060ff
+UXTerm*color13:    #ff40ff
+UXTerm*color14:    #40ffff
+UXTerm*color15:    #ffffff
+
+UXTerm*metaSendsEscape: true
+UXTerm*utf8: 1
+UXTerm*locale: 0
+UXTerm*toolBar: false
 
 Xft.dpi: 144

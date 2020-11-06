@@ -34,6 +34,7 @@ _link startxwinrc ~/.startxwinrc
 _link tmux.conf ~/.tmux.conf
 _link vim ~/.vim
 _link vimrc ~/.vimrc
+_link xbindkeysrc.scm ~/.xbindkeysrc.scm
 _link xinitrc ~/.xinitrc
 _link xmonad ~/.xmonad
 _link zshrc ~/.zshrc
