@@ -31,7 +31,7 @@ execute pathogen#infect('junk/{}')
 let g:ignored_dirs
 \ = '\v'
 \ . '^\.%(hg|git|bzr|svn)$|^_darcs$'
-\ . '|%(dist|\.virthualenv|cabal-dev)$'
+\ . '|^%(dist|\.virthualenv|cabal-dev)$'
 
 let g:ignored_files
 \ = '\v\~|\.%'
