@@ -183,12 +183,15 @@ __simple_prompt() {
 }
 
 __tacky_prompt() {
-    username='%F{magenta}%B%n%b%f'
-    separator='%F{magenta}@%f'
-    hostname='%F{magenta}%B%m%f%b'
-    curdir='%F{blue}%B%~%b%f'
+    magenta=$'%{\e[95m%}'
+    blue=$'%{\e[94m%}'
+    reset='%f'
+    username='%n'
+    separator='@'
+    hostname='%m'
+    curdir='%~'
     privind='%(!.#.$)'
-    PS1=$username$separator$hostname' '$curdir$privind' '
+    PS1=$magenta$username$separator$hostname$reset' '$blue$curdir$reset$privind' '
 }
 
 __os_specific() {
@@ -319,7 +322,7 @@ __os_specific
 #__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
-#__use_local_opam
+__use_local_opam
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal
