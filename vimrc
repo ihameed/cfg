@@ -136,6 +136,8 @@ filetype plugin on
 syntax on
 
 set autoindent
+set sidescroll=1
+set sidescrolloff=8
 
 set hlsearch
 set ruler
