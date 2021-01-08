@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-scriptdir=$(cd -P -- "$(dirname -- "$0")"; pwd -P)
+scriptdir="$(cd -P -- "$(dirname -- "$0")"; pwd -P)"
 _link() {
     local target="$scriptdir"/"$1"
     local linkpath="$2"
