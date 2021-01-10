@@ -25,6 +25,8 @@ _link() {
 }
 
 _link Xresources ~/.Xresources
+_link bash_profile ~/.bash_profile
+_link bashrc ~/.bashrc
 _link emacs.d ~/.emacs.d
 _link fonts.conf ~/.fonts.conf
 _link gvimrc ~/.gvimrc

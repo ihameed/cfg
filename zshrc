@@ -293,6 +293,7 @@ export PAGER='less'
 export LESS='-SR'
 export WINEDEBUG=fixme-all
 export EDITOR='vim'
+export SYSSCREENRC=/dev/null
 alias figee=fg
 alias figs=jobs
 alias pdflatex='pdflatex -interaction nonstopmode'
