@@ -70,10 +70,10 @@ __tacky_prompt() {
     separator='@'
     hostname='\h'
     curdir='\w'
-    PS1=$reset'['$magenta$username$separator$hostname$reset' '$blue$curdir$reset']$ '
+    PS1=$reset'['$magenta$username$separator$hostname$reset' '$blue$curdir$reset']\$ '
 }
 
 export SYSSCREENRC=/dev/null
-set +o history
+unset HISTFILE
 __os_specific
 __tacky_prompt
