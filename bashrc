@@ -10,4 +10,5 @@ __tacky_prompt() {
 }
 
 export SYSSCREENRC=/dev/null
+set +o history
 __tacky_prompt
