@@ -69,7 +69,7 @@ __tacky_prompt() {
     username='\u'
     separator='@'
     hostname='\h'
-    curdir='\W'
+    curdir='\w'
     PS1=$reset'['$magenta$username$separator$hostname$reset' '$blue$curdir$reset']$ '
 }
 
