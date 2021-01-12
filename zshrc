@@ -208,7 +208,6 @@ __os_specific() {
             __disable_mintty_retardation
             ;;
         linux*)
-            export PATH=$HOME'/.local/bin:'$PATH
             export TZ='America/Los_Angeles'
             alias ls='ls -F --color'
             alias grep='grep --color'
