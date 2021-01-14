@@ -64,3 +64,5 @@ export SYSSCREENRC=/dev/null
 unset HISTFILE
 __os_specific
 __tacky_prompt
+
+bind 'set show-all-if-ambiguous on'
