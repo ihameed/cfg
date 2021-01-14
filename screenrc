@@ -7,10 +7,18 @@ defscrollback 65536
 maptimeout 0
 defc1 off
 
-caption always "%{= dW}%Y-%m-%d %0C:%s %a    %= %{= dd}%-Lw%{= bd}%51>%n%f* %t%{-}%+Lw%<%{- Wk}%{= dd}"
+# Disable terminal flow control by default.
+defflow off
+
+hardstatus string "[%S] %h"
+
+caption always "%{= dW}%Y-%m-%d %0C:%s %a    %= %{= dd}%-Lw%{= dd}%51>%n%f* %t%{-}%+Lw%<%{- Wk}%{= dd}"
 
 term 'screen-256color'
+# Mirror the hardstatus string to the xterm titlebar
+#termcapinfo xterm*|rxvt*|kterm*|Eterm*|cygwin hs:ts=\E]0;:fs=\007:ds=\E]0;\007
 termcapinfo xterm* 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+
 termcapinfo xterm* 'ti@:te@'
 
 # Enable background-color-erase.
@@ -25,4 +33,3 @@ defbce "on"
 # Don't manipulate /etc/utmp.
 deflogin off
 
-hardstatus string "[%S%?] %h"

@@ -280,9 +280,15 @@ __bind_keys() {
     bindkey "\eOd" emacs-backward-word
 }
 
-chpwd() {
+__update_terminal_title() {
+    # chpwd()
     [[ -t 1 ]] || return
     __update_title
+}
+
+__register_update_terminal_title() {
+    autoload add-zsh-hook
+    add-zsh-hook precmd __update_terminal_title
 }
 
 setopt IGNORE_EOF
@@ -326,6 +332,7 @@ __use_local_opam
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal
+__register_update_terminal_title
 __tacky_prompt
 
 agent-clean
