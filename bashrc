@@ -65,4 +65,4 @@ unset HISTFILE
 __os_specific
 __tacky_prompt
 
-bind 'set show-all-if-ambiguous on'
+bind 'set show-all-if-ambiguous on' 2>/dev/null
