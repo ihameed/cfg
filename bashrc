@@ -54,8 +54,8 @@ __tacky_prompt() {
     hostname='\h'
     curdir='\w'
 
-    xterm_title_begin='\[\e]2;\]'
-    xterm_title_end='\[\a\]';
+    xterm_title_begin='\[\e]2;'
+    xterm_title_end='\a\]'
     xterm_title=$xterm_title_begin$username$separator$hostname':'$curdir$xterm_title_end
     PS1=$reset$xterm_title'['$magenta$username$separator$hostname$reset' '$blue$curdir$reset']\$ '
 }
