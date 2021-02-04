@@ -7,4 +7,5 @@ C:\cygwin\bin\ssh-pageant.exe -c -r -a /tmp/ssh-__pageant/agent.0 | C:\cygwin\bi
 call %FN%
 del %FN%
 
-C:\cygwin\bin\xrdb.exe -merge ~/.Xresources
+C:\cygwin\bin\xrdb.exe ~/.local/Xresources
+C:\cygwin\bin\xrdb.exe -merge ~/.local/local.Xresources
