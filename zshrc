@@ -341,3 +341,4 @@ path=(${(Oa)path})
 typeset -U path
 path=(${(Oa)path})
 export PATH
+unset HISTFILE
