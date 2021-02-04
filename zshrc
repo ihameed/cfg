@@ -102,7 +102,7 @@ __disable_flow_control() {
 __use_keychain() {
     if which keychain > /dev/null 2>&1; then
         keychain -q -Q --inherit any
-        source ~/.keychain/$HOST-sh > /dev/null
+        source "$HOME/.keychain/$HOST-sh" > /dev/null
     fi
 }
 
@@ -128,50 +128,54 @@ __set_bsd_clicolor() {
 }
 
 __use_local_smlnj() {
-    path=($HOME/.local/sml/bin $path)
-    export SMLNJ_HOME=$HOME/.local/sml
+    path=("$HOME/.local/sml/bin" $path)
+    export SMLNJ_HOME="$HOME/.local/sml"
 }
 
 __use_local_ghc() {
-    path=($HOME/.local/ghc/bin $path)
+    path=("$HOME/.local/ghc/bin" $path)
 }
 
 __use_local_cabal() {
-    path=($HOME/.cabal/bin $path)
+    path=("$HOME/.cabal/bin" $path)
 }
 
 __use_local_emacs() {
-    path=($HOME/.local/emacs/bin $path)
+    path=("$HOME/.local/emacs/bin" $path)
 }
 
 __use_local_ocaml() {
-    if [ -f $HOME/.opam/opam-init/init.zsh ]; then
-        . $HOME/.opam/opam-init/init.zsh
+    if [ -f "$HOME/.opam/opam-init/init.zsh" ]; then
+        . "$HOME/.opam/opam-init/init.zsh"
     fi
 }
 
 __use_local_opam() {
-    path=($HOME/.local/opam/bin $path)
+    path=("$HOME/.local/opam/bin" $path)
+}
+
+__use_local_rust() {
+    path=("$HOME/.local/programs/rust/1.49.0/amd64/bin" $path)
 }
 
 __use_local_pkgsrc() {
-    path=($HOME/.local/pkg/sbin $HOME/.local/pkg/bin $path)
+    path=("$HOME/.local/pkg/sbin" "$HOME/.local/pkg/bin" $path)
 }
 
 __use_local_nix() {
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
-    export MANPATH=$MANPATH:$HOME'/.nix-profile/share/man'
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+    export MANPATH="$MANPATH":"$HOME/.nix-profile/share/man"
 }
 
 __use_local_nix_profile() {
-    if [ -d $HOME/.nix-profile ]; then
-        export C_INCLUDE_PATH=$HOME/.nix-profile/include
-        export LIBRARY_PATH=$HOME/.nix-profile/lib
+    if [ -d "$HOME/.nix-profile" ]; then
+        export C_INCLUDE_PATH="$HOME/.nix-profile/include"
+        export LIBRARY_PATH="$HOME/.nix-profile/lib"
     fi
 }
 
 __add_local_path() {
-    export PATH=$HOME'/.local/bin:'$PATH
+    export PATH="$HOME/.local/bin":"$PATH"
 }
 
 __disable_mintty_retardation() {
@@ -195,9 +199,9 @@ __tacky_prompt() {
 }
 
 __os_specific() {
-    case $OSTYPE in
+    case "$OSTYPE" in
         cygwin)
-            export PATH='/usr/bin:/bin:/usr/local/bin:'$PATH
+            export PATH='/usr/bin:/bin:/usr/local/bin:'"$PATH"
             export SHELL='/bin/zsh'
             export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
@@ -216,7 +220,7 @@ __os_specific() {
             ;;
         interix*)
             export HOME='/home/'`whoami`
-            export PATH='/usr/local/sbin:'$PATH
+            export PATH='/usr/local/sbin:'"$PATH"
             export TZ='America/Los_Angeles'
             alias ls='ls -F'
             __add_local_path
@@ -224,7 +228,7 @@ __os_specific() {
         darwin*)
             alias ls='ls -F'
             alias grep='grep --color'
-            export PATH='/opt/local/bin:/opt/local/sbin:'$PATH
+            export PATH='/opt/local/bin:/opt/local/sbin:'"$PATH"
             export TERMINFO=/opt/local/share/terminfo
             __set_locale
             __add_local_path
@@ -245,7 +249,7 @@ __os_specific() {
 }
 
 __terminal_specific() {
-    case $TERM in
+    case "$TERM" in
         cons25)
             bindkey "^?" delete-char
             ;;
@@ -332,6 +336,7 @@ __use_local_opam
 __use_local_ocaml
 __use_local_ghc
 __use_local_cabal
+__use_local_rust
 __register_update_terminal_title
 __tacky_prompt
 

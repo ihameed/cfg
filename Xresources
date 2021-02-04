@@ -10,6 +10,7 @@ XTerm*titeInhibit: true
 XTerm*scrollTtyOutput: false
 XTerm*scrollBar: false
 XTerm*scrollKey: true
+XTerm*selectToClipboard: true
 
 XTerm*borderWidth: 0
 XTerm*internalBorder: 1
@@ -93,4 +94,4 @@ UXTerm*utf8: 1
 UXTerm*locale: 0
 UXTerm*toolBar: false
 
-Xft.dpi: 144
+Xft.dpi: 96

@@ -1,0 +1,4 @@
+Xft.dpi: 96
+Xcursor.theme: macOS
+
+XTerm*iconHint: /example/.local/utilities-terminal

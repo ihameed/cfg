@@ -12,4 +12,5 @@ xset r rate 300 30 # 300ms delay, 30 repeat events per second
 vmware-user
 #exec xmonad
 #startplasma-x11
-exec xfwm4
+xfwm4 &
+while true; do sleep 5000; done

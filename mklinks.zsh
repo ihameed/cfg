@@ -19,12 +19,14 @@ _link() {
             fi
             ;;
         *)
-            ln -s "$target" "$linkpath"
+            ln -sn "$target" "$linkpath"
             ;;
     esac
 }
 
-_link Xresources ~/.Xresources
+mkdir -p ~/.local
+
+_link Xresources ~/.local/Xresources
 _link bash_profile ~/.bash_profile
 _link bashrc ~/.bashrc
 _link emacs.d ~/.emacs.d

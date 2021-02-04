@@ -169,7 +169,7 @@
 ;(xbindkey '(mod4 p) "`dmenu_path | dmenu -fn 'Tahoma-8' -nb '#201f1f' -nf '#d4d2cf' -sb '#184880' -sf '#ffffff'`")
 ;(xbindkey '(mod4 p) "rofi -font 'Tahoma 12' -show run")
 (define (rofi cmd) (string-join
-    (list "rofi -font 'Tahoma 12' -modi 'run,windowcd,window'"
+    (list "rofi -font 'Tahoma 8' -modi 'run,windowcd,window'"
         "-kb-accept-entry \\!Return"
         "-kb-cancel \\!Escape"
         "-color-window '#222222, #222222, #b1b4b3'"
@@ -182,3 +182,4 @@
 (xbindkey '(Mod4 p) (rofi "run"))
 (xbindkey '(Mod4 a) (rofi "window"))
 (xbindkey '(Mod4 Tab) (rofi "windowcd"))
+(xbindkey '(Mod4 l) "xscreensaver-command -lock")
