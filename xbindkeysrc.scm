@@ -128,23 +128,23 @@
 ;; If key2 is pressed start cmd-k2
 ;; If both are pressed start cmd-k1-k2 or cmd-k2-k1 following the
 ;;   release order
-(define (define-chord-keys key1 key2 cmd-k1 cmd-k2 cmd-k1-k2 cmd-k2-k1)
-    "Define chording keys"
-  (let ((k1 #f) (k2 #f))
-    (xbindkey-function key1 (lambda () (set! k1 #t)))
-    (xbindkey-function key2 (lambda () (set! k2 #t)))
-    (xbindkey-function (cons 'release key1)
-                       (lambda ()
-                         (if (and k1 k2)
-                             (run-command cmd-k1-k2)
-                             (if k1 (run-command cmd-k1)))
-                         (set! k1 #f) (set! k2 #f)))
-    (xbindkey-function (cons 'release key2)
-                       (lambda ()
-                         (if (and k1 k2)
-                             (run-command cmd-k2-k1)
-                             (if k2 (run-command cmd-k2)))
-                         (set! k1 #f) (set! k2 #f)))))
+; (define (define-chord-keys key1 key2 cmd-k1 cmd-k2 cmd-k1-k2 cmd-k2-k1)
+;     "Define chording keys"
+;   (let ((k1 #f) (k2 #f))
+;     (xbindkey-function key1 (lambda () (set! k1 #t)))
+;     (xbindkey-function key2 (lambda () (set! k2 #t)))
+;     (xbindkey-function (cons 'release key1)
+;                        (lambda ()
+;                          (if (and k1 k2)
+;                              (run-command cmd-k1-k2)
+;                              (if k1 (run-command cmd-k1)))
+;                          (set! k1 #f) (set! k2 #f)))
+;     (xbindkey-function (cons 'release key2)
+;                        (lambda ()
+;                          (if (and k1 k2)
+;                              (run-command cmd-k2-k1)
+;                              (if k2 (run-command cmd-k2)))
+;                          (set! k1 #f) (set! k2 #f)))))
 
 
 ;; Example:
@@ -176,6 +176,7 @@
         "-color-normal '#222222, #b1b4b3, #222222, #005577, #b1b4b3'"
         "-color-active '#222222, #b1b4b3, #222222, #007763, #b1b4b3'"
         "-color-urgent '#222222, #b1b4b3, #222222, #77003d, #b1b4b3'"
+        "-monitor 'primary'"
         "-show" cmd)
     " "))
 

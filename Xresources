@@ -11,6 +11,7 @@ XTerm*scrollTtyOutput: false
 XTerm*scrollBar: false
 XTerm*scrollKey: true
 XTerm*selectToClipboard: true
+XTerm*backarrowKey: false
 
 XTerm*borderWidth: 0
 XTerm*internalBorder: 1
@@ -43,15 +44,6 @@ XTerm*toolBar: false
 
 
 
-
-
-
-
-
-
-
-
-
 UXTerm*termName: xterm-256color
 UXTerm*saveLines: 1024
 ! UXTerm*font: 6x13
@@ -64,6 +56,7 @@ UXTerm*titeInhibit: true
 UXTerm*scrollTtyOutput: false
 UXTerm*scrollBar: false
 UXTerm*scrollKey: true
+UXTerm*backarrowKey: false
 
 UXTerm*borderWidth: 0
 UXTerm*internalBorder: 1

@@ -6,14 +6,20 @@ agent-select() {
     local -aU tmpdir_files
     local -aU tmp_files
     local -aU files
-    local tmpdir=$TMPDIR
+    local localdir="$HOME/.local/ssh-agent"
+    local tmpdir="$TMPDIR"
+    if [ -z "$localdir" ]; then
+        localdir_files=( )
+    else
+        localdir_files=($localdir/ssh-*/agent.*(N)) 2>/dev/null
+    fi
     if [ -z "$tmpdir" ]; then
         tmpdir_files=( )
     else
         tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
     fi
     tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
-    files=($tmpdir_files $tmp_files)
+    files=($localdir_files $tmpdir_files $tmp_files)
 
     local file
     integer idx=0
@@ -53,14 +59,20 @@ agent-clean() {
     local -aU tmpdir_files
     local -aU tmp_files
     local -aU files
+    local localdir="$HOME/.local/ssh-agent"
     local tmpdir=$TMPDIR
+    if [ -z "$localdir" ]; then
+        localdir_files=( )
+    else
+        localdir_files=($localdir/ssh-*/agent.*(N)) 2>/dev/null
+    fi
     if [ -z "$tmpdir" ]; then
         tmpdir_files=()
     else
         tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
     fi
     tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
-    files=($tmpdir_files $tmp_files)
+    files=($localdir_files $tmpdir_files $tmp_files)
 
     local file
     local old_IFS
@@ -347,3 +359,4 @@ typeset -U path
 path=(${(Oa)path})
 export PATH
 unset HISTFILE
+#export DBUS_SESSION_BUS_ADDRESS="disabled:"
