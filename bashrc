@@ -61,6 +61,7 @@ __tacky_prompt() {
 }
 
 export SYSSCREENRC=/dev/null
+export IGNOREEOF=10
 unset HISTFILE
 __os_specific
 __tacky_prompt
