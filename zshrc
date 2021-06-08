@@ -215,7 +215,7 @@ __os_specific() {
         cygwin)
             export PATH='/usr/bin:/bin:/usr/local/bin:'"$PATH"
             export SHELL='/bin/zsh'
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
             alias ls='ls -F --color'
             alias grep='grep --color'
@@ -224,7 +224,7 @@ __os_specific() {
             __disable_mintty_retardation
             ;;
         linux*)
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
@@ -233,7 +233,7 @@ __os_specific() {
         interix*)
             export HOME='/home/'`whoami`
             export PATH='/usr/local/sbin:'"$PATH"
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             alias ls='ls -F'
             __add_local_path
             ;;
