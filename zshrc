@@ -310,6 +310,7 @@ __register_update_terminal_title() {
 setopt IGNORE_EOF
 setopt NO_BANG_HIST
 setopt HIST_IGNORE_DUPS
+export HISTSIZE=10000
 export PAGER='less'
 export LESS='-SR'
 export WINEDEBUG=fixme-all
