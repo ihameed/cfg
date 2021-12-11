@@ -169,13 +169,7 @@
 ;(xbindkey '(mod4 p) "`dmenu_path | dmenu -fn 'Tahoma-8' -nb '#201f1f' -nf '#d4d2cf' -sb '#184880' -sf '#ffffff'`")
 ;(xbindkey '(mod4 p) "rofi -font 'Tahoma 12' -show run")
 (define (rofi cmd) (string-join
-    (list "rofi -font 'Tahoma 8' -modi 'run,windowcd,window'"
-        "-kb-accept-entry \\!Return"
-        "-kb-cancel \\!Escape"
-        "-color-window '#222222, #222222, #b1b4b3'"
-        "-color-normal '#222222, #b1b4b3, #222222, #005577, #b1b4b3'"
-        "-color-active '#222222, #b1b4b3, #222222, #007763, #b1b4b3'"
-        "-color-urgent '#222222, #b1b4b3, #222222, #77003d, #b1b4b3'"
+    (list "rofi 'run,windowcd,window'"
         "-monitor 'primary'"
         "-show" cmd)
     " "))
@@ -184,3 +178,12 @@
 (xbindkey '(Mod4 a) (rofi "window"))
 (xbindkey '(Mod4 Tab) (rofi "windowcd"))
 (xbindkey '(Mod4 l) "xscreensaver-command -lock")
+(xbindkey '(Control Shift "c:10") "xdotool set_desktop 0")
+(xbindkey '(Control Shift "c:11") "xdotool set_desktop 1")
+(xbindkey '(Control Shift "c:12") "xdotool set_desktop 2")
+(xbindkey '(Control Shift "c:13") "xdotool set_desktop 3")
+(xbindkey '(Control Shift "c:14") "xdotool set_desktop 4")
+(xbindkey '(Control Shift "c:15") "xdotool set_desktop 5")
+(xbindkey '(Control Shift "c:16") "xdotool set_desktop 6")
+(xbindkey '(Control Shift "c:17") "xdotool set_desktop 7")
+(xbindkey '(Control Shift "c:18") "xdotool set_desktop 8")

@@ -32,6 +32,7 @@ _link bashrc ~/.bashrc
 _link emacs.d ~/.emacs.d
 _link fonts.conf ~/.fonts.conf
 _link gvimrc ~/.gvimrc
+_link ideavimrc ~/.ideavimrc
 _link minttyrc ~/.minttyrc
 _link screenrc ~/.screenrc
 _link startxwinrc ~/.startxwinrc

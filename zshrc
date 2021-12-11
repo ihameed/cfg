@@ -361,3 +361,4 @@ path=(${(Oa)path})
 export PATH
 unset HISTFILE
 #export DBUS_SESSION_BUS_ADDRESS="disabled:"
+export DOTNET_CLI_TELEMETRY_OPTOUT="true"

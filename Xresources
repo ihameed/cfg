@@ -11,7 +11,8 @@ XTerm*scrollTtyOutput: false
 XTerm*scrollBar: false
 XTerm*scrollKey: true
 XTerm*selectToClipboard: true
-XTerm*backarrowKey: false
+XTerm*backarrowKey: true
+XTerm*bufferedFPS: 100
 
 XTerm*borderWidth: 0
 XTerm*internalBorder: 1
@@ -56,7 +57,8 @@ UXTerm*titeInhibit: true
 UXTerm*scrollTtyOutput: false
 UXTerm*scrollBar: false
 UXTerm*scrollKey: true
-UXTerm*backarrowKey: false
+UXTerm*backarrowKey: true
+UXTerm*bufferedFPS: 100
 
 UXTerm*borderWidth: 0
 UXTerm*internalBorder: 1
