@@ -170,7 +170,8 @@
 ;(xbindkey '(mod4 p) "rofi -font 'Tahoma 12' -show run")
 (define (rofi cmd) (string-join
     (list "rofi 'run,windowcd,window'"
-        "-monitor 'primary'"
+        ;"-monitor 'primary'"
+        "-m -1"
         "-show" cmd)
     " "))
 

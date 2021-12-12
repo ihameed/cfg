@@ -33,13 +33,17 @@ _link emacs.d ~/.emacs.d
 _link fonts.conf ~/.fonts.conf
 _link gvimrc ~/.gvimrc
 _link ideavimrc ~/.ideavimrc
-_link minttyrc ~/.minttyrc
 _link screenrc ~/.screenrc
-_link startxwinrc ~/.startxwinrc
 _link tmux.conf ~/.tmux.conf
 _link vim ~/.vim
 _link vimrc ~/.vimrc
-_link xbindkeysrc.scm ~/.xbindkeysrc.scm
+_link xbindkeysrc.scm ~/.local/xbindkeysrc.scm
 _link xinitrc ~/.xinitrc
 _link xmonad ~/.xmonad
 _link zshrc ~/.zshrc
+case $OSTYPE in
+    cygwin)
+        _link startxwinrc ~/.startxwinrc
+        _link minttyrc ~/.minttyrc
+        ;;
+esac
