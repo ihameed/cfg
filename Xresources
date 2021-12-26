@@ -43,6 +43,19 @@ XTerm*utf8: 1
 XTerm*locale: 0
 XTerm*toolBar: false
 
+XTerm*Translations: #override \n\
+    ~Meta <Btn1Down>:select-start() \n\
+    ~Meta <Btn1Motion>:select-extend() \n\
+    ~Meta <Btn1Up>:select-end(SELECT, CUT_BUFFER0) \n\
+    ~Ctrl ~Meta <Btn2Down>:ignore() \n\
+    ~Ctrl ~Meta <Btn2Up>:insert-selection(SELECT, CUT_BUFFER0) \n\
+    <Btn3Down>:ignore() \n\
+    <Btn3Up>:ignore()
+
+XTerm*on2Clicks: word
+XTerm*on3Clicks: line
+XTerm*on4Clicks: none
+XTerm*on5Clicks: none
 
 
 UXTerm*termName: xterm-256color
