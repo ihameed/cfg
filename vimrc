@@ -309,6 +309,7 @@ if has('gui_running')
   set background=light
   colorscheme solarized
 else
+  set mouse=
   set vb t_vb=
   set t_Co=256
   set cpo-=C
