@@ -2,21 +2,21 @@ __os_specific() {
     case "$OSTYPE" in
         cygwin)
             export SHELL='/bin/bash'
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
             ;;
         linux*)
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             alias ls='ls -F --color'
             alias grep='grep --color'
             __set_locale
             ;;
         interix*)
             export HOME='/home/'`whoami`
-            export TZ='America/Los_Angeles'
+            #export TZ='America/Los_Angeles'
             alias ls='ls -F'
             ;;
         darwin*)
