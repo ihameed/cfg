@@ -271,6 +271,7 @@ __terminal_specific() {
             fi
             ;;
     esac
+    stty erase "$(tput kbs)"
 }
 
 __bind_keys() {
