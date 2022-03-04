@@ -171,7 +171,7 @@
 (define (rofi cmd) (string-join
     (list "rofi 'run,windowcd,window'"
         ;"-monitor 'primary'"
-        "-m -1"
+        ;"-m -1"
         "-show" cmd)
     " "))
 
@@ -188,3 +188,11 @@
 (xbindkey '(Control Shift "c:16") "xdotool set_desktop 6")
 (xbindkey '(Control Shift "c:17") "xdotool set_desktop 7")
 (xbindkey '(Control Shift "c:18") "xdotool set_desktop 8")
+
+(xbindkey '(Mod2 XF86MonBrightnessUp) "xbacklight -inc 5")
+(xbindkey '(Mod2 XF86MonBrightnessDown) "xbacklight -dec 5")
+
+(xbindkey '(Mod2 XF86AudioRaiseVolume) "pactl set-sink-volume @DEFAULT_SINK@ +1000")
+(xbindkey '(Mod2 XF86AudioLowerVolume) "pactl set-sink-volume @DEFAULT_SINK@ -1000")
+(xbindkey '(Mod2 XF86AudioMute) "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+(xbindkey '(Mod2 XF86AudioMicMute) "pactl set-source-mute @DEFAULT_SINK@ toggle")
