@@ -97,6 +97,10 @@ agent-clean() {
     IFS=$old_IFS
 }
 
+agent-update-screen() {
+    screen -X setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
+}
+
 ghc-pkg-clean() {
     for p in `ghc-pkg check $* 2>&1  | grep problems \
             | awk '{print $6}' | sed -e 's/:$//'`
