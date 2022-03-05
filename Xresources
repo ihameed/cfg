@@ -24,7 +24,7 @@ XTerm*color0:    #000000
 XTerm*color1:    #bf0000
 XTerm*color2:    #00bf00
 XTerm*color3:    #bfbf00
-XTerm*color4:    #0000bf
+XTerm*color4:    #3040ff
 XTerm*color5:    #bf00bf
 XTerm*color6:    #00bfbf
 XTerm*color7:    #bfbfbf
@@ -37,6 +37,24 @@ XTerm*color12:    #6060ff
 XTerm*color13:    #ff40ff
 XTerm*color14:    #40ffff
 XTerm*color15:    #ffffff
+
+!XTerm*color0: #000000
+!XTerm*color1: #cd0000
+!XTerm*color2: #00cd00
+!XTerm*color3: #cdcd00
+!XTerm*color4: #0000ee
+!XTerm*color5: #cd00cd
+!XTerm*color6: #00cdcd
+!XTerm*color7: #e5e5e5
+!
+!XTerm*color8:  #7f7f7f
+!XTerm*color9:  #ff0000
+!XTerm*color10: #00ff00
+!XTerm*color11: #ffff00
+!XTerm*color12: #5c5cff
+!XTerm*color13: #ff00ff
+!XTerm*color14: #00ffff
+!XTerm*color15: #ffffff
 
 XTerm*metaSendsEscape: true
 XTerm*utf8: 1
