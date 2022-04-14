@@ -56,6 +56,25 @@ XTerm*color15:    #ffffff
 !XTerm*color14: #00ffff
 !XTerm*color15: #ffffff
 
+XTerm*color0:    #000000
+XTerm*color1:    #bf0000
+XTerm*color2:    #00bf00
+XTerm*color3:    #bfbf00
+XTerm*color5:    #bf00bf
+XTerm*color6:    #00bfbf
+XTerm*color7:    #bfbfbf
+
+XTerm*color8:    #404040
+XTerm*color9:    #ff4040
+XTerm*color10:    #40ff40
+XTerm*color11:    #ffff40
+XTerm*color13:    #ff40ff
+XTerm*color14:    #40ffff
+XTerm*color15:    #ffffff
+
+XTerm*color4:    #3040ff
+XTerm*color12:    #6060ff
+
 XTerm*metaSendsEscape: true
 XTerm*utf8: 1
 XTerm*locale: 0
