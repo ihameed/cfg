@@ -1,11 +1,18 @@
+Xft.dpi: 96
+
 XTerm*termName: xterm-256color
 XTerm*saveLines: 1024
-! XTerm*font: 6x13
-! XTerm*boldFont: 6x13
-XTerm*font: xft:PragmataPro Mono:size=9
-XTerm*boldFont: xft:PragmataPro Mono:size=9
+
+XTerm*faceName: PragmataPro Mono
+XTerm*faceSize: 8
+XTerm*renderFont: true
+!XTerm*font: 6x13
+!XTerm*boldFont: 6x13
+!XTerm*font: xft:PragmataPro Mono:size=9
+!XTerm*boldFont: xft:PragmataPro Mono:size=9
 XTerm*boldMode: false
 XTerm*allowBoldFonts: false
+
 XTerm*titeInhibit: true
 XTerm*scrollTtyOutput: false
 XTerm*scrollBar: false
@@ -20,23 +27,23 @@ XTerm*internalBorder: 1
 XTerm*background: #000000
 XTerm*foreground: #c2c2c2
 
-XTerm*color0:    #000000
-XTerm*color1:    #bf0000
-XTerm*color2:    #00bf00
-XTerm*color3:    #bfbf00
-XTerm*color4:    #3040ff
-XTerm*color5:    #bf00bf
-XTerm*color6:    #00bfbf
-XTerm*color7:    #bfbfbf
-
-XTerm*color8:    #404040
-XTerm*color9:    #ff4040
-XTerm*color10:    #40ff40
-XTerm*color11:    #ffff40
-XTerm*color12:    #6060ff
-XTerm*color13:    #ff40ff
-XTerm*color14:    #40ffff
-XTerm*color15:    #ffffff
+!XTerm*color0:    #000000
+!XTerm*color1:    #bf0000
+!XTerm*color2:    #00bf00
+!XTerm*color3:    #bfbf00
+!XTerm*color4:    #3040ff
+!XTerm*color5:    #bf00bf
+!XTerm*color6:    #00bfbf
+!XTerm*color7:    #bfbfbf
+!
+!XTerm*color8:    #404040
+!XTerm*color9:    #ff4040
+!XTerm*color10:    #40ff40
+!XTerm*color11:    #ffff40
+!XTerm*color12:    #6060ff
+!XTerm*color13:    #ff40ff
+!XTerm*color14:    #40ffff
+!XTerm*color15:    #ffffff
 
 !XTerm*color0: #000000
 !XTerm*color1: #cd0000
@@ -80,14 +87,14 @@ XTerm*utf8: 1
 XTerm*locale: 0
 XTerm*toolBar: false
 
-XTerm*Translations: #override \n\
-    ~Meta <Btn1Down>:select-start() \n\
-    ~Meta <Btn1Motion>:select-extend() \n\
-    ~Meta <Btn1Up>:select-end(SELECT, CUT_BUFFER0) \n\
-    ~Ctrl ~Meta <Btn2Down>:ignore() \n\
-    ~Ctrl ~Meta <Btn2Up>:insert-selection(SELECT, CUT_BUFFER0) \n\
-    <Btn3Down>:ignore() \n\
-    <Btn3Up>:ignore()
+!XTerm*Translations: #override \n\
+!    ~Meta <Btn1Down>:select-start() \n\
+!    ~Meta <Btn1Motion>:select-extend() \n\
+!    ~Meta <Btn1Up>:select-end(SELECT, CUT_BUFFER0) \n\
+!    ~Ctrl ~Meta <Btn2Down>:ignore() \n\
+!    ~Ctrl ~Meta <Btn2Up>:insert-selection(SELECT, CUT_BUFFER0) \n\
+!    <Btn3Down>:ignore() \n\
+!    <Btn3Up>:ignore()
 
 XTerm*on2Clicks: word
 XTerm*on3Clicks: line
@@ -97,11 +104,16 @@ XTerm*on5Clicks: none
 
 UXTerm*termName: xterm-256color
 UXTerm*saveLines: 1024
-! UXTerm*font: 6x13
-! UXTerm*boldFont: 6x13
+
+!UXTerm*font: 6x13
+!UXTerm*boldFont: 6x13
+UXTerm*faceName: PragmataPro Mono
+UXTerm*faceSize: 8
+UXTerm*renderFont: true
 UXTerm*font: xft:PragmataPro Mono:size=9
 UXTerm*boldFont: xft:PragmataPro Mono:size=9
 UXTerm*boldMode: false
+
 UXTerm*allowBoldFonts: false
 UXTerm*titeInhibit: true
 UXTerm*scrollTtyOutput: false
@@ -138,5 +150,3 @@ UXTerm*metaSendsEscape: true
 UXTerm*utf8: 1
 UXTerm*locale: 0
 UXTerm*toolBar: false
-
-Xft.dpi: 96
