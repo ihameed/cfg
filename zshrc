@@ -171,7 +171,7 @@ __use_local_opam() {
 }
 
 __use_local_rust() {
-    path=("$HOME/.local/programs/rust/1.49.0/amd64/bin" $path)
+    path=("$HOME/.local/programs/rust/1.63.0-amd64/bin" $path)
 }
 
 __use_local_pkgsrc() {
