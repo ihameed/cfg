@@ -350,11 +350,11 @@ __os_specific
 #__use_local_nix_profile
 __terminal_specific
 #__use_local_smlnj
-__use_local_opam
-__use_local_ocaml
-__use_local_ghc
+#__use_local_opam
+#__use_local_ocaml
+#__use_local_ghc
 __use_local_cabal
-__use_local_rust
+#__use_local_rust
 __register_update_terminal_title
 __tacky_prompt
 
@@ -365,5 +365,8 @@ typeset -U path
 path=(${(Oa)path})
 export PATH
 unset HISTFILE
-#export DBUS_SESSION_BUS_ADDRESS="disabled:"
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
+
+if [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]]; then
+    export DBUS_SESSION_BUS_ADDRESS="disabled:"
+fi
