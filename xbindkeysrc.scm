@@ -168,16 +168,17 @@
 
 ;(xbindkey '(mod4 p) "`dmenu_path | dmenu -fn 'Tahoma-8' -nb '#201f1f' -nf '#d4d2cf' -sb '#184880' -sf '#ffffff'`")
 ;(xbindkey '(mod4 p) "rofi -font 'Tahoma 12' -show run")
-(define (rofi cmd) (string-join
+(define (rofi cmd theme) (string-join
     (list "rofi 'run,windowcd,window'"
         ;"-monitor 'primary'"
         ;"-m -1"
+        "-theme" theme
         "-show" cmd)
     " "))
 
-(xbindkey '(Mod4 p) (rofi "run"))
-(xbindkey '(Mod4 a) (rofi "window"))
-(xbindkey '(Mod4 Tab) (rofi "windowcd"))
+(xbindkey '(Mod4 p) (rofi "run" "hurr"))
+(xbindkey '(Mod4 a) (rofi "window" "hurrside"))
+(xbindkey '(Mod4 Tab) (rofi "windowcd" "hurrside"))
 (xbindkey '(Mod4 l) "xscreensaver-command -lock")
 (xbindkey '(Control Shift "c:10") "xdotool set_desktop 0")
 (xbindkey '(Control Shift "c:11") "xdotool set_desktop 1")
