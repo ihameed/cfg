@@ -341,6 +341,8 @@ compctl -c man
 compctl -c info
 compctl -c which
 
+compdef _gnu_generic start
+compctl -f start
 
 __bind_keys
 __disable_flow_control
