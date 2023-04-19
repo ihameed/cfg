@@ -135,7 +135,6 @@ __update_title() {
 
 __set_locale() {
     export LANG='en_US.UTF-8'
-    export LC_ALL='en_US.UTF-8'
 }
 
 __set_bsd_clicolor() {

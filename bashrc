@@ -42,7 +42,6 @@ __set_bsd_clicolor() {
 
 __set_locale() {
     export LANG='en_US.UTF-8'
-    export LC_ALL='en_US.UTF-8'
 }
 
 __tacky_prompt() {
