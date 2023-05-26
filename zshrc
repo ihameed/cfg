@@ -38,11 +38,11 @@ agent-select() {
             echo
         done
 
-        echo -n 'ya['$active']: '
-        read idx
+        local next_idx=
+        vared -e -p "ya[$active]: " next_idx
 
-        if [[ ($idx -ge 1) && ($idx -le $len) ]]; then
-            file=$files[$idx]
+        if [[ ($next_idx -ge 1) && ($next_idx -le $len) ]]; then
+            file=$files[$next_idx]
             export SSH_AUTH_SOCK=$file
             echo 'using agent socket at '$file
             SSH_AUTH_SOCK=$file ssh-add -l
