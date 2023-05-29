@@ -254,11 +254,6 @@ __os_specific() {
             alias ls='ls -F'
             alias grep='grep --color'
             __set_bsd_clicolor
-            # case $TERM in
-            #     xterm-256color)
-            #         export TERM='xterm'
-            #         ;;
-            # esac
             ;;
     esac
 }
@@ -268,13 +263,21 @@ __terminal_specific() {
         cons25)
             bindkey "^?" delete-char
             ;;
-        screen|screen-bce|screen-256color-bce)
-            if tput -T screen-256color > /dev/null 2>&1; then
-                export TERM="screen-256color"
-            fi
+        screen*)
+            #stty erase "$(tput kbs)"
             ;;
     esac
-    stty erase "$(tput kbs)"
+    case "$OSTYPE" in
+        freebsd*)
+        case "$TERM" in
+            screen|screen-bce|screen-256color-bce)
+                tput -T "$TERM" kbs > /dev/null 2>&1
+                if (( $? )) then
+                    export TERM="screen-256color"
+                fi
+            ;;
+        esac
+    esac
 }
 
 __bind_keys() {

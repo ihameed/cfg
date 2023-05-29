@@ -25,6 +25,7 @@ _link() {
 }
 
 mkdir -p ~/.local
+mkdir -p ~/.terminfo/x
 
 _link Xresources ~/.local/Xresources
 _link bash_profile ~/.bash_profile
@@ -41,6 +42,7 @@ _link xbindkeysrc.scm ~/.local/xbindkeysrc.scm
 _link xinitrc ~/.xinitrc
 _link xmonad ~/.xmonad
 _link zshrc ~/.zshrc
+_link terminfo/x/xterm-256color ~/.terminfo/x/xterm-256color
 case $OSTYPE in
     cygwin)
         _link startxwinrc ~/.startxwinrc

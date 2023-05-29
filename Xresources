@@ -18,7 +18,10 @@ XTerm*scrollTtyOutput: false
 XTerm*scrollBar: false
 XTerm*scrollKey: true
 XTerm*selectToClipboard: true
-XTerm*backarrowKey: true
+!XTerm*backarrowKey: true
+XTerm*backarrowKeyIsErase: true
+!XTerm*ptyInitialErase: false
+XTerm.ttyModes: erase ^?
 XTerm*bufferedFPS: 100
 
 XTerm*borderWidth: 0
@@ -119,7 +122,10 @@ UXTerm*titeInhibit: true
 UXTerm*scrollTtyOutput: false
 UXTerm*scrollBar: false
 UXTerm*scrollKey: true
-UXTerm*backarrowKey: true
+!UXTerm*backarrowKey: false
+UXTerm*backarrowKeyIsErase: true
+!UXTerm*ptyInitialErase: false
+UXTerm.ttyModes: erase ^?
 UXTerm*bufferedFPS: 100
 
 UXTerm*borderWidth: 0

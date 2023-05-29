@@ -1,0 +1,11 @@
+xterm ^H vs ^?:
+https://bugzilla.redhat.com/show_bug.cgi?id=142659
+http://www.fifi.org/doc/xterm/README.Debian
+https://github.com/void-linux/void-packages/pull/42169#issuecomment-1549971356
+https://github.com/openbsd/src/blob/master/share/termtypes/termtypes.master#L5-L8
+
+some debian guy hacked up the xterm entry for upstream ncurses to use kbs=^?
+instead of kbs=^H. most linux distributions use this change. nixos doesn't, and
+neither does void linux prior to 2023-05-19. openbsd also uses kbs=^? for xterm
+and also screen. freebsd uses termcamp. it uses kb=^H for xterm and screen. it
+also uses ^H for tmux, which is wrong, because tmux-the-program always emits ^?

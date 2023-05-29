@@ -33,3 +33,4 @@ defbce "on"
 # Don't manipulate /etc/utmp.
 deflogin off
 
+#bindkey -k kb stuff ^H
