@@ -9,3 +9,7 @@ instead of kbs=^H. most linux distributions use this change. nixos doesn't, and
 neither does void linux prior to 2023-05-19. openbsd also uses kbs=^? for xterm
 and also screen. freebsd uses termcamp. it uses kb=^H for xterm and screen. it
 also uses ^H for tmux, which is wrong, because tmux-the-program always emits ^?
+
+xterm "application mode":
+https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-PC-Style-Function-Keys
+https://github.com/fish-shell/fish-shell/issues/2139#issuecomment-388706768

@@ -282,25 +282,35 @@ __terminal_specific() {
 
 __bind_keys() {
     bindkey -e
-    bindkey "\e[Z" reverse-menu-complete
-    bindkey "\e[3~" delete-char
+    # xterm
+    bindkey "\e[Z" reverse-menu-complete # shift-tab
+    bindkey "\e[3~" delete-char # delete
 
-    bindkey "\e[5~" beginning-of-history
-    bindkey "\e[6~" end-of-history
+    # xterm, screen, linux
+    bindkey "\e[5~" beginning-of-history # page up
+    bindkey "\e[6~" end-of-history # page down
 
-    bindkey "\e[1~" beginning-of-line
-    bindkey "\e[4~" end-of-line
-    bindkey "\e[H" beginning-of-line
-    bindkey "\e[F" end-of-line
-    bindkey "\e[7~" beginning-of-line
-    bindkey "\e[8~" end-of-line
+    # screen, vt220
+    bindkey "\e[1~" beginning-of-line # home
+    bindkey "\e[4~" end-of-line # end
 
-    bindkey "\e[5C" forward-word
-    bindkey "\e[5D" backward-word
-    bindkey "\e\e[C" forward-word
-    bindkey "\e\e[D" backward-word
-    bindkey "\eOc" emacs-forward-word
-    bindkey "\eOd" emacs-backward-word
+    # xterm, screen
+    bindkey "\e[H" beginning-of-line # home
+    bindkey "\e[F" end-of-line # end
+
+    # xterm "application mode"
+    bindkey "\eOH" beginning-of-line # home (terminfo "khome")
+    bindkey "\eOF" end-of-line # end (terminfo "kend")
+    #bindkey -- "${terminfo[khome]/O/[}" beginning-of-line
+    #bindkey -- "${terminfo[kend]/O/[}" end-of-line
+
+    # rxvt
+    bindkey "\e[7~" beginning-of-line # home
+    bindkey "\e[8~" end-of-line # end
+
+    # xterm
+    bindkey "\e[1;5D" backward-word # ctrl-left
+    bindkey "\e[1;5C" forward-word # ctrl-right
 }
 
 __update_terminal_title() {
