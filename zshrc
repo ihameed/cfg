@@ -220,16 +220,16 @@ __os_specific() {
             export SHELL='/bin/zsh'
             #export TZ='America/Los_Angeles'
             export LESSHISTFILE='-'
-            alias ls='ls -F --color'
-            alias grep='grep --color'
+            alias ls='ls -F --color=auto'
+            alias grep='grep --color=auto'
             __set_locale
             __add_local_path
             __disable_mintty_retardation
             ;;
         linux*)
             #export TZ='America/Los_Angeles'
-            alias ls='ls -F --color'
-            alias grep='grep --color'
+            alias ls='ls -F --color=auto'
+            alias grep='grep --color=auto'
             __set_locale
             __add_local_path
             ;;
