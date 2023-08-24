@@ -26,7 +26,6 @@ agent-select() {
     integer len=${#files}
     integer active=-1
 
-
     if [[ $len -ge 1 ]]; then
         for idx in {1..$len}; do
             file=$files[$idx]
@@ -148,15 +147,11 @@ __use_local_smlnj() {
 }
 
 __use_local_ghc() {
-    path=("$HOME/.local/ghc/bin" $path)
+    path=("$HOME/.local/programs/ghc/default/bin" $path)
 }
 
 __use_local_cabal() {
     path=("$HOME/.cabal/bin" $path)
-}
-
-__use_local_emacs() {
-    path=("$HOME/.local/emacs/bin" $path)
 }
 
 __use_local_ocaml() {
@@ -166,7 +161,7 @@ __use_local_ocaml() {
 }
 
 __use_local_opam() {
-    path=("$HOME/.local/opam/bin" $path)
+    path=("$HOME/.local/programs/opam/bin" $path)
 }
 
 __use_local_rust() {
@@ -193,7 +188,7 @@ __add_local_path() {
     export PATH="$HOME/.local/bin":"$PATH"
 }
 
-__disable_mintty_retardation() {
+__disable_mintty_annoying_crap() {
     echo -n '\e[?7786l' #mousewheel -> up/down
 }
 
@@ -201,7 +196,7 @@ __simple_prompt() {
     PS1='%n@%m:%~%(!.#.$) '
 }
 
-__tacky_prompt() {
+__fancy_prompt() {
     magenta=$'%{\e[95m%}'
     blue=$'%{\e[94m%}'
     reset='%f'
@@ -224,7 +219,7 @@ __os_specific() {
             alias grep='grep --color=auto'
             __set_locale
             __add_local_path
-            __disable_mintty_retardation
+            __disable_mintty_annoying_crap
             ;;
         linux*)
             #export TZ='America/Los_Angeles'
@@ -370,7 +365,7 @@ __terminal_specific
 __use_local_cabal
 #__use_local_rust
 __register_update_terminal_title
-__tacky_prompt
+__fancy_prompt
 
 agent-clean
 
@@ -384,3 +379,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 if [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]]; then
     export DBUS_SESSION_BUS_ADDRESS="disabled:"
 fi
+
+[[ -f "$HOME/.local/local.zsh" ]] && . "$HOME/.local/local.zsh"
