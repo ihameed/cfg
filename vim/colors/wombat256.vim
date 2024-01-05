@@ -278,18 +278,19 @@ call <SID>X("WarningMsg",   "ff0000",   "",         "")
             "DiffDelete
             "DiffText
 
+
 " syntax highlighting
 call <SID>X("Number",       "e5786d",   "",         "none")
 call <SID>X("Constant",     "e5786d",   "",         "none")
 call <SID>X("String",       "95e454",   "",         "none")
 call <SID>X("Comment",      "c0bc6c",   "",         "none")
-call <SID>X("Identifier",   "caeb82",   "",         "none")
+call <SID>X("Identifier",   "caeb82",   "",         "none") " diffadd
 call <SID>X("Keyword",      "87afff",   "",         "none")
 call <SID>X("Statement",    "87afff",   "",         "none")
 call <SID>X("Function",     "caeb82",   "",         "none")
 call <SID>X("PreProc",      "e5786d",   "",         "none")
 call <SID>X("Type",         "caeb82",   "",         "none")
-call <SID>X("Special",      "ffdead",   "",         "none")
+call <SID>X("Special",      "ffdead",   "",         "none") " diffdelete
 call <SID>X("Todo",         "857b6f",   "",         "none")
             "Underlined
             "Error
@@ -298,6 +299,20 @@ call <SID>X("Todo",         "857b6f",   "",         "none")
 hi! link VisualNOS  Visual
 hi! link NonText    LineNr
 hi! link FoldColumn Folded
+
+" XXXih: from syntax.txt:
+"
+" Since the Vim 9.1 release |version-9.1| the diff filetype links the diffAdded,
+" diffRemoved and diffChanged highlighting groups to |hl-DiffAdd|,
+" |hl-DiffDelete| and |hl-DiffChange| by default.  If you do not want this, you
+" can change it to the previous groups like this in your |.vimrc| >
+" 
+" 	hi link diffRemoved Special
+" 	hi link diffChanged PreProc
+" 	hi link diffAdded Identifier
+hi! link DiffAdd Identifier
+hi! link DiffDelete Special
+hi! link DiffChange PreProc
 
 " delete functions {{{
 delf <SID>X

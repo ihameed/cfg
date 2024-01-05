@@ -707,6 +707,10 @@ exe "hi! vimGroup"          .s:fmt_undb    .s:fg_blue   .s:bg_none
 " ---------------------------------------------------------------------
 hi! link diffAdded Statement
 hi! link diffLine Identifier
+" XXXih: vim 9.1
+hi! link DiffAdd Identifier
+hi! link DiffDelete Special
+hi! link DiffChange PreProc
 "}}}
 " git & gitcommit highlighting "{{{
 "git

@@ -3,6 +3,7 @@
 set clipboard-=ideaput
 set iskeyword+=-
 set nooldundo
+set matchit
 vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
 nmap gqip :action com.andrewbrookins.idea.wrap.WrapParagraphAction<CR>
 nmap gqq :action com.andrewbrookins.idea.wrap.WrapAction<CR>

@@ -323,3 +323,5 @@ endif
 
 set rtp-=~/.vim/after/
 set rtp+=~/.vim/after/
+
+autocmd FileType cmake set formatoptions+=roqn2
