@@ -109,13 +109,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': g:ignored_files,
   \ }
 
-imap <f1> <nop>
-map <f1> <nop>
-map <f2> <esc>:NERDTreeToggle<cr>
-map <f3> <esc>:CtrlPBuffer<cr>
-map <f4> <esc>:CtrlP<cr>
-map <f12> <esc>:CtrlPClearCache<cr>
-
 autocmd BufRead *.inf  set filetype=dosini
 autocmd BufRead *.json set filetype=json
 
@@ -325,3 +318,11 @@ set rtp-=~/.vim/after/
 set rtp+=~/.vim/after/
 
 autocmd FileType cmake set formatoptions+=roqn2
+autocmd FileType cmake set iskeyword+=-
+
+imap <f1> <nop>
+map <f1> <nop>
+map <f2> <esc>:NERDTreeToggle<cr>
+map <f3> <esc>:CtrlPBuffer<cr>
+map <f4> <esc>:CtrlP<cr>
+map <f12> <esc>:CtrlPClearCache<cr>
