@@ -341,6 +341,8 @@ alias ssh-xforward='ssh -Y -C'
 
 autoload -Uz compinit
 compinit
+zstyle ':completion:*' accept-exact-dirs true
+zstyle ':completion:*' path-completion false
 
 listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
 compctl -K listsysctls sysctl
