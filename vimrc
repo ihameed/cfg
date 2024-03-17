@@ -4,6 +4,7 @@ set encoding=utf-8
 set fileformat=unix
 
 runtime macros/matchit.vim
+runtime junk/SyntaxAttr.vim
 
 let mapleader = ","
 let maplocalleader = "\\"

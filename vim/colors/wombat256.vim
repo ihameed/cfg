@@ -300,6 +300,7 @@ hi! link VisualNOS  Visual
 hi! link NonText    LineNr
 hi! link FoldColumn Folded
 
+" https://github.com/vim/vim/pull/13825
 " XXXih: from syntax.txt:
 "
 " Since the Vim 9.1 release |version-9.1| the diff filetype links the diffAdded,
@@ -310,6 +311,15 @@ hi! link FoldColumn Folded
 " 	hi link diffRemoved Special
 " 	hi link diffChanged PreProc
 " 	hi link diffAdded Identifier
+hi! link Added Identifier
+hi! link Changed PreProc
+hi! link Removed Special
+
+hi! link diffAdded Identifier
+hi! link diffChanged PreProc
+hi! link diffLine Identifier
+hi! link diffRemoved Special
+
 hi! link DiffAdd Identifier
 hi! link DiffDelete Special
 hi! link DiffChange PreProc

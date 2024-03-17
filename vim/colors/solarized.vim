@@ -705,9 +705,17 @@ exe "hi! vimGroup"          .s:fmt_undb    .s:fg_blue   .s:bg_none
 "}}}
 " diff highlighting "{{{
 " ---------------------------------------------------------------------
-hi! link diffAdded Statement
-hi! link diffLine Identifier
 " XXXih: vim 9.1
+" https://github.com/vim/vim/pull/13825
+hi! link Added Statement
+hi! link Changed PreProc
+hi! link Removed Special
+
+hi! link diffAdded Statement
+hi! link diffChanged PreProc
+hi! link diffLine Identifier
+hi! link diffRemoved Special
+
 hi! link DiffAdd Identifier
 hi! link DiffDelete Special
 hi! link DiffChange PreProc
