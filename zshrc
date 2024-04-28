@@ -5,21 +5,28 @@ recursive-fetch() {
 agent-select() {
     local -aU tmpdir_files
     local -aU tmp_files
+    local -aU osxdir_files
     local -aU files
     local localdir="$HOME/.local/ssh-agent"
     local tmpdir="$TMPDIR"
+    local osxdir="/private/tmp"
     if [ -z "$localdir" ]; then
         localdir_files=( )
     else
-        localdir_files=($localdir/ssh-*/agent.*(N)) 2>/dev/null
+        localdir_files=("$localdir"/ssh-*/agent.*(N)) 2>/dev/null
     fi
     if [ -z "$tmpdir" ]; then
         tmpdir_files=( )
     else
-        tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
+        tmpdir_files=("$tmpdir"/ssh-*/agent.*(N)) 2>/dev/null
     fi
     tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
-    files=($localdir_files $tmpdir_files $tmp_files)
+    if [ -z "$osxdir" ]; then
+        osxdir_files=( )
+    else
+        osxdir_files=("$osxdir"/com.apple.launchd.*/Listeners(N)) 2>/dev/null
+    fi
+    files=($localdir_files $tmpdir_files $tmp_files $osxdir_files)
 
     local file
     integer idx=0
@@ -29,11 +36,11 @@ agent-select() {
     if [[ $len -ge 1 ]]; then
         for idx in {1..$len}; do
             file=$files[$idx]
-            if [[ $SSH_AUTH_SOCK = $file ]]; then
+            if [[ "$SSH_AUTH_SOCK" = "$file" ]]; then
                 active=$idx
             fi
-            echo $idx'. agent socket at '$file
-            SSH_AUTH_SOCK=$file ssh-add -l
+            echo "$idx. agent socket at $file"
+            SSH_AUTH_SOCK="$file" ssh-add -l
             echo
         done
 
@@ -42,9 +49,9 @@ agent-select() {
 
         if [[ ($next_idx -ge 1) && ($next_idx -le $len) ]]; then
             file=$files[$next_idx]
-            export SSH_AUTH_SOCK=$file
-            echo 'using agent socket at '$file
-            SSH_AUTH_SOCK=$file ssh-add -l
+            export SSH_AUTH_SOCK="$file"
+            echo "using agent socket at $file"
+            SSH_AUTH_SOCK="$file" ssh-add -l
         fi
     else
         echo 'no agent sockets found'
@@ -63,32 +70,31 @@ agent-clean() {
     if [ -z "$localdir" ]; then
         localdir_files=( )
     else
-        localdir_files=($localdir/ssh-*/agent.*(N)) 2>/dev/null
+        localdir_files=("$localdir"/ssh-*/agent.*(N)) 2>/dev/null
     fi
     if [ -z "$tmpdir" ]; then
         tmpdir_files=()
     else
-        tmpdir_files=($tmpdir/ssh-*/agent.*(N)) 2>/dev/null
+        tmpdir_files=("$tmpdir"/ssh-*/agent.*(N)) 2>/dev/null
     fi
     tmp_files=(/tmp/ssh-*/agent.*(N)) 2>/dev/null
     files=($localdir_files $tmpdir_files $tmp_files)
 
     local file
     local old_IFS
-    local timeout_cmd='timeout 5'
+    local timeout_cmd=('timeout' '5')
     if ! type timeout > /dev/null; then
-      timeout_cmd=''
+      timeout_cmd=( )
     fi
     old_IFS=$IFS
     IFS=
     for file in $files; do
         #echo -n 'probing '$file'... '
-        local cmd="SSH_AUTH_SOCK=$file $timeout_cmd ssh-add -l 2>/dev/null 1>/dev/null"
-        eval $cmd
-        local code=$?
-        if [[ $code -ne 0 && $code -ne 1 ]]; then
-            #echo 'deleted: ' $code
-            rm -r $(dirname $file)
+        SSH_AUTH_SOCK="$file" "$timeout_cmd[@]" ssh-add -l 2>/dev/null 1>/dev/null
+        local code="$?"
+        if [[ "$code" -ne 0 && "$code" -ne 1 ]]; then
+            #echo "deleted: $code"
+            rm -r "$(dirname "$file")"
         else
             #echo 'kept'
         fi
