@@ -2,7 +2,7 @@
 "map P ]P
 set clipboard-=ideaput
 set iskeyword+=-
-set nooldundo
+"set nooldundo "https://youtrack.jetbrains.com/issue/VIM-308/Undo-requires-one-more-step-if-the-cursor-is-not-at-the-position-where-it-was-after-undo#focus=Comments-27-9779048.0-0
 set matchit
 vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
 nmap gqip :action com.andrewbrookins.idea.wrap.WrapParagraphAction<CR>
