@@ -377,10 +377,6 @@ __fancy_prompt
 
 agent-clean
 
-path=(${(Oa)path})
-typeset -U path
-path=(${(Oa)path})
-export PATH
 unset HISTFILE
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 
@@ -389,3 +385,8 @@ if [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]]; then
 fi
 
 [[ -f "$HOME/.local/local.zsh" ]] && . "$HOME/.local/local.zsh"
+
+path=(${(Oa)path})
+typeset -U path
+path=(${(Oa)path})
+export PATH
