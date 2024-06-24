@@ -5,6 +5,7 @@ set fileformat=unix
 
 runtime macros/matchit.vim
 runtime junk/SyntaxAttr.vim
+runtime junk/skim.vim
 
 let mapleader = ","
 let maplocalleader = "\\"

@@ -244,7 +244,7 @@ __os_specific() {
         darwin*)
             alias ls='ls -F'
             alias grep='grep --color'
-            export PATH='/opt/local/bin:/opt/local/sbin:'"$PATH"
+            export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
             export TERMINFO=/opt/local/share/terminfo
             __set_locale
             __add_local_path
