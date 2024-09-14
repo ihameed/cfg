@@ -12,7 +12,10 @@ defflow off
 
 hardstatus string "[%S] %h"
 
-caption always "%{= dW}%Y-%m-%d %0C:%s %a    %= %{= dd}%-Lw%{= dd}%51>%n%f* %t%{-}%+Lw%<%{- Wk}%{= dd}"
+backtick 0 1 1 /bin/date +'%F %I:%M:%S %p %Z'
+
+#caption always "%{= dW}%Y-%m-%d %0C:%s %a    %= %{= dd}%-Lw%{= dd}%51>%n%f* %t%{-}%+Lw%<%{- Wk}%{= dd}"
+caption always "%{= dW}%`    %= %{= dd}%-Lw%{= dd}%51>%n* %t%{-}%+Lw%<%{- Wk}%{= dd}"
 
 term 'screen-256color'
 # Mirror the hardstatus string to the xterm titlebar
