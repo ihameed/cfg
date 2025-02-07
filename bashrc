@@ -66,3 +66,4 @@ __os_specific
 __tacky_prompt
 shopt -s globstar
 bind 'set show-all-if-ambiguous on' 2>/dev/null
+[[ -f "$HOME/.local/local.bash" ]] && . "$HOME/.local/local.bash"
