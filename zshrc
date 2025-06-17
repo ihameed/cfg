@@ -386,7 +386,7 @@ fi
 
 [[ -f "$HOME/.local/local.zsh" ]] && . "$HOME/.local/local.zsh"
 
-path=(${(Oa)path})
+# path=(${(Oa)path}) # reverse in place https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
 typeset -U path
-path=(${(Oa)path})
+# path=(${(Oa)path})
 export PATH
