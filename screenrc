@@ -37,3 +37,10 @@ defbce "on"
 deflogin off
 
 #bindkey -k kb stuff ^H
+
+# standout <-> italic screen 5.0 bug
+# https://savannah.gnu.org/bugs/?67436
+# https://savannah.gnu.org/bugs/?36676
+# https://unix.stackexchange.com/questions/595978/why-inverted-color-changes-to-italic-font-in-terminal
+# https://unix.stackexchange.com/a/240147
+termcapinfo xterm* 'ZH=\E[7m:ZR=\E[27m'
