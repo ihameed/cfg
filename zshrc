@@ -171,7 +171,7 @@ __use_local_opam() {
 }
 
 __use_local_rust() {
-    path=("$HOME/.local/programs/rust/1.83.0/bin" "$HOME/.cargo/bin" $path)
+    path=("$HOME/.local/programs/rust/current/bin" "$HOME/.cargo/bin" $path)
 }
 
 __use_local_pkgsrc() {
