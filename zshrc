@@ -345,20 +345,6 @@ alias racket='rlwrap racket'
 alias emacs-cli='emacs -nw'
 alias ssh-xforward='ssh -Y -C'
 
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' accept-exact-dirs true
-zstyle ':completion:*' path-completion false
-
-listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
-compctl -K listsysctls sysctl
-compctl -c man
-compctl -c info
-compctl -c which
-
-compdef _gnu_generic start
-compctl -f start
-
 __bind_keys
 __disable_flow_control
 __update_title
@@ -390,3 +376,22 @@ fi
 typeset -U path
 # path=(${(Oa)path})
 export PATH
+
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' accept-exact-dirs true
+zstyle ':completion:*' path-completion false
+zstyle ':completion:*' verbose yes
+
+zstyle ':completion:*:*:*:descriptions' format "%d:"
+zstyle ':completion:*' group-name ''
+
+listsysctls () { set -A reply $(sysctl -AN ${1%.*} 2>/dev/null) }
+compctl -K listsysctls sysctl
+compctl -c man
+compctl -c info
+compctl -c which
+
+compdef _gnu_generic start
+compctl -f start
