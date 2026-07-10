@@ -36,6 +36,8 @@ defbce "on"
 # Don't manipulate /etc/utmp.
 deflogin off
 
+defwrap on
+
 #bindkey -k kb stuff ^H
 
 # standout <-> italic screen 5.0 bug
