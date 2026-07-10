@@ -310,6 +310,8 @@ else
   set cpo-=C
 
   colorscheme wombat256
+
+  set ttimeoutlen=16
 endif
 
 if filereadable(expand("~/.local/vim/local.vim"))
